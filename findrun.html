@@ -183,6 +183,32 @@
     </div>
   </section>
 
+  <!-- 개발자 후원(기부) 섹션 (4개국어 연동) -->
+  <section id="donate" class="py-12 bg-amber-50/75 border-t border-amber-200/70">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 text-amber-900 text-xs font-extrabold">
+        <i data-lucide="coffee" class="w-3.5 h-3.5"></i> SUPPORT FREEWARE DEVELOPER
+      </div>
+      <h2 class="text-xl sm:text-2xl font-black text-slate-900" data-i18n="donateTitle">
+        FINDRUN이 업무 시간을 아껴주었나요?
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed" data-i18n="donateDesc">
+        TINYWORK LAB의 무료 유틸리티는 광고 없이 배포됩니다. 따뜻한 커피 한 잔의 후원은 지속적인 기능 업데이트와 신규 툴 개발에 큰 힘이 됩니다.
+      </p>
+      <div class="pt-1.5 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="https://www.buymeacoffee.com/tinyworklab"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-extrabold text-slate-950 bg-[#FFDD00] hover:bg-[#f5d400] shadow-md shadow-amber-400/20 hover:-translate-y-0.5 transition-all"
+        >
+          <i data-lucide="coffee" class="w-4 h-4"></i>
+          <span data-i18n="donateCta">개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="py-16 bg-slate-50 border-t border-slate-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="rounded-3xl bg-white border border-slate-200 p-8 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xs">
@@ -215,8 +241,11 @@
       <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-500">
         <a href="index.html" class="hover:text-slate-900">MEMTODO</a>
         <a href="findrun.html" class="hover:text-slate-900">FINDRUN</a>
-        <a href="guide.html" class="hover:text-slate-900">상세 사용 설명서</a>
+        <a href="guide.html" class="hover:text-slate-900" data-i18n="footerGuide">상세 사용 설명서</a>
         <a href="https://github.com/tinyworklab-dev/FINDRUN-Release/releases/download/v1.0.0/FINDRUN_Setup_V1.0.0.exe" class="hover:text-slate-900">GitHub</a>
+        <a href="https://www.buymeacoffee.com/tinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-extrabold" data-i18n="footerDonate">
+          ☕ 개발자 후원하기
+        </a>
       </div>
     </div>
   </footer>
@@ -240,9 +269,14 @@
         f2Title: '어떤 작업 중에도 단축키 즉시 호출', f2Desc: '엑셀, CAD, 브라우저 등 어떤 전체 화면 작업을 하던 중에도 단축키 한 번이면 화면 중앙에 검색창이 즉시 나타나고 실행 후 깔끔하게 사라집니다.',
         f3Title: 'MEMTODO와의 완벽한 시너지', f3Desc: '핵심 프로젝트 폴더와 마감 일정은 MEMTODO에 고정해 두고, 수시로 찾아야 하는 참고 문서나 유틸리티는 FINDRUN으로 즉시 호출해 보세요.',
         f4Title: '회원가입·광고·유료 결제 없는 완전 무료', f4Desc: 'TINYWORK LAB이 모든 Windows 사용자를 위해 무료로 배포합니다. 인터넷 연결이나 계정 로그인 없이 설치 즉시 모든 기능을 제한 없이 사용하세요.',
+        donateTitle: 'FINDRUN이 업무 시간을 아껴주었나요?',
+        donateDesc: 'TINYWORK LAB의 무료 유틸리티는 광고 없이 배포됩니다. 따뜻한 커피 한 잔의 후원은 지속적인 기능 업데이트와 신규 툴 개발에 큰 힘이 됩니다.',
+        donateCta: '개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)',
         memtodoBannerTitle: '바탕화면 위 포스트잇·캘린더·파일 통합 관리, MEMTODO',
         memtodoBannerDesc: '소제목별 할 일 관리부터 폴더·파일 드래그 연결, 커스텀 마감 알림까지 월 구독료 없이 평생 소장하세요.',
-        memtodoBannerCta: 'MEMTODO 살펴보기'
+        memtodoBannerCta: 'MEMTODO 살펴보기',
+        footerGuide: '상세 사용 설명서',
+        footerDonate: '☕ 개발자 후원하기'
       },
       'en': {
         navGuide: 'User Guide', navPricing: 'MEMTODO Pricing', navDownload: 'Download FINDRUN Free',
@@ -259,9 +293,14 @@
         f2Title: 'Global Hotkey Over Any App', f2Desc: 'Summon the search bar over Excel, CAD, or full-screen browsers and launch instantly.',
         f3Title: 'Seamless Synergy with MEMTODO', f3Desc: 'Pin core project folders in MEMTODO and summon reference files on the fly with FINDRUN.',
         f4Title: 'Completely Free — No Sign-Up Required', f4Desc: 'Released free for all Windows users by TINYWORK LAB. Works offline right after installation.',
+        donateTitle: 'Did FINDRUN save your time at work?',
+        donateDesc: 'TINYWORK LAB freeware is distributed with zero ads. Buying me a coffee helps keep updates and new free utilities coming!',
+        donateCta: 'Buy Me a Coffee (Support Developer)',
         memtodoBannerTitle: 'Sticky Notes, Calendar & File Management on Desktop — MEMTODO',
         memtodoBannerDesc: 'Organize tasks by sub-section, drag & drop folders, and get custom deadline alerts with a one-time license.',
-        memtodoBannerCta: 'Explore MEMTODO'
+        memtodoBannerCta: 'Explore MEMTODO',
+        footerGuide: 'User Manual',
+        footerDonate: '☕ Support Developer'
       },
       'ja': {
         navGuide: '取扱説明書', navPricing: 'MEMTODO 料金', navDownload: 'FINDRUN 無料ダウンロード',
@@ -278,9 +317,14 @@
         f2Title: 'どんな作業中でもショートカット即呼び出し', f2Desc: 'ExcelやCADなどの全画面作業中でもショートカット一つで画面中央に検索窓を呼び出せます。',
         f3Title: 'MEMTODOとの完璧なシナジー', f3Desc: '重要プロジェクトはMEMTODOに固定し、頻繁に参照する資料はFINDRUNで瞬時に呼び出せます。',
         f4Title: '会員登録・広告・課金なしの完全無料', f4Desc: 'TINYWORK LABが全Windowsユーザーへ無料提供。ネット接続やログインなしで制限なく使えます。',
+        donateTitle: 'FINDRUN は作業時間の短縮に役立ちましたか？',
+        donateDesc: 'TINYWORK LAB のフリーソフトは広告なしで提供しています。コーヒー1杯のご支援が継続的なアップデートと新規ツール開発の励みになります。',
+        donateCta: '開発者にコーヒー1杯を奢る (Buy Me a Coffee)',
         memtodoBannerTitle: 'デスクトップ付箋・カレンダー・ファイル統合管理、MEMTODO',
         memtodoBannerDesc: '見出し別タスク管理からフォルダのドラッグ連携、独自締切通知まで買い切りで永久利用可能。',
-        memtodoBannerCta: 'MEMTODO を見る'
+        memtodoBannerCta: 'MEMTODO を見る',
+        footerGuide: '取扱説明書',
+        footerDonate: '☕ 開発者を応援する'
       },
       'zh-CN': {
         navGuide: '使用说明书', navPricing: 'MEMTODO 价格', navDownload: '免费下载 FINDRUN',
@@ -297,9 +341,14 @@
         f2Title: '任何全屏工作中一键呼出', f2Desc: '无论正在使用 Excel、CAD 还是浏览器，按下快捷键即可在屏幕中央呼出搜索框。',
         f3Title: '与 MEMTODO 完美协同工作', f3Desc: '核心项目固定在 MEMTODO 便签中，日常参考文档通过 FINDRUN 随叫随到。',
         f4Title: '免注册、无广告、永久完全免费', f4Desc: 'TINYWORK LAB 免费提供给所有 Windows 用户，安装即用无需联网登录。',
+        donateTitle: 'FINDRUN 是否帮您节省了宝贵的工作时间？',
+        donateDesc: 'TINYWORK LAB 的免费工具完全无广告。请开发者喝杯咖啡将支持我们持续更新并开发更多实用工具！',
+        donateCta: '请开发者喝杯咖啡 (Buy Me a Coffee)',
         memtodoBannerTitle: '桌面便签、日历与文件一体化管理，MEMTODO',
         memtodoBannerDesc: '分组待办进度、文件夹拖拽关联与自定义截止提醒，一次付费终身拥有。',
-        memtodoBannerCta: '查看 MEMTODO'
+        memtodoBannerCta: '查看 MEMTODO',
+        footerGuide: '详细使用说明书',
+        footerDonate: '☕ 打赏支持开发者'
       }
     };
 
@@ -377,5 +426,19 @@
       inputEl.focus();
     });
   </script>
+
+  <!-- Buy Me a Coffee 플로팅 후원 위젯 -->
+  <script
+    data-name="BMC-Widget"
+    data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="tinyworklab"
+    data-description="Support TINYWORK LAB on Buy me a coffee!"
+    data-message="MEMTODO & FINDRUN 개발을 응원해 주셔서 감사합니다 ☕"
+    data-color="#FFDD00"
+    data-position="Right"
+    data-x_margin="20"
+    data-y_margin="20"
+  ></script>
 </body>
 </html>

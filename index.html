@@ -586,6 +586,32 @@
     </div>
   </section>
 
+  <!-- 개발자 후원(기부) 섹션 (4개국어 연동) -->
+  <section id="donate" class="py-12 bg-amber-50/75 border-b border-amber-200/70">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 text-amber-900 text-xs font-extrabold">
+        <i data-lucide="coffee" class="w-3.5 h-3.5"></i> SUPPORT INDIE DEVELOPER
+      </div>
+      <h2 class="text-xl sm:text-2xl font-black text-slate-900" data-i18n="donateTitle">
+        TINYWORK LAB의 툴이 업무에 도움이 되셨나요?
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed" data-i18n="donateDesc">
+        따뜻한 커피 한 잔의 자발적 후원은 1인 개발자가 광고 없는 초경량 유틸리티를 지속적으로 업데이트하고 무료 툴을 제작하는 데 큰 힘이 됩니다.
+      </p>
+      <div class="pt-1.5 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="https://www.buymeacoffee.com/tinyworklab"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-extrabold text-slate-950 bg-[#FFDD00] hover:bg-[#f5d400] shadow-md shadow-amber-400/20 hover:-translate-y-0.5 transition-all"
+        >
+          <i data-lucide="coffee" class="w-4 h-4"></i>
+          <span data-i18n="donateCta">개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FINDRUN 교차 소개 배너 -->
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -668,8 +694,11 @@
       <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-500">
         <a href="index.html" class="hover:text-slate-900">MEMTODO</a>
         <a href="findrun.html" class="hover:text-slate-900">FINDRUN</a>
-        <a href="guide.html" class="hover:text-slate-900">상세 사용 설명서</a>
+        <a href="guide.html" class="hover:text-slate-900" data-i18n="footerGuide">상세 사용 설명서</a>
         <a href="https://github.com/tinyworklab-dev/memtodo-release/releases" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900">GitHub Releases</a>
+        <a href="https://www.buymeacoffee.com/tinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-extrabold" data-i18n="footerDonate">
+          ☕ 개발자 후원하기
+        </a>
       </div>
     </div>
   </footer>
@@ -698,26 +727,26 @@
         </a>
       </div>
 
-<div class="mt-5 space-y-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+      <div class="mt-5 space-y-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
         <div class="flex items-start gap-2.5">
           <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">1</span>
           <div>
             <p class="font-extrabold text-slate-900">먼저 무료 다운로드 후 7일 체험 시작</p>
-            <p class="text-slate-500 mt-0.5">설치 후 메모장 상단 왕관(PRO) 아이콘을 눌러 7일 무료 체험을 바로 시작할 수 있습니다.</p>
+            <p class="text-slate-500 mt-0.5">설치 후 메모장 상단 왕관 아이콘을 눌러 7일 무료 체험을 바로 시작할 수 있습니다.</p>
           </div>
         </div>
         <div class="flex items-start gap-2.5">
           <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">2</span>
           <div>
-            <p class="font-extrabold text-slate-900">카카오톡 채널 1:1 채팅으로 신청 및 계좌 안내</p>
-            <p class="text-slate-500 mt-0.5">위 노란 버튼으로 채널에 들어가 <span class="font-mono text-slate-700">[입금자명] / [기기 코드]</span>를 보내주시면 입금 계좌와 발급 절차를 안내해 드립니다.</p>
+            <p class="font-extrabold text-slate-900">기기 코드(HWID) 복사 후 라이선스 발급</p>
+            <p class="text-slate-500 mt-0.5">인증 창에 표시된 <code class="bg-white px-1 py-0.5 border rounded font-mono">XXXX-XXXX-XXXX-XXXX</code> 코드를 전달해주시면 영구 키를 발급해 드립니다.</p>
           </div>
         </div>
         <div class="flex items-start gap-2.5">
           <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">3</span>
           <div>
-            <p class="font-extrabold text-slate-900">입금 확인 후 영구 키 입력 및 소장</p>
-            <p class="text-slate-500 mt-0.5">발급받은 라이선스 키를 앱에 입력하면 즉시 평생 소장 PRO 버전으로 전환됩니다.</p>
+            <p class="font-extrabold text-slate-900">키 입력 즉시 영구 소장 전환</p>
+            <p class="text-slate-500 mt-0.5">추가 구독 결제 없이 영구적으로 모든 PRO 기능이 활성화됩니다.</p>
           </div>
         </div>
       </div>
@@ -768,11 +797,16 @@
         freeF1: '메모장 1개 생성 및 무제한 소제목·할 일', freeF2: '기본 5종 파스텔 테마 색상 지원', freeF3: '자석 스냅, 창 일괄 정렬, JSON 백업/복원', freeF4: '앱 내 8개국어 UI 지원', freeF5: 'PRO 기능 7일 무료 체험 제공', freeCta: '무료 버전 다운로드',
         proPromo: 'v1.0 출시 기념 선착순 100명 런칭 특가', proSub: '평생 소장 라이선스 (1회 결제 · 구독료 없음)', proNote: '월간·연간 추가 결제 없음 · v1.x 모든 기능 업데이트 무료 포함',
         proF1: '메모장 개수 무제한 생성 및 동시 배치', proF2: '파일 & 폴더 드래그 첨부 및 원클릭 열기', proF3: '메모장 일체형 캘린더 & 커스텀 컬러 테마', proF4: '자체 마감 알림창 (사전 알림 + 표시 시간 설정)', proF5: '야간 다크 모드, 반복 일정, 완료 항목 자동 정리, 단축키 설정', proCta: 'PRO 평생 소장권 구매 및 인증 안내',
+        donateTitle: 'TINYWORK LAB의 툴이 업무에 도움이 되셨나요?',
+        donateDesc: '따뜻한 커피 한 잔의 자발적 후원은 1인 개발자가 광고 없는 초경량 유틸리티를 지속적으로 업데이트하고 무료 툴을 제작하는 데 큰 힘이 됩니다.',
+        donateCta: '개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)',
         findrunBannerTitle: '0.1초 초고속 파일·프로그램 런처, FINDRUN', findrunBannerDesc: '자주 여는 폴더와 문서를 단축키 한 번으로 검색하고 즉시 실행하세요. MEMTODO와 함께 쓰면 시너지가 극대화됩니다.', findrunBannerCta: 'FINDRUN 자세히 보기',
         faqTitle: '자주 묻는 질문',
         faq1Q: 'Q. Windows나 macOS에서 처음 설치할 때 보안 경고 창이 뜹니다. 안전한가요?',
         faq2Q: 'Q. PRO 평생 소장권 구매 후 인증은 어떻게 진행되나요?',
-        faq3Q: 'Q. 새 버전 업데이트가 나오면 기존 프로그램을 지우고 다시 설치해야 하나요?'
+        faq3Q: 'Q. 새 버전 업데이트가 나오면 기존 프로그램을 지우고 다시 설치해야 하나요?',
+        footerGuide: '상세 사용 설명서',
+        footerDonate: '☕ 개발자 후원하기'
       },
       'en': {
         navGuide: 'User Guide', navPricing: 'Pricing', navLifetimeBadge: 'Lifetime', navDownload: 'Download (Win · Mac)',
@@ -803,11 +837,16 @@
         freeF1: '1 sticky note with unlimited sections & tasks', freeF2: '5 built-in pastel note themes', freeF3: 'Magnetic snap, window auto-align & JSON backup', freeF4: '8-language UI support inside the app', freeF5: 'Includes 7-day PRO free trial', freeCta: 'Download Free Version',
         proPromo: 'Launch Special: First 100 Users ($7.99 / Reg. $11.99)', proSub: 'Lifetime License ($7.99 USD / ₩9,900 KRW · One-Time)', proNote: 'Zero recurring fees · Free v1.x updates included',
         proF1: 'Unlimited sticky note windows simultaneously', proF2: 'Drag & drop files and folders onto tasks', proF3: 'Integrated monthly calendar & custom themes', proF4: 'Custom deadline alert popups & duration control', proF5: 'Dark mode, recurring tasks, auto-sort completed & hotkeys', proCta: 'PRO Lifetime Purchase & Activation Guide',
+        donateTitle: 'Did TINYWORK LAB tools save your time at work?',
+        donateDesc: 'Voluntary support helps an indie developer keep building ad-free, lightweight desktop utilities and continuous updates. Thank you for the coffee!',
+        donateCta: 'Buy Me a Coffee (Support Developer)',
         findrunBannerTitle: '0.1s Ultra-Fast File & App Launcher, FINDRUN', findrunBannerDesc: 'Summon FINDRUN with a hotkey to search and launch folders or files in 0.1 seconds. Pairs seamlessly with MEMTODO.', findrunBannerCta: 'Explore FINDRUN',
         faqTitle: 'Frequently Asked Questions',
         faq1Q: 'Q. Windows or macOS shows a security prompt on first launch. Is it safe?',
         faq2Q: 'Q. How do I activate my PRO Lifetime License after purchase?',
-        faq3Q: 'Q. Do I need to uninstall the old version when updating?'
+        faq3Q: 'Q. Do I need to uninstall the old version when updating?',
+        footerGuide: 'User Manual',
+        footerDonate: '☕ Support Developer'
       },
       'ja': {
         navGuide: '取扱説明書', navPricing: '料金プラン', navLifetimeBadge: '買い切り', navDownload: 'ダウンロード (Win · Mac)',
@@ -838,11 +877,16 @@
         freeF1: '付箋1枚作成＆無制限の見出し・タスク', freeF2: '基本5色のパステルテーマ', freeF3: 'マグネット吸着・ウィンドウ整列・JSONバックアップ', freeF4: 'アプリ内8言語UI対応', freeF5: 'PRO機能7日間無料体験付き', freeCta: '無料版をダウンロード',
         proPromo: 'v1.0 リリース記念 先着100名限定特価', proSub: '永久ライセンス（$7.99 USD / 9,900 KRW · 買い切り）', proNote: '追加課金なし · v1.x 全アップデート無料',
         proF1: '付箋ウィンドウを無制限に作成・同時配置', proF2: 'ファイル＆フォルダのドラッグ添付と即座起動', proF3: '一体型月間カレンダー＆カスタムカラーテーマ', proF4: '独自締切アラート（事前通知＋表示時間設定）', proF5: 'ダークモード・繰り返し予定・完了自動整理・ショートカット設定', proCta: 'PRO永久ライセンス購入・認証案内',
+        donateTitle: 'TINYWORK LAB のツールはお役に立ちましたか？',
+        donateDesc: '温かいコーヒー1杯のご支援が、広告なしの超軽量ユーティリティの継続的なアップデートと無料ツール開発の大きな励みになります。',
+        donateCta: '開発者にコーヒー1杯を奢る (Buy Me a Coffee)',
         findrunBannerTitle: '0.1秒超高速ファイル・アプリランチャー FINDRUN', findrunBannerDesc: 'よく使うフォルダや書類をショートカット一発で検索・起動。MEMTODOと併用することで作業効率が倍増します。', findrunBannerCta: 'FINDRUN の詳細を見る',
         faqTitle: 'よくある質問',
         faq1Q: 'Q. WindowsやmacOSで初回起動時にセキュリティ警告が表示されます。安全ですか？',
         faq2Q: 'Q. PRO永久ライセンス購入後の認証手順を教えてください。',
-        faq3Q: 'Q. 新バージョンへ更新する際、古いアプリを削除する必要がありますか？'
+        faq3Q: 'Q. 新バージョンへ更新する際、古いアプリを削除する必要がありますか？',
+        footerGuide: '取扱説明書',
+        footerDonate: '☕ 開発者を応援する'
       },
       'zh-CN': {
         navGuide: '使用说明书', navPricing: '价格方案', navLifetimeBadge: '终身买断', navDownload: '下载 (Win · Mac)',
@@ -873,11 +917,16 @@
         freeF1: '创建 1 个便签窗口，无限分组与待办', freeF2: '内置 5 种柔和护眼主题配色', freeF3: '窗口磁吸、一键排列及 JSON 备份恢复', freeF4: '软件内置 8 国语言界面切换', freeF5: '提供 7 天 PRO 完整功能免费试用', freeCta: '下载免费版本',
         proPromo: 'v1.0 首发特惠：前 100 名享首发价', proSub: '终身买断授权（$7.99 USD / 9,900 KRW · 一次性付费）', proNote: '无任何续费 · 免费包含 v1.x 全部功能更新',
         proF1: '无限数量便签窗口同时创建与排列', proF2: '文件与文件夹拖拽关联及一键快速打开', proF3: '一体化月度日历与自定义主题颜色', proF4: '独立截止提醒弹窗（提前提醒 + 停留时间设置）', proF5: '夜间深色模式、重复日程、已完成自动归底、全局快捷键', proCta: 'PRO 终身版购买与激活指南',
+        donateTitle: 'TINYWORK LAB 的工具是否提升了您的工作效率？',
+        donateDesc: '您的自愿打赏将直接支持独立开发者持续更新无广告的轻量级办公工具，并推出更多实用免费软件！',
+        donateCta: '请开发者喝杯咖啡 (Buy Me a Coffee)',
         findrunBannerTitle: '0.1秒极速文件与程序启动器，FINDRUN', findrunBannerDesc: '按下快捷键即可秒搜并打开常用文件夹与文档，与 MEMTODO 搭配使用效率翻倍。', findrunBannerCta: '了解 FINDRUN 详情',
         faqTitle: '常见问题解答',
         faq1Q: 'Q. Windows 或 macOS 首次安装时弹出安全提示，软件安全吗？',
         faq2Q: 'Q. 购买 PRO 终身买断版后如何激活授权？',
-        faq3Q: 'Q. 发布新版本更新时，需要先卸载旧版本再安装吗？'
+        faq3Q: 'Q. 发布新版本更新时，需要先卸载旧版本再安装吗？',
+        footerGuide: '详细使用说明书',
+        footerDonate: '☕ 打赏支持开发者'
       }
     };
 
@@ -1033,5 +1082,19 @@
       }
     });
   </script>
+
+  <!-- Buy Me a Coffee 플로팅 후원 위젯 -->
+  <script
+    data-name="BMC-Widget"
+    data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="tinyworklab"
+    data-description="Support TINYWORK LAB on Buy me a coffee!"
+    data-message="MEMTODO & FINDRUN 개발을 응원해 주셔서 감사합니다 ☕"
+    data-color="#FFDD00"
+    data-position="Right"
+    data-x_margin="20"
+    data-y_margin="84"
+  ></script>
 </body>
 </html>

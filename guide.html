@@ -112,7 +112,7 @@
     </div>
   </div>
 
-  <!-- 공통 푸터 -->
+  <!-- 공통 푸터 (4개국어 후원 링크 포함) -->
   <footer class="bg-white border-t border-slate-200 py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2.5">
@@ -126,8 +126,11 @@
       <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-500">
         <a href="index.html" class="hover:text-slate-900">MEMTODO</a>
         <a href="findrun.html" class="hover:text-slate-900">FINDRUN</a>
-        <a href="guide.html" class="hover:text-slate-900">상세 사용 설명서</a>
+        <a href="guide.html" class="hover:text-slate-900" data-i18n="footerGuide">상세 사용 설명서</a>
         <a href="https://github.com/tinyworklab-dev/memtodo-release/releases" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900">GitHub Releases</a>
+        <a href="https://www.buymeacoffee.com/tinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-extrabold" data-i18n="footerDonate">
+          ☕ 개발자 후원하기
+        </a>
       </div>
     </div>
   </footer>
@@ -143,7 +146,9 @@
         tocLabel: '목차 (CONTENTS)',
         toc1: '1. 설치 및 OS 보안 경고 해제', toc2: '2. 메모장·소제목·할 일 기본', toc3: '3. 파일 및 폴더 드래그 첨부',
         toc4: '4. 다중 선택 및 창 자동 정렬', toc5: '5. 일체형 캘린더 & 마감 알림', toc6: '6. 핵심 단축키 & 트레이/메뉴바',
-        toc7: '7. 데이터 백업/복원 & 업데이트', toc8: '8. PRO 7일 체험 및 영구 인증', toc9: '9. FINDRUN 런처 사용법'
+        toc7: '7. 데이터 백업/복원 & 업데이트', toc8: '8. PRO 7일 체험 및 영구 인증', toc9: '9. FINDRUN 런처 사용법',
+        footerGuide: '상세 사용 설명서',
+        footerDonate: '☕ 개발자 후원하기'
       },
       'en': {
         navGuide: 'User Guide', navPricing: 'Pricing', navDownload: 'Download (Win · Mac)',
@@ -152,7 +157,9 @@
         tocLabel: 'CONTENTS',
         toc1: '1. Installation & OS Security Bypass', toc2: '2. Sticky Notes, Sections & Tasks', toc3: '3. Drag & Drop Files & Folders',
         toc4: '4. Multi-Select & Auto Window Snap', toc5: '5. Integrated Calendar & Custom Alerts', toc6: '6. Shortcuts & System Tray / Menu Bar',
-        toc7: '7. Backup, Restore & Updates', toc8: '8. 7-Day PRO Trial & Lifetime Key', toc9: '9. FINDRUN Launcher Guide'
+        toc7: '7. Backup, Restore & Updates', toc8: '8. 7-Day PRO Trial & Lifetime Key', toc9: '9. FINDRUN Launcher Guide',
+        footerGuide: 'User Manual',
+        footerDonate: '☕ Support Developer'
       },
       'ja': {
         navGuide: '取扱説明書', navPricing: '料金プラン', navDownload: 'ダウンロード (Win · Mac)',
@@ -161,7 +168,9 @@
         tocLabel: '目次 (CONTENTS)',
         toc1: '1. インストールとセキュリティ解除', toc2: '2. 付箋メモ・見出し・タスク基本操作', toc3: '3. ファイル・フォルダのドラッグ添付',
         toc4: '4. 複数選択の一括移動とウィンドウ整列', toc5: '5. 一体型カレンダーとカスタム通知', toc6: '6. ショートカットとトレイ/メニューバー',
-        toc7: '7. データバックアップ・復元と更新', toc8: '8. PRO 7日間無料体験と永久ライセンス', toc9: '9. FINDRUN ランチャーの使い方'
+        toc7: '7. データバックアップ・復元と更新', toc8: '8. PRO 7日間無料体験と永久ライセンス', toc9: '9. FINDRUN ランチャーの使い方',
+        footerGuide: '取扱説明書',
+        footerDonate: '☕ 開発者を応援する'
       },
       'zh-CN': {
         navGuide: '使用说明书', navPricing: '价格方案', navDownload: '下载 (Win · Mac)',
@@ -170,7 +179,9 @@
         tocLabel: '目录 (CONTENTS)',
         toc1: '1. 安装及系统安全提示解除', toc2: '2. 便签、分组标题与待办基础', toc3: '3. 文件与文件夹拖拽关联',
         toc4: '4. 多选批量移动与窗口自动对齐', toc5: '5. 一体化月历与自定义截止提醒', toc6: '6. 核心快捷键与托盘/菜单栏',
-        toc7: '7. 数据备份恢复与版本更新', toc8: '8. PRO 7天试用与永久授权激活', toc9: '9. FINDRUN 快速启动器指南'
+        toc7: '7. 数据备份恢复与版本更新', toc8: '8. PRO 7天试用与永久授权激活', toc9: '9. FINDRUN 快速启动器指南',
+        footerGuide: '详细使用说明书',
+        footerDonate: '☕ 打赏支持开发者'
       }
     };
 
@@ -1005,14 +1016,21 @@
           </ol>
         </section>
 
-        <section id="findrun-guide" class="scroll-mt-24 bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-lg">
-          <div class="flex items-center gap-2.5 mb-4">
-            <span class="w-8 h-8 rounded-xl bg-emerald-400 text-slate-950 font-black text-sm flex items-center justify-center">9</span>
-            <h2 class="text-xl sm:text-2xl font-black">FINDRUN 极速启动器使用说明 (Windows)</h2>
+        <section id="findrun-guide" class="scroll-mt-24 bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-lg space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-emerald-400 text-slate-950 font-black text-sm flex items-center justify-center">9</span>
+              <h2 class="text-xl sm:text-2xl font-black">FINDRUN V1.0.0 极速启动器使用说明 (Windows)</h2>
+            </div>
+            <a href="https://github.com/tinyworklab-dev/FINDRUN-Release/releases/download/v1.0.0/FINDRUN_Setup_V1.0.0.exe" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 transition-colors">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> 下载 FINDRUN_Setup_V1.0.0.exe
+            </a>
           </div>
           <ul class="space-y-2 text-xs sm:text-sm text-slate-300 bg-white/5 border border-white/10 p-4 rounded-2xl">
-            <li>• <strong>呼出与隐藏：</strong> 按下设置的全局快捷键呼出搜索框，按 <kbd>Esc</kbd> 键即可瞬间隐藏。</li>
-            <li>• <strong>极速搜索与启动：</strong> 输入文件名片段实时筛选后，使用 <kbd>↑</kbd> <kbd>↓</kbd> 方向键并按 <kbd>Enter</kbd> 键即可在 0.1 秒内打开。</li>
+            <li>• <strong>安装与安全提示：</strong> 运行 <code class="font-mono text-emerald-300">FINDRUN_Setup_V1.0.0.exe</code> 时若弹出“Windows 已保护你的电脑”，请点击 <strong>[更多信息] → [仍要运行]</strong>。</li>
+            <li>• <strong>呼出与隐藏：</strong> 按下设置的全局快捷键 <kbd>Alt</kbd>+<kbd>Space</kbd> 呼出搜索框，按 <kbd>Esc</kbd> 键即可瞬间隐藏到托盘。</li>
+            <li>• <strong>极速搜索与过滤：</strong> 支持多关键词空格 AND 检索以及文档/CAD/图片/压缩包分类过滤。</li>
+            <li>• <strong>双排收藏夹与批量拖拽：</strong> 支持顶部拖拽固定常用文件夹，并可多选搜索结果批量拖拽至外部窗口。</li>
           </ul>
         </section>
       `
@@ -1046,5 +1064,19 @@
       applyGuideLanguage(e.target.value);
     });
   </script>
+
+  <!-- Buy Me a Coffee 플로팅 후원 위젯 -->
+  <script
+    data-name="BMC-Widget"
+    data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="tinyworklab"
+    data-description="Support TINYWORK LAB on Buy me a coffee!"
+    data-message="MEMTODO & FINDRUN 개발을 응원해 주셔서 감사합니다 ☕"
+    data-color="#FFDD00"
+    data-position="Right"
+    data-x_margin="20"
+    data-y_margin="20"
+  ></script>
 </body>
 </html>
