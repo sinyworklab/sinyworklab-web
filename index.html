@@ -83,6 +83,11 @@
             <option value="zh-CN">简体中文</option>
           </select>
         </div>
+
+        <a href="#download-center" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all shrink-0">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span data-i18n="navDownload">다운로드 (Win · Mac)</span>
+        </a>
       </div>
     </div>
   </header>
@@ -501,7 +506,7 @@
     </div>
   </section>
 
-  <!-- 요금제 섹션 (정가 14,900원 / 특가 9,900원 + USD 달러 환산 병기) -->
+  <!-- 요금제 섹션 -->
   <section id="pricing" class="py-20 lg:py-24 bg-slate-50 border-y border-slate-200/80">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-14">
@@ -578,7 +583,7 @@
 
           <div class="mt-8 space-y-2.5">
             <button id="openLicenseGuideBtn" type="button" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-extrabold text-slate-950 bg-yellow-400 hover:bg-yellow-300 shadow-lg shadow-yellow-400/20 transition-all cursor-pointer">
-              <i data-lucide="key-round" class="w-4 h-4"></i> <span data-i18n="proCta">PRO 평생 소장권 구매 및 인증 안내</span>
+              <i data-lucide="credit-card" class="w-4 h-4"></i> <span data-i18n="proCta">PRO 평생 소장권 결제 및 인증 안내</span>
             </button>
           </div>
         </div>
@@ -586,7 +591,7 @@
     </div>
   </section>
 
-  <!-- 개발자 후원(기부) 섹션 (4개국어 연동) -->
+  <!-- 개발자 후원(기부) 섹션 -->
   <section id="donate" class="py-12 bg-amber-50/75 border-b border-amber-200/70">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 text-amber-900 text-xs font-extrabold">
@@ -661,9 +666,9 @@
             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 shrink-0 transition-transform"></i>
           </button>
           <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-            1) MEMTODO 실행 후 상단의 <strong>[PRO 체험/인증]</strong> 버튼을 누르면 내 컴퓨터의 고유 기기 코드(HWID)가 표시됩니다.<br />
-            2) 구매 시 해당 기기 코드를 남겨주시면 영구 라이선스 키를 발급해 드립니다.<br />
-            3) 앱에 키를 입력하면 즉시 영구 PRO 버전으로 전환되며, 이후 오프라인에서도 평생 사용하실 수 있습니다.
+            1) 상단 <strong>[PRO 평생 소장권 결제]</strong> 버튼을 눌러 카드/Apple Pay(Polar) 또는 카카오톡 채널로 결제를 진행합니다.<br />
+            2) MEMTODO 앱 상단 왕관 아이콘을 눌러 내 PC의 <strong>16자리 기기 코드(HWID)</strong>를 복사한 뒤, 주문번호와 함께 제출해 주세요.<br />
+            3) 확인 즉시 영구 라이선스 키를 발급해 드리며, 앱에 입력하면 오프라인에서도 평생 PRO 버전으로 사용하실 수 있습니다.
           </div>
         </div>
 
@@ -703,59 +708,127 @@
     </div>
   </footer>
 
-  <!-- PRO 구매 및 인증 안내 모달 -->
-  <div id="licenseModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative">
+  <!-- PRO 결제 및 라이선스 발급 신청 통합 모달 -->
+  <div id="licenseModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative my-8">
       <button id="closeLicenseModalBtn" type="button" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1 cursor-pointer">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-extrabold mb-3">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-extrabold mb-2.5">
         <i data-lucide="crown" class="w-3.5 h-3.5"></i> MEMTODO PRO Lifetime
       </div>
-      <h3 class="text-xl font-black text-slate-900">선착순 100명 런칭 특가 · 9,900원 ($7.99)</h3>
-      <p class="text-xs text-slate-500 mt-1">정가 14,900원 ($11.99) → 1회 결제로 평생 무제한 사용</p>
+      <h3 class="text-xl font-black text-slate-900" data-i18n="modalTitle">선착순 100명 런칭 특가 · 9,900원 ($7.99)</h3>
+      <p class="text-xs text-slate-500 mt-1" data-i18n="modalSubtitle">정가 14,900원 ($11.99) → 1회 결제로 평생 무제한 사용</p>
 
-      <div class="mt-4">
+      <!-- STEP 1: 결제 수단 선택 -->
+      <div class="mt-5 space-y-2.5">
+        <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+          <span class="w-4 h-4 rounded-full bg-blue-600 text-white inline-flex items-center justify-center text-[10px]">1</span>
+          <span data-i18n="modalStep1Label">결제 수단 선택 (글로벌 카드 · 국내 간편결제)</span>
+        </div>
+
+        <!-- 글로벌 카드 / Apple Pay (Polar) -->
+        <a
+          id="polarPayBtn"
+          href="https://buy.polar.sh/polar_cl_8fdGNcaoRpPdNC0UZlYPjckWrgCqaU6KxHEkF1X3Fr9"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white transition-all shadow-md group"
+        >
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0">
+              <i data-lucide="credit-card" class="w-5 h-5"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-sm font-extrabold flex items-center gap-1.5">
+                <span data-i18n="modalCardTitle">해외·국내 신용카드 / Apple Pay 즉시 결제</span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 font-black">$7.99</span>
+              </div>
+              <div class="text-[11px] text-slate-400" data-i18n="modalCardDesc">Visa · Mastercard · Apple Pay (Polar)</div>
+            </div>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-white shrink-0"></i>
+        </a>
+
+        <!-- 국내 카카오톡 채널 간편결제 / 계좌이체 -->
         <a
           href="https://pf.kakao.com/_IsuvX"
           target="_blank"
           rel="noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FEE500] hover:bg-[#f5dc00] text-[#191919] text-sm font-extrabold transition shadow-sm"
+          class="w-full flex items-center justify-between px-4 py-3 rounded-2xl bg-[#FEE500] hover:bg-[#f5dc00] text-[#191919] transition-all shadow-2xs group"
         >
-          카카오톡 채널로 PRO 구매 및 키 발급 신청
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-black/10 flex items-center justify-center shrink-0">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-sm font-extrabold flex items-center gap-1.5">
+                <span data-i18n="modalKakaoTitle">국내 계좌이체 / 카카오톡 채널 결제 문의</span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-black/15 font-black">9,900원</span>
+              </div>
+              <div class="text-[11px] text-neutral-800" data-i18n="modalKakaoDesc">원화 송금 및 영수증·HWID 1:1 빠른 키 발급</div>
+            </div>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-700 shrink-0"></i>
         </a>
       </div>
 
-      <div class="mt-5 space-y-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
-        <div class="flex items-start gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">1</span>
-          <div>
-            <p class="font-extrabold text-slate-900">먼저 무료 다운로드 후 7일 체험 시작</p>
-            <p class="text-slate-500 mt-0.5">설치 후 메모장 상단 왕관 아이콘을 눌러 7일 무료 체험을 바로 시작할 수 있습니다.</p>
-          </div>
+      <!-- STEP 2: 결제 완료 후 HWID 제출 양식 생성기 -->
+      <div class="mt-5 pt-4 border-t border-slate-200 space-y-2.5">
+        <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+          <span class="w-4 h-4 rounded-full bg-emerald-600 text-white inline-flex items-center justify-center text-[10px]">2</span>
+          <span data-i18n="modalStep2Label">결제 완료 후 라이선스 키 발급 신청 (HWID 입력)</span>
         </div>
-        <div class="flex items-start gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">2</span>
-          <div>
-            <p class="font-extrabold text-slate-900">기기 코드(HWID) 복사 후 라이선스 발급</p>
-            <p class="text-slate-500 mt-0.5">인증 창에 표시된 <code class="bg-white px-1 py-0.5 border rounded font-mono">XXXX-XXXX-XXXX-XXXX</code> 코드를 전달해주시면 영구 키를 발급해 드립니다.</p>
-          </div>
+        <p class="text-[11px] text-slate-500 leading-relaxed" data-i18n="modalStep2Desc">
+          결제 후 아래에 <strong>주문번호(또는 결제 이메일)</strong>와 앱 상단 왕관 아이콘에 표시된 <strong>16자리 기기 코드(HWID)</strong>를 입력하고 복사 버튼을 눌러 카카오톡 또는 이메일로 보내주세요.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <input
+            id="orderRefInput"
+            type="text"
+            placeholder="주문번호 또는 결제 이메일"
+            class="px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-800 focus:border-blue-500 outline-none"
+          />
+          <input
+            id="hwidRefInput"
+            type="text"
+            maxlength="19"
+            placeholder="HWID (예: B1F4-98A2-CC01-33E9)"
+            class="px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono font-bold text-slate-800 uppercase focus:border-blue-500 outline-none"
+          />
         </div>
-        <div class="flex items-start gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 text-[11px]">3</span>
-          <div>
-            <p class="font-extrabold text-slate-900">키 입력 즉시 영구 소장 전환</p>
-            <p class="text-slate-500 mt-0.5">추가 구독 결제 없이 영구적으로 모든 PRO 기능이 활성화됩니다.</p>
-          </div>
+
+        <div class="flex flex-col sm:flex-row gap-2">
+          <button
+            id="copyClaimFormBtn"
+            type="button"
+            class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold text-white bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
+          >
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span data-i18n="modalCopyFormBtn">발급 신청 양식 복사하기</span>
+          </button>
+          <a
+            id="mailtoClaimBtn"
+            href="mailto:tinyworklab.dev@gmail.com?subject=MEMTODO%20PRO%20License%20Request"
+            class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
+          >
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            <span data-i18n="modalMailBtn">이메일로 바로 보내기</span>
+          </a>
+        </div>
+        <div id="copyFeedbackMsg" class="hidden text-[11px] font-bold text-emerald-600 text-center">
+          ✓ 신청 양식이 클립보드에 복사되었습니다! 카카오톡 채널 또는 이메일에 붙여넣어 전송해 주세요.
         </div>
       </div>
 
-      <div class="mt-6 flex flex-col gap-2.5">
-        <a href="#download-center" id="modalGoDownloadBtn" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-extrabold text-white bg-blue-600 hover:bg-blue-700 transition-colors">
-          <i data-lucide="download" class="w-4 h-4"></i> Windows · Mac 설치하고 7일 체험하기
+      <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+        <a href="#download-center" id="modalGoDownloadBtn" class="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span data-i18n="modalTrialLink">먼저 설치하고 7일 무료 체험하기</span>
         </a>
-        <button id="closeLicenseModalBtn2" type="button" class="w-full py-2.5 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-100 transition-colors cursor-pointer">
+        <button id="closeLicenseModalBtn2" type="button" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-100 transition-colors cursor-pointer" data-i18n="modalClose">
           닫기
         </button>
       </div>
@@ -766,6 +839,12 @@
 
   <script>
     lucide.createIcons();
+
+    const POLAR_CHECKOUT_URL = 'https://buy.polar.sh/polar_cl_8fdGNcaoRpPdNC0UZlYPjckWrgCqaU6KxHEkF1X3Fr9';
+    const SUPPORT_EMAIL = 'tinyworklab.dev@gmail.com';
+
+    const polarBtn = document.getElementById('polarPayBtn');
+    if (polarBtn) polarBtn.href = POLAR_CHECKOUT_URL;
 
     const i18nIndex = {
       'ko': {
@@ -796,7 +875,20 @@
         freeBadge: '영구 무료', freeSub: '/ 기간 제한 없음', freeNote: '가벼운 단일 메모와 기본 할 일 관리를 원하는 분께 적합합니다.',
         freeF1: '메모장 1개 생성 및 무제한 소제목·할 일', freeF2: '기본 5종 파스텔 테마 색상 지원', freeF3: '자석 스냅, 창 일괄 정렬, JSON 백업/복원', freeF4: '앱 내 8개국어 UI 지원', freeF5: 'PRO 기능 7일 무료 체험 제공', freeCta: '무료 버전 다운로드',
         proPromo: 'v1.0 출시 기념 선착순 100명 런칭 특가', proSub: '평생 소장 라이선스 (1회 결제 · 구독료 없음)', proNote: '월간·연간 추가 결제 없음 · v1.x 모든 기능 업데이트 무료 포함',
-        proF1: '메모장 개수 무제한 생성 및 동시 배치', proF2: '파일 & 폴더 드래그 첨부 및 원클릭 열기', proF3: '메모장 일체형 캘린더 & 커스텀 컬러 테마', proF4: '자체 마감 알림창 (사전 알림 + 표시 시간 설정)', proF5: '야간 다크 모드, 반복 일정, 완료 항목 자동 정리, 단축키 설정', proCta: 'PRO 평생 소장권 구매 및 인증 안내',
+        proF1: '메모장 개수 무제한 생성 및 동시 배치', proF2: '파일 & 폴더 드래그 첨부 및 원클릭 열기', proF3: '메모장 일체형 캘린더 & 커스텀 컬러 테마', proF4: '자체 마감 알림창 (사전 알림 + 표시 시간 설정)', proF5: '야간 다크 모드, 반복 일정, 완료 항목 자동 정리, 단축키 설정', proCta: 'PRO 평생 소장권 결제 및 인증 안내',
+        modalTitle: '선착순 100명 런칭 특가 · 9,900원 ($7.99)',
+        modalSubtitle: '정가 14,900원 ($11.99) → 1회 결제로 평생 무제한 사용',
+        modalStep1Label: '결제 수단 선택 (글로벌 카드 · 국내 간편결제)',
+        modalCardTitle: '해외·국내 신용카드 / Apple Pay 즉시 결제',
+        modalCardDesc: 'Visa · Mastercard · Apple Pay (Polar)',
+        modalKakaoTitle: '국내 계좌이체 / 카카오톡 채널 결제 문의',
+        modalKakaoDesc: '원화 송금 및 영수증·HWID 1:1 빠른 키 발급',
+        modalStep2Label: '결제 완료 후 라이선스 키 발급 신청 (HWID 입력)',
+        modalStep2Desc: '결제 후 아래에 주문번호(또는 결제 이메일)와 앱 상단 왕관 아이콘에 표시된 16자리 기기 코드(HWID)를 입력하고 복사 버튼을 눌러 카카오톡 또는 이메일로 보내주세요.',
+        modalCopyFormBtn: '발급 신청 양식 복사하기',
+        modalMailBtn: '이메일로 바로 보내기',
+        modalTrialLink: '먼저 설치하고 7일 무료 체험하기',
+        modalClose: '닫기',
         donateTitle: 'TINYWORK LAB의 툴이 업무에 도움이 되셨나요?',
         donateDesc: '따뜻한 커피 한 잔의 자발적 후원은 1인 개발자가 광고 없는 초경량 유틸리티를 지속적으로 업데이트하고 무료 툴을 제작하는 데 큰 힘이 됩니다.',
         donateCta: '개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)',
@@ -836,7 +928,20 @@
         freeBadge: 'Free Forever', freeSub: '/ No time limit', freeNote: 'Ideal for a single lightweight desktop note and basic task tracking.',
         freeF1: '1 sticky note with unlimited sections & tasks', freeF2: '5 built-in pastel note themes', freeF3: 'Magnetic snap, window auto-align & JSON backup', freeF4: '8-language UI support inside the app', freeF5: 'Includes 7-day PRO free trial', freeCta: 'Download Free Version',
         proPromo: 'Launch Special: First 100 Users ($7.99 / Reg. $11.99)', proSub: 'Lifetime License ($7.99 USD / ₩9,900 KRW · One-Time)', proNote: 'Zero recurring fees · Free v1.x updates included',
-        proF1: 'Unlimited sticky note windows simultaneously', proF2: 'Drag & drop files and folders onto tasks', proF3: 'Integrated monthly calendar & custom themes', proF4: 'Custom deadline alert popups & duration control', proF5: 'Dark mode, recurring tasks, auto-sort completed & hotkeys', proCta: 'PRO Lifetime Purchase & Activation Guide',
+        proF1: 'Unlimited sticky note windows simultaneously', proF2: 'Drag & drop files and folders onto tasks', proF3: 'Integrated monthly calendar & custom themes', proF4: 'Custom deadline alert popups & duration control', proF5: 'Dark mode, recurring tasks, auto-sort completed & hotkeys', proCta: 'Buy PRO Lifetime License & Activate',
+        modalTitle: 'Launch Special (First 100 Users) · $7.99 USD',
+        modalSubtitle: 'Regular $11.99 → One-time payment, lifetime license',
+        modalStep1Label: 'Step 1. Choose Payment Method',
+        modalCardTitle: 'Credit Card / Apple Pay Instant Checkout',
+        modalCardDesc: 'Visa · Mastercard · Apple Pay via Polar ($7.99 USD)',
+        modalKakaoTitle: 'Korean Bank Transfer / KakaoTalk Support',
+        modalKakaoDesc: 'KRW transfer & 1:1 license issuance (₩9,900)',
+        modalStep2Label: 'Step 2. Request Your License Key (After Payment)',
+        modalStep2Desc: 'Enter your Order ID (or checkout email) and your 16-character Hardware ID (HWID) found under the Crown icon in MEMTODO, then copy & send it to us.',
+        modalCopyFormBtn: 'Copy License Request Form',
+        modalMailBtn: 'Send via Email',
+        modalTrialLink: 'Install first & start 7-day free trial',
+        modalClose: 'Close',
         donateTitle: 'Did TINYWORK LAB tools save your time at work?',
         donateDesc: 'Voluntary support helps an indie developer keep building ad-free, lightweight desktop utilities and continuous updates. Thank you for the coffee!',
         donateCta: 'Buy Me a Coffee (Support Developer)',
@@ -877,6 +982,19 @@
         freeF1: '付箋1枚作成＆無制限の見出し・タスク', freeF2: '基本5色のパステルテーマ', freeF3: 'マグネット吸着・ウィンドウ整列・JSONバックアップ', freeF4: 'アプリ内8言語UI対応', freeF5: 'PRO機能7日間無料体験付き', freeCta: '無料版をダウンロード',
         proPromo: 'v1.0 リリース記念 先着100名限定特価', proSub: '永久ライセンス（$7.99 USD / 9,900 KRW · 買い切り）', proNote: '追加課金なし · v1.x 全アップデート無料',
         proF1: '付箋ウィンドウを無制限に作成・同時配置', proF2: 'ファイル＆フォルダのドラッグ添付と即座起動', proF3: '一体型月間カレンダー＆カスタムカラーテーマ', proF4: '独自締切アラート（事前通知＋表示時間設定）', proF5: 'ダークモード・繰り返し予定・完了自動整理・ショートカット設定', proCta: 'PRO永久ライセンス購入・認証案内',
+        modalTitle: 'リリース記念 先着100名限定特価 · $7.99 USD',
+        modalSubtitle: '定価 $11.99 → 1回のお支払いで永久利用可能',
+        modalStep1Label: 'Step 1. お支払い方法を選択',
+        modalCardTitle: 'クレジットカード / Apple Pay 即時決済',
+        modalCardDesc: 'Visa · Mastercard · Apple Pay (Polar · $7.99 USD)',
+        modalKakaoTitle: '韓国ウォン振込 / KakaoTalk お問い合わせ',
+        modalKakaoDesc: 'KRW送金および1:1ライセンス発行サポート (₩9,900)',
+        modalStep2Label: 'Step 2. 決済完了後のライセンス発行申請 (HWID入力)',
+        modalStep2Desc: '決済後、注文番号（またはメールアドレス）とアプリ上部の王冠アイコンに表示される16桁のデバイスコード（HWID）を入力し、コピーして送信してください。',
+        modalCopyFormBtn: '申請フォームをコピーする',
+        modalMailBtn: 'メールで送信する',
+        modalTrialLink: '先にインストールして7日間無料体験を始める',
+        modalClose: '閉じる',
         donateTitle: 'TINYWORK LAB のツールはお役に立ちましたか？',
         donateDesc: '温かいコーヒー1杯のご支援が、広告なしの超軽量ユーティリティの継続的なアップデートと無料ツール開発の大きな励みになります。',
         donateCta: '開発者にコーヒー1杯を奢る (Buy Me a Coffee)',
@@ -917,6 +1035,19 @@
         freeF1: '创建 1 个便签窗口，无限分组与待办', freeF2: '内置 5 种柔和护眼主题配色', freeF3: '窗口磁吸、一键排列及 JSON 备份恢复', freeF4: '软件内置 8 国语言界面切换', freeF5: '提供 7 天 PRO 完整功能免费试用', freeCta: '下载免费版本',
         proPromo: 'v1.0 首发特惠：前 100 名享首发价', proSub: '终身买断授权（$7.99 USD / 9,900 KRW · 一次性付费）', proNote: '无任何续费 · 免费包含 v1.x 全部功能更新',
         proF1: '无限数量便签窗口同时创建与排列', proF2: '文件与文件夹拖拽关联及一键快速打开', proF3: '一体化月度日历与自定义主题颜色', proF4: '独立截止提醒弹窗（提前提醒 + 停留时间设置）', proF5: '夜间深色模式、重复日程、已完成自动归底、全局快捷键', proCta: 'PRO 终身版购买与激活指南',
+        modalTitle: '首发特惠（前 100 名）· $7.99 USD',
+        modalSubtitle: '原价 $11.99 → 一次性付费，终身买断使用',
+        modalStep1Label: '第 1 步：选择支付方式',
+        modalCardTitle: '国际信用卡 / Apple Pay 即时支付',
+        modalCardDesc: 'Visa · Mastercard · Apple Pay (Polar · $7.99 USD)',
+        modalKakaoTitle: '韩国银行转账 / KakaoTalk 客服咨询',
+        modalKakaoDesc: '韩元转账及 1 对 1 密钥发放支持 (₩9,900)',
+        modalStep2Label: '第 2 步：付款后申请永久激活密钥 (填写 HWID)',
+        modalStep2Desc: '付款完成后，请在下方输入订单号（或付款邮箱）以及 MEMTODO 顶部皇冠图标中的 16 位设备码 (HWID)，点击复制后发送给我们即可。',
+        modalCopyFormBtn: '复制密钥申请模板',
+        modalMailBtn: '通过邮件发送',
+        modalTrialLink: '先下载安装并开启 7 天免费试用',
+        modalClose: '关闭',
         donateTitle: 'TINYWORK LAB 的工具是否提升了您的工作效率？',
         donateDesc: '您的自愿打赏将直接支持独立开发者持续更新无广告的轻量级办公工具，并推出更多实用免费软件！',
         donateCta: '请开发者喝杯咖啡 (Buy Me a Coffee)',
@@ -1079,6 +1210,39 @@
       if (e.target === licenseModal) {
         licenseModal.classList.add('hidden');
         licenseModal.classList.remove('flex');
+      }
+    });
+
+    const orderRefInput = document.getElementById('orderRefInput');
+    const hwidRefInput = document.getElementById('hwidRefInput');
+    const copyClaimFormBtn = document.getElementById('copyClaimFormBtn');
+    const mailtoClaimBtn = document.getElementById('mailtoClaimBtn');
+    const copyFeedbackMsg = document.getElementById('copyFeedbackMsg');
+
+    function buildClaimText() {
+      const orderVal = (orderRefInput.value || '').trim() || '(결제 주문번호 또는 이메일 입력)';
+      const hwidVal = (hwidRefInput.value || '').trim().toUpperCase() || '(XXXX-XXXX-XXXX-XXXX)';
+      return `[MEMTODO PRO 라이선스 키 발급 신청]\n- 주문번호 / 결제 이메일: ${orderVal}\n- 기기 고유 코드 (HWID): ${hwidVal}`;
+    }
+
+    function updateMailtoHref() {
+      const subject = encodeURIComponent('MEMTODO PRO License Key Request');
+      const body = encodeURIComponent(buildClaimText());
+      mailtoClaimBtn.href = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
+    }
+
+    orderRefInput.addEventListener('input', updateMailtoHref);
+    hwidRefInput.addEventListener('input', updateMailtoHref);
+    updateMailtoHref();
+
+    copyClaimFormBtn.addEventListener('click', async () => {
+      const text = buildClaimText();
+      try {
+        await navigator.clipboard.writeText(text);
+        copyFeedbackMsg.classList.remove('hidden');
+        setTimeout(() => copyFeedbackMsg.classList.add('hidden'), 4500);
+      } catch (err) {
+        alert(text);
       }
     });
   </script>
