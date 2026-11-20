@@ -44,13 +44,13 @@
 
   <!-- 공통 상단 네비게이션 바 -->
   <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-      <a href="index.html" class="flex items-center gap-2.5 group shrink-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-3">
+      <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 group shrink-0">
         <div class="w-9 h-9 rounded-xl bg-[#1E1E1E] overflow-hidden flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
           <img src="logo.png" alt="TinyWork Lab Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" />
         </div>
         <div class="flex flex-col">
-          <span class="font-black text-base tracking-tight text-slate-900 leading-none">TINYWORK LAB</span>
+          <span class="font-black text-sm sm:text-base tracking-tight text-slate-900 leading-none">TINYWORK LAB</span>
           <span class="text-[10px] font-semibold text-slate-500 tracking-wider mt-0.5">DESKTOP UTILITIES</span>
         </div>
       </a>
@@ -69,7 +69,7 @@
         <a href="#faq" class="hover:text-slate-900 transition-colors">FAQ</a>
       </nav>
 
-      <div class="flex items-center gap-2 sm:gap-2.5">
+      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
         <div class="relative inline-flex items-center">
           <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 pointer-events-none"></i>
           <select
@@ -83,11 +83,6 @@
             <option value="zh-CN">简体中文</option>
           </select>
         </div>
-
-        <a href="#download-center" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow transition-all shrink-0">
-          <i data-lucide="download" class="w-4 h-4"></i>
-          <span data-i18n="navDownload">다운로드 (Win · Mac)</span>
-        </a>
       </div>
     </div>
   </header>
@@ -691,6 +686,17 @@
       </div>
       <h3 class="text-xl font-black text-slate-900">선착순 100명 런칭 특가 · 9,900원 ($7.99)</h3>
       <p class="text-xs text-slate-500 mt-1">정가 14,900원 ($11.99) → 1회 결제로 평생 무제한 사용</p>
+
+      <div class="mt-4">
+        <a
+          href="https://pf.kakao.com/_IsuvX"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FEE500] hover:bg-[#f5dc00] text-[#191919] text-sm font-extrabold transition shadow-sm"
+        >
+          카카오톡 채널로 PRO 구매 및 키 발급 신청
+        </a>
+      </div>
 
       <div class="mt-5 space-y-3 text-xs text-slate-700 bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
         <div class="flex items-start gap-2.5">
