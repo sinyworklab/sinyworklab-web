@@ -495,8 +495,8 @@
         </div>
       </div>
 
-      <p class="text-center text-[11px] text-slate-400 mt-6" data-i18n="dlMacTip">
-        💡 내 맥북 칩셋 확인: 좌측 상단  → 이 Mac에 관하여에서 'Apple M1~M4' 또는 'Intel'을 확인해 주세요. (처음 열 때는 우클릭 → [열기]로 실행)
+      <p class="text-center text-[11px] text-slate-400 mt-6 leading-relaxed" data-i18n="dlMacTip">
+        💡 내 맥북 칩셋 확인: 좌측 상단  → 이 Mac에 관하여에서 Apple M1~M4 또는 Intel을 확인해 주세요. (처음 실행 시 '손상되었기 때문에 열 수 없습니다'가 뜨면 응용 프로그램 폴더로 옮긴 뒤 터미널에서 xattr -cr /Applications/MEMTODO.app 입력)
       </p>
     </div>
   </section>
@@ -645,13 +645,13 @@
       <div class="space-y-3.5">
         <div class="rounded-2xl bg-white border border-slate-200 overflow-hidden">
           <button type="button" class="faq-btn w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-slate-900 hover:bg-slate-50/70 transition-colors cursor-pointer">
-            <span data-i18n="faq1Q">Q. Windows나 macOS에서 처음 설치할 때 보안 경고 창이 뜹니다. 안전한가요?</span>
+            <span data-i18n="faq1Q">Q. Windows나 macOS에서 처음 설치할 때 보안 경고 또는 '손상되었기 때문에 열 수 없습니다' 창이 뜹니다. 안전한가요?</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 shrink-0 transition-transform"></i>
           </button>
           <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3 space-y-2">
-            <p>네, 100% 안전합니다. 신규 배포되는 독립 개발사 소프트웨어는 초기 다운로드 누적 전까지 OS 보안 안내 창이 표시될 수 있습니다.</p>
+            <p>네, 100% 안전합니다. Apple/Microsoft 유료 개발자 공증 전 단계의 독립 소프트웨어는 OS 보안 안내 창이 표시될 수 있습니다.</p>
             <p>• <strong>Windows:</strong> 'Windows의 PC 보호' 창 왼쪽의 <strong>[추가 정보]</strong> 클릭 후 아래에 나타나는 <strong>[실행]</strong> 버튼을 누르세요.</p>
-            <p>• <strong>macOS:</strong> 응용 프로그램 폴더로 옮긴 뒤 아이콘을 <strong>우클릭 → [열기]</strong>를 선택하거나, <strong>시스템 설정 → 개인정보 보호 및 보안 → [확인 없이 열기]</strong>를 눌러주세요.</p>
+            <p>• <strong>macOS ('손상되었기 때문에 열 수 없습니다' 경고 시):</strong> 창에서 <strong>[취소]</strong>를 누르고 앱을 <strong>응용 프로그램(Applications)</strong> 폴더로 옮긴 뒤, Mac <strong>터미널(Terminal)</strong>을 열어 <code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs text-slate-900">xattr -cr /Applications/MEMTODO.app</code> 를 입력하면 격리 속성이 해제되어 즉시 실행됩니다.</p>
           </div>
         </div>
 
@@ -791,7 +791,7 @@
         dlWinDesc: '일반 데스크톱 및 노트북 PC용 표준 설치 파일입니다.', dlWinBtn: 'Windows 다운로드',
         dlMacArmDesc: '2020년 말 이후 출시된 M1, M2, M3, M4 칩 탑재 맥북·아이맥 전용입니다.', dlMacArmBtn: 'Mac (M1~M4) 다운로드',
         dlMacIntelDesc: '2020년 이전 출시된 Intel 칩 탑재 구형 맥북·아이맥 전용입니다.', dlMacIntelBtn: 'Mac (Intel) 다운로드',
-        dlMacTip: '💡 내 맥북 칩셋 확인: 좌측 상단  → 이 Mac에 관하여에서 Apple M1~M4 또는 Intel을 확인해 주세요. (처음 열 때는 우클릭 → [열기]로 실행)',
+        dlMacTip: "💡 내 맥북 칩셋 확인: 좌측 상단  → 이 Mac에 관하여에서 Apple M1~M4 또는 Intel을 확인해 주세요. (처음 실행 시 '손상되었기 때문에 열 수 없습니다'가 뜨면 응용 프로그램 폴더로 옮긴 뒤 터미널에서 xattr -cr /Applications/MEMTODO.app 입력)",
         pricingTitle: '매달 빠져나가는 구독료 없이, 커피 두 잔 값으로 평생 소장하세요', pricingDesc: '먼저 무료 버전 또는 앱 내 7일 PRO 무료 체험으로 모든 기능을 직접 써보신 후 결정하실 수 있습니다.',
         freeBadge: '영구 무료', freeSub: '/ 기간 제한 없음', freeNote: '가벼운 단일 메모와 기본 할 일 관리를 원하는 분께 적합합니다.',
         freeF1: '메모장 1개 생성 및 무제한 소제목·할 일', freeF2: '기본 5종 파스텔 테마 색상 지원', freeF3: '자석 스냅, 창 일괄 정렬, JSON 백업/복원', freeF4: '앱 내 8개국어 UI 지원', freeF5: 'PRO 기능 7일 무료 체험 제공', freeCta: '무료 버전 다운로드',
@@ -802,7 +802,7 @@
         donateCta: '개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)',
         findrunBannerTitle: '0.1초 초고속 파일·프로그램 런처, FINDRUN', findrunBannerDesc: '자주 여는 폴더와 문서를 단축키 한 번으로 검색하고 즉시 실행하세요. MEMTODO와 함께 쓰면 시너지가 극대화됩니다.', findrunBannerCta: 'FINDRUN 자세히 보기',
         faqTitle: '자주 묻는 질문',
-        faq1Q: 'Q. Windows나 macOS에서 처음 설치할 때 보안 경고 창이 뜹니다. 안전한가요?',
+        faq1Q: "Q. Windows나 macOS에서 처음 설치할 때 보안 경고 또는 '손상되었기 때문에 열 수 없습니다' 창이 뜹니다. 안전한가요?",
         faq2Q: 'Q. PRO 평생 소장권 구매 후 인증은 어떻게 진행되나요?',
         faq3Q: 'Q. 새 버전 업데이트가 나오면 기존 프로그램을 지우고 다시 설치해야 하나요?',
         footerGuide: '상세 사용 설명서',
@@ -831,7 +831,7 @@
         dlWinDesc: 'Standard installer for Windows 10 & Windows 11 (64-bit) PCs.', dlWinBtn: 'Download for Windows',
         dlMacArmDesc: 'For M1, M2, M3, and M4 Apple Silicon Macs (late 2020 and newer).', dlMacArmBtn: 'Download for Mac (M1–M4)',
         dlMacIntelDesc: 'For Intel-based Macs released prior to late 2020.', dlMacIntelBtn: 'Download for Mac (Intel)',
-        dlMacTip: '💡 Check your Mac chip: Click  → About This Mac to see Apple M1–M4 or Intel. (On first launch, Right-click → Open)',
+        dlMacTip: '💡 Check your Mac chip: Click  → About This Mac to see Apple M1–M4 or Intel. (If macOS says "is damaged and can\'t be opened", drag MEMTODO to Applications and run: xattr -cr /Applications/MEMTODO.app in Terminal)',
         pricingTitle: 'No Monthly Subscriptions — Own It Forever for $7.99 (₩9,900)', pricingDesc: 'Try every PRO feature free for 7 days inside the app before you decide.',
         freeBadge: 'Free Forever', freeSub: '/ No time limit', freeNote: 'Ideal for a single lightweight desktop note and basic task tracking.',
         freeF1: '1 sticky note with unlimited sections & tasks', freeF2: '5 built-in pastel note themes', freeF3: 'Magnetic snap, window auto-align & JSON backup', freeF4: '8-language UI support inside the app', freeF5: 'Includes 7-day PRO free trial', freeCta: 'Download Free Version',
@@ -842,7 +842,7 @@
         donateCta: 'Buy Me a Coffee (Support Developer)',
         findrunBannerTitle: '0.1s Ultra-Fast File & App Launcher, FINDRUN', findrunBannerDesc: 'Summon FINDRUN with a hotkey to search and launch folders or files in 0.1 seconds. Pairs seamlessly with MEMTODO.', findrunBannerCta: 'Explore FINDRUN',
         faqTitle: 'Frequently Asked Questions',
-        faq1Q: 'Q. Windows or macOS shows a security prompt on first launch. Is it safe?',
+        faq1Q: 'Q. Windows or macOS shows a security prompt or "is damaged and can\'t be opened" on first launch. Is it safe?',
         faq2Q: 'Q. How do I activate my PRO Lifetime License after purchase?',
         faq3Q: 'Q. Do I need to uninstall the old version when updating?',
         footerGuide: 'User Manual',
@@ -871,7 +871,7 @@
         dlWinDesc: 'Windows 10 / 11 (64-bit) PC用の標準インストーラーです。', dlWinBtn: 'Windows版をダウンロード',
         dlMacArmDesc: '2020年後半以降発売の M1, M2, M3, M4 チップ搭載 Mac 専用です。', dlMacArmBtn: 'Mac (M1〜M4) ダウンロード',
         dlMacIntelDesc: '2020年以前発売の Intel プロセッサ搭載 Mac 専用です。', dlMacIntelBtn: 'Mac (Intel) ダウンロード',
-        dlMacTip: '💡 Macチップ確認方法：画面左上  →「このMacについて」で Apple M1〜M4 または Intel を確認してください。（初回は右クリック →「開く」）',
+        dlMacTip: '💡 Macチップ確認方法：画面左上  →「このMacについて」で Apple M1〜M4 または Intel を確認してください。（初回起動時に「壊れているため開けません」と表示された場合は、アプリケーションフォルダへ移動後、ターミナルで xattr -cr /Applications/MEMTODO.app を実行してください）',
         pricingTitle: '毎月のサブスク課金なし、$7.99（9,900ウォン）で永久ライセンス', pricingDesc: 'まずは無料版またはアプリ内の7日間PRO無料体験で全機能をお試しいただけます。',
         freeBadge: '永久無料', freeSub: '/ 期限なし', freeNote: 'シンプルな付箋1枚と基本的なタスク管理に最適です。',
         freeF1: '付箋1枚作成＆無制限の見出し・タスク', freeF2: '基本5色のパステルテーマ', freeF3: 'マグネット吸着・ウィンドウ整列・JSONバックアップ', freeF4: 'アプリ内8言語UI対応', freeF5: 'PRO機能7日間無料体験付き', freeCta: '無料版をダウンロード',
@@ -882,7 +882,7 @@
         donateCta: '開発者にコーヒー1杯を奢る (Buy Me a Coffee)',
         findrunBannerTitle: '0.1秒超高速ファイル・アプリランチャー FINDRUN', findrunBannerDesc: 'よく使うフォルダや書類をショートカット一発で検索・起動。MEMTODOと併用することで作業効率が倍増します。', findrunBannerCta: 'FINDRUN の詳細を見る',
         faqTitle: 'よくある質問',
-        faq1Q: 'Q. WindowsやmacOSで初回起動時にセキュリティ警告が表示されます。安全ですか？',
+        faq1Q: 'Q. WindowsやmacOSで初回起動時にセキュリティ警告や「壊れているため開けません」と表示されます。安全ですか？',
         faq2Q: 'Q. PRO永久ライセンス購入後の認証手順を教えてください。',
         faq3Q: 'Q. 新バージョンへ更新する際、古いアプリを削除する必要がありますか？',
         footerGuide: '取扱説明書',
@@ -911,7 +911,7 @@
         dlWinDesc: '适用于常规 Windows 10 / 11 (64位) 台式机与笔记本电脑。', dlWinBtn: '下载 Windows 版',
         dlMacArmDesc: '专为 2020 年底及之后发布的 M1, M2, M3, M4 芯片 Mac 打造。', dlMacArmBtn: '下载 Mac (M1~M4) 版',
         dlMacIntelDesc: '专为 2020 年之前发布的 Intel 处理器 Mac 打造。', dlMacIntelBtn: '下载 Mac (Intel) 版',
-        dlMacTip: '💡 查看 Mac 芯片型号：点击左上角  → 关于本机，确认显示 Apple M1~M4 或 Intel。（首次打开请右键 → 打开）',
+        dlMacTip: '💡 查看 Mac 芯片型号：点击左上角  → 关于本机，确认显示 Apple M1~M4 或 Intel。（首次打开若提示“已损坏，无法打开”，请拖入“应用程序”文件夹后在终端运行：xattr -cr /Applications/MEMTODO.app）',
         pricingTitle: '告别按月扣费订阅，仅需 $7.99（₩9,900）终身拥有', pricingDesc: '可先下载免费版，并在软件内开启 7 天 PRO 免费试用体验全部高级功能。',
         freeBadge: '永久免费', freeSub: '/ 无时间限制', freeNote: '适合轻量级单便签与日常待办清单管理。',
         freeF1: '创建 1 个便签窗口，无限分组与待办', freeF2: '内置 5 种柔和护眼主题配色', freeF3: '窗口磁吸、一键排列及 JSON 备份恢复', freeF4: '软件内置 8 国语言界面切换', freeF5: '提供 7 天 PRO 完整功能免费试用', freeCta: '下载免费版本',
@@ -922,7 +922,7 @@
         donateCta: '请开发者喝杯咖啡 (Buy Me a Coffee)',
         findrunBannerTitle: '0.1秒极速文件与程序启动器，FINDRUN', findrunBannerDesc: '按下快捷键即可秒搜并打开常用文件夹与文档，与 MEMTODO 搭配使用效率翻倍。', findrunBannerCta: '了解 FINDRUN 详情',
         faqTitle: '常见问题解答',
-        faq1Q: 'Q. Windows 或 macOS 首次安装时弹出安全提示，软件安全吗？',
+        faq1Q: 'Q. Windows 或 macOS 首次安装时弹出安全提示或“已损坏，无法打开”，软件安全吗？',
         faq2Q: 'Q. 购买 PRO 终身买断版后如何激活授权？',
         faq3Q: 'Q. 发布新版本更新时，需要先卸载旧版本再安装吗？',
         footerGuide: '详细使用说明书',

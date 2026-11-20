@@ -246,14 +246,30 @@
                 </table>
               </div>
               <p class="text-xs text-slate-600">💡 <strong>칩셋 확인:</strong> 화면 좌측 상단 <strong> → [이 Mac에 관하여]</strong>에서 'Apple M1~M4' 또는 'Intel'을 확인하세요. 다운로드한 <code class="font-mono">.dmg</code>를 열고 MEMTODO 아이콘을 <strong>Applications(응용 프로그램)</strong> 폴더로 드래그합니다.</p>
-              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-2">
+              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-3">
                 <div class="font-extrabold text-rose-900 flex items-center gap-1.5">
                   <i data-lucide="lock-open" class="w-4 h-4 text-rose-600"></i>
-                  macOS에서 '확인되지 않은 개발자' 보안 경고 창이 뜨는 경우
+                  macOS 보안 경고 또는 '손상되었기 때문에 열 수 없습니다' 창이 뜨는 경우
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-xs">
+                <div class="bg-white p-3.5 rounded-xl border border-rose-300 shadow-2xs space-y-1.5 text-xs">
+                  <div class="font-extrabold text-rose-700 flex items-center gap-1.5">
+                    <span>★ 'MEMTODO'은(는) 손상되었기 때문에 열 수 없습니다 해결법 (터미널 명령어)</span>
+                  </div>
+                  <p class="text-slate-600 leading-relaxed">
+                    Apple 공증 전 앱을 브라우저로 다운로드할 때 macOS가 붙이는 격리 속성 때문에 나타나는 정상적인 현상입니다. <strong>[휴지통으로 이동]을 누르지 말고 [취소]</strong>를 누른 뒤 아래 순서대로 실행하세요.
+                  </p>
+                  <p class="text-slate-700 leading-relaxed">
+                    1) MEMTODO 앱을 <strong>Applications(응용 프로그램)</strong> 폴더로 옮깁니다.<br />
+                    2) Mac에서 <strong>터미널(Terminal)</strong>을 열고(<kbd>Cmd</kbd>+<kbd>Space</kbd> → <code class="font-mono">터미널</code>) 아래 명령어를 입력 후 Enter를 누릅니다:
+                  </p>
+                  <div class="bg-slate-900 text-emerald-300 font-mono text-xs px-3 py-2 rounded-lg select-all">
+                    xattr -cr /Applications/MEMTODO.app
+                  </div>
+                  <p class="text-slate-500">이후 응용 프로그램 폴더에서 MEMTODO를 더블클릭하면 경고 없이 즉시 실행됩니다.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
-                    <div class="font-extrabold text-slate-900 mb-1">방법 A. 우클릭 후 [열기] (가장 빠름)</div>
+                    <div class="font-extrabold text-slate-900 mb-1">방법 A. 우클릭 후 [열기]</div>
                     <p class="text-slate-600 leading-relaxed">1) <strong>Finder → 응용 프로그램</strong>에서 MEMTODO를 <strong>우클릭</strong>합니다.<br />2) 메뉴에서 <strong>[열기]</strong>를 누르고 팝업의 <strong>[열기]</strong>를 클릭합니다.</p>
                   </div>
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
@@ -458,14 +474,28 @@
                 </table>
               </div>
               <p class="text-xs text-slate-600">💡 <strong>Check your Mac chip:</strong> Click <strong> → About This Mac</strong> to see Apple M1–M4 or Intel. Open the <code class="font-mono">.dmg</code> and drag MEMTODO into <strong>Applications</strong>.</p>
-              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-2">
+              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-3">
                 <div class="font-extrabold text-rose-900 flex items-center gap-1.5">
                   <i data-lucide="lock-open" class="w-4 h-4 text-rose-600"></i>
-                  Bypassing macOS Gatekeeper ("Unidentified Developer") on First Launch
+                  Bypassing macOS Gatekeeper or "is damaged and can't be opened" Alert
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-xs">
+                <div class="bg-white p-3.5 rounded-xl border border-rose-300 shadow-2xs space-y-1.5 text-xs">
+                  <div class="font-extrabold text-rose-700">★ Fix for "'MEMTODO' is damaged and can't be opened" (Terminal Command)</div>
+                  <p class="text-slate-600 leading-relaxed">
+                    macOS automatically adds a quarantine flag to apps downloaded via browsers before Apple Notarization. Click <strong>[Cancel]</strong> (do NOT click Move to Trash), then follow these steps:
+                  </p>
+                  <p class="text-slate-700 leading-relaxed">
+                    1) Drag MEMTODO into your <strong>Applications</strong> folder.<br />
+                    2) Open <strong>Terminal</strong> (<kbd>Cmd</kbd>+<kbd>Space</kbd> → type <code class="font-mono">Terminal</code>) and run:
+                  </p>
+                  <div class="bg-slate-900 text-emerald-300 font-mono text-xs px-3 py-2 rounded-lg select-all">
+                    xattr -cr /Applications/MEMTODO.app
+                  </div>
+                  <p class="text-slate-500">Double-click MEMTODO in Applications and it will launch immediately.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
-                    <div class="font-extrabold text-slate-900 mb-1">Method A. Right-Click → Open (Fastest)</div>
+                    <div class="font-extrabold text-slate-900 mb-1">Method A. Right-Click → Open</div>
                     <p class="text-slate-600 leading-relaxed">1) Open <strong>Finder → Applications</strong> and <strong>Right-click</strong> MEMTODO.<br />2) Select <strong>[Open]</strong> from the menu, then click <strong>[Open]</strong> in the popup.</p>
                   </div>
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
@@ -670,14 +700,28 @@
                 </table>
               </div>
               <p class="text-xs text-slate-600">💡 <strong>チップ確認方法:</strong> 左上 <strong> →「このMacについて」</strong>で確認できます。<code class="font-mono">.dmg</code> を開き、MEMTODOを <strong>Applications（アプリケーション）</strong> フォルダへドラッグしてください。</p>
-              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-2">
+              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-3">
                 <div class="font-extrabold text-rose-900 flex items-center gap-1.5">
                   <i data-lucide="lock-open" class="w-4 h-4 text-rose-600"></i>
-                  macOSで「開発元が未確認のため開けません」と表示される場合
+                  macOSで「壊れているため開けません」または「開発元が未確認」と表示される場合
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-xs">
+                <div class="bg-white p-3.5 rounded-xl border border-rose-300 shadow-2xs space-y-1.5 text-xs">
+                  <div class="font-extrabold text-rose-700">★「'MEMTODO'は壊れているため開けません」の解除手順（ターミナルコマンド）</div>
+                  <p class="text-slate-600 leading-relaxed">
+                    Apple公証前のアプリをブラウザでダウンロードした際に付与される隔離属性が原因です。<strong>［ゴミ箱に入れる］は押さず［キャンセル］</strong>をクリックし、以下の手順を実行してください。
+                  </p>
+                  <p class="text-slate-700 leading-relaxed">
+                    1) MEMTODO を <strong>Applications（アプリケーション）</strong> フォルダへ移動します。<br />
+                    2) Mac の <strong>ターミナル（Terminal）</strong> を開き（<kbd>Cmd</kbd>+<kbd>Space</kbd> → <code class="font-mono">Terminal</code>）、次のコマンドを入力して Enter を押します：
+                  </p>
+                  <div class="bg-slate-900 text-emerald-300 font-mono text-xs px-3 py-2 rounded-lg select-all">
+                    xattr -cr /Applications/MEMTODO.app
+                  </div>
+                  <p class="text-slate-500">その後、アプリケーションフォルダから MEMTODO をダブルクリックすると即座に起動します。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
-                    <div class="font-extrabold text-slate-900 mb-1">方法A. 右クリック → [開く]（最短）</div>
+                    <div class="font-extrabold text-slate-900 mb-1">方法A. 右クリック → [開く]</div>
                     <p class="text-slate-600 leading-relaxed">1) <strong>Finder → アプリケーション</strong> で MEMTODO を<strong>右クリック</strong>します。<br />2) メニューの <strong>[開く]</strong> を選び、警告ダイアログの <strong>[開く]</strong> をクリックします。</p>
                   </div>
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
@@ -882,14 +926,28 @@
                 </table>
               </div>
               <p class="text-xs text-slate-600">💡 <strong>查看 Mac 芯片：</strong>点击左上角 <strong> → 关于本机</strong>确认显示 Apple M1~M4 或 Intel。打开 <code class="font-mono">.dmg</code> 后将 MEMTODO 拖入 <strong>Applications（应用程序）</strong> 文件夹。</p>
-              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-2">
+              <div class="p-4 rounded-xl bg-rose-50/80 border border-rose-200 text-slate-800 space-y-3">
                 <div class="font-extrabold text-rose-900 flex items-center gap-1.5">
                   <i data-lucide="lock-open" class="w-4 h-4 text-rose-600"></i>
-                  macOS 首次打开提示“无法验证开发者”时的解决方法
+                  macOS 首次打开提示“已损坏，无法打开”或“无法验证开发者”时的解决方法
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-xs">
+                <div class="bg-white p-3.5 rounded-xl border border-rose-300 shadow-2xs space-y-1.5 text-xs">
+                  <div class="font-extrabold text-rose-700">★ 解决“'MEMTODO'已损坏，无法打开”的终端命令</div>
+                  <p class="text-slate-600 leading-relaxed">
+                    这是 macOS 对浏览器下载的未公证应用添加隔离属性导致的正常现象。请勿点击“移到废纸篓”，点击<strong>[取消]</strong>后按以下步骤操作：
+                  </p>
+                  <p class="text-slate-700 leading-relaxed">
+                    1) 将 MEMTODO 拖入 <strong>Applications（应用程序）</strong> 文件夹。<br />
+                    2) 打开 Mac <strong>终端 (Terminal)</strong>（<kbd>Cmd</kbd>+<kbd>Space</kbd> → 输入 <code class="font-mono">Terminal</code>），粘贴以下命令并按回车：
+                  </p>
+                  <div class="bg-slate-900 text-emerald-300 font-mono text-xs px-3 py-2 rounded-lg select-all">
+                    xattr -cr /Applications/MEMTODO.app
+                  </div>
+                  <p class="text-slate-500">随后在“应用程序”中双击 MEMTODO 即可正常打开。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
-                    <div class="font-extrabold text-slate-900 mb-1">方法 A：右键 → 打开（最快）</div>
+                    <div class="font-extrabold text-slate-900 mb-1">方法 A：右键 → 打开</div>
                     <p class="text-slate-600 leading-relaxed">1) 在 <strong>访达 → 应用程序</strong> 中<strong>右键点击</strong> MEMTODO。<br />2) 选择 <strong>[打开]</strong>，然后在弹窗中再次点击 <strong>[打开]</strong>。</p>
                   </div>
                   <div class="bg-white p-3 rounded-lg border border-rose-200/80">
