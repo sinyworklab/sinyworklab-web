@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /success.html
+
+Sitemap: https://tinyworklab.com/sitemap.xml

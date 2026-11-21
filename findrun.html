@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="scroll-smooth">
+<html lang="ko" class="scroll-smooth dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,44 +11,82 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans KR"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
   <style>
-    body { font-family: 'Noto Sans KR', 'Inter', sans-serif; color: #0F172A; background-color: #FAFAFA; overflow-x: hidden; }
+    body {
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
+      color: #0F172A;
+      background-color: #FAFAFA;
+      overflow-x: hidden;
+      word-break: keep-all;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    html.dark body { color: #F8FAFC; background-color: #020617; }
     .glass-nav { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    html.dark .glass-nav { background: rgba(15, 23, 42, 0.88); }
     .hero-grid-bg { background-image: radial-gradient(rgba(16, 185, 129, 0.12) 1px, transparent 1px); background-size: 24px 24px; }
+    html.dark .hero-grid-bg { background-image: radial-gradient(rgba(52, 211, 153, 0.14) 1px, transparent 1px); }
   </style>
 </head>
 <body class="antialiased selection:bg-emerald-200 selection:text-slate-900">
 
-  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/80">
+  <!-- 공통 상단 네비게이션 바 -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/80 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
       <a href="index.html" class="flex items-center gap-2.5 group shrink-0">
         <div class="w-9 h-9 rounded-xl bg-[#1E1E1E] overflow-hidden flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
           <img src="logo.png" alt="TinyWork Lab Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" />
         </div>
         <div class="flex flex-col">
-          <span class="font-black text-base tracking-tight text-slate-900 leading-none">TINYWORK LAB</span>
-          <span class="text-[10px] font-semibold text-slate-500 tracking-wider mt-0.5">DESKTOP UTILITIES</span>
+          <span class="font-black text-base tracking-tight text-slate-900 dark:text-white leading-none">TINYWORK LAB</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider mt-0.5">DESKTOP UTILITIES</span>
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
-        <a href="index.html" class="hover:text-blue-600 transition-colors">MEMTODO</a>
-        <a href="findrun.html" class="text-emerald-600 font-extrabold flex items-center gap-1.5">
-          FINDRUN <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700">FREE</span>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+        <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">MEMTODO</a>
+        <a href="findrun.html" class="text-emerald-600 dark:text-emerald-400 font-extrabold flex items-center gap-1.5">
+          FINDRUN <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">FREE</span>
         </a>
-        <a href="guide.html" class="hover:text-slate-900 transition-colors flex items-center gap-1" data-i18n="navGuide">
+        <a href="guide.html" class="hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1" data-i18n="navGuide">
           <i data-lucide="book-open" class="w-3.5 h-3.5 text-slate-400"></i> <span>사용 설명서</span>
         </a>
-        <a href="index.html#pricing" class="hover:text-slate-900 transition-colors" data-i18n="navPricing">MEMTODO 요금제</a>
+        <a href="index.html#pricing" class="hover:text-slate-900 dark:hover:text-white transition-colors" data-i18n="navPricing">MEMTODO 요금제</a>
       </nav>
 
-      <div class="flex items-center gap-2 sm:gap-2.5">
+      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <!-- 다크모드(기본) / 라이트모드 전환 버튼 -->
+        <button
+          id="themeToggleBtn"
+          type="button"
+          aria-label="Toggle Light Mode"
+          title="다크모드 / 라이트모드 전환"
+          class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 transition-colors cursor-pointer"
+        >
+          <i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-600 dark:hidden"></i>
+          <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400 hidden dark:inline-block"></i>
+          <span class="hidden sm:inline" data-i18n="navThemeToggle">라이트모드</span>
+        </button>
+
+        <!-- 언어 선택기 -->
         <div class="relative inline-flex items-center">
-          <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 pointer-events-none"></i>
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 absolute left-2.5 pointer-events-none"></i>
           <select
             id="langSelector"
             aria-label="Language Selector"
-            class="pl-7 pr-6 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/80 border border-slate-200/80 outline-none cursor-pointer transition-colors"
+            class="pl-7 pr-6 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 outline-none cursor-pointer transition-colors"
           >
             <option value="ko">한국어</option>
             <option value="en">English</option>
@@ -56,52 +94,47 @@
             <option value="zh-CN">简体中文</option>
           </select>
         </div>
-
-        <a href="https://github.com/tinyworklab-dev/FINDRUN-Release/releases/download/v1.0.0/FINDRUN_Setup_V1.0.0.exe" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 shadow-sm transition-all shrink-0">
-          <i data-lucide="download" class="w-4 h-4"></i>
-          <span data-i18n="navDownload">FINDRUN 무료 다운로드</span>
-        </a>
       </div>
     </div>
   </header>
 
-  <section class="hero-grid-bg pt-14 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-200/80">
+  <section class="hero-grid-bg pt-14 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-extrabold">
-            <i data-lucide="gift" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/70 text-emerald-800 dark:text-emerald-300 text-xs font-extrabold">
+            <i data-lucide="gift" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
             <span data-i18n="heroBadge">TINYWORK LAB FREEWARE · 개인·기업 100% 무료</span>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-slate-900 leading-[1.22]" data-i18n="heroTitle">
+          <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.22]" data-i18n="heroTitle">
             파일도, 폴더도, 앱도 0.1초 만에 즉시 실행 — FINDRUN
           </h1>
 
-          <p class="text-slate-600 text-base sm:text-[17px] leading-relaxed font-medium" data-i18n="heroDesc">
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-[17px] leading-relaxed font-medium" data-i18n="heroDesc">
             깊숙한 폴더 트리를 마우스로 클릭하며 헤매지 마세요. 글로벌 단축키를 누르고 파일명 일부만 입력하면 0.1초 만에 검색되고 Enter 한 번으로 즉시 실행되는 초경량 Windows 런처입니다.
           </p>
 
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
-            <a href="https://github.com/tinyworklab-dev/FINDRUN-Release/releases/download/v1.0.0/FINDRUN_Setup_V1.0.0.exe" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-sm sm:text-base font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 shadow-lg shadow-emerald-500/20 transition-all">
+            <a href="https://github.com/tinyworklab-dev/FINDRUN-Release/releases/download/v1.0.0/FINDRUN_Setup_V1.0.0.exe" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-sm sm:text-base font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 shadow-lg shadow-emerald-500/20 transition-all whitespace-nowrap">
               <i data-lucide="download" class="w-5 h-5"></i>
               <span data-i18n="heroCtaDownload">Windows용 무료 다운로드 (FREE)</span>
             </a>
-            <a href="guide.html#findrun-guide" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm sm:text-base font-bold text-slate-800 bg-white border border-slate-300 hover:bg-slate-50 transition-all">
-              <i data-lucide="book-open" class="w-4 h-4 text-emerald-600"></i>
+            <a href="guide.html#findrun-guide" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all whitespace-nowrap">
+              <i data-lucide="book-open" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
               <span data-i18n="heroCtaGuide">FINDRUN 사용 가이드</span>
             </a>
           </div>
 
-          <p class="text-[11px] text-slate-500 font-medium" data-i18n="smartscreenTip">
-            💡 Windows 설치 시 'Windows의 PC 보호' 창이 뜨면 <strong>[추가 정보] → [실행]</strong>을 눌러주세요.
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium" data-i18n="smartscreenTip">
+            💡 Windows 설치 시 'Windows의 PC 보호' 창이 뜨면 [추가 정보] → [실행]을 눌러주세요.
           </p>
 
-          <div class="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-xs font-semibold text-slate-500">
-            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="trustFree">광고·결제 없는 완전 무료</span></span>
-            <span class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> <span data-i18n="trustLight">초저점유율 백그라운드 상주</span></span>
-            <span class="flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4 text-slate-600"></i> <span data-i18n="trustLocal">오프라인 로컬 인덱싱</span></span>
+          <div class="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+            <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i> <span data-i18n="trustFree">광고·결제 없는 완전 무료</span></span>
+            <span class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i> <span data-i18n="trustLight">초저점유율 백그라운드 상주</span></span>
+            <span class="flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4 text-slate-600 dark:text-slate-400"></i> <span data-i18n="trustLocal">오프라인 로컬 인덱싱</span></span>
           </div>
         </div>
 
@@ -140,42 +173,42 @@
     </div>
   </section>
 
-  <section class="py-20 bg-white">
+  <section class="py-20 bg-white dark:bg-slate-950 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600">SPEED & SIMPLICITY</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2" data-i18n="featMainTitle">마우스 손을 떼는 순간 업무가 빨라집니다</h2>
+        <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">SPEED & SIMPLICITY</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="featMainTitle">마우스 손을 떼는 순간 업무가 빨라집니다</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80">
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
           <div class="w-11 h-11 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900" data-i18n="f1Title">0.1초 초고속 파일·폴더 검색</h3>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="f1Desc">
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f1Title">0.1초 초고속 파일·폴더 검색</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f1Desc">
             Windows 기본 검색의 답답한 로딩 없이, 지정한 작업 폴더와 즐겨찾기 경로를 초고속으로 인덱싱하여 타이핑과 동시에 결과를 띄워줍니다.
           </p>
         </div>
 
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80">
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
           <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-4"><i data-lucide="command" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900" data-i18n="f2Title">어떤 작업 중에도 단축키 즉시 호출</h3>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="f2Desc">
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f2Title">어떤 작업 중에도 단축키 즉시 호출</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f2Desc">
             엑셀, CAD, 브라우저 등 어떤 전체 화면 작업을 하던 중에도 단축키 한 번이면 화면 중앙에 검색창이 즉시 나타나고 실행 후 깔끔하게 사라집니다.
           </p>
         </div>
 
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80">
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
           <div class="w-11 h-11 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center mb-4"><i data-lucide="layers" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900" data-i18n="f3Title">MEMTODO와의 완벽한 시너지</h3>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="f3Desc">
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f3Title">MEMTODO와의 완벽한 시너지</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f3Desc">
             핵심 프로젝트 폴더와 마감 일정은 MEMTODO에 고정해 두고, 수시로 찾아야 하는 참고 문서나 유틸리티는 FINDRUN으로 즉시 호출해 보세요.
           </p>
         </div>
 
-        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80">
-          <div class="w-11 h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900" data-i18n="f4Title">회원가입·광고·유료 결제 없는 완전 무료</h3>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed" data-i18n="f4Desc">
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="w-11 h-11 rounded-2xl bg-slate-900 dark:bg-slate-800 text-white flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f4Title">회원가입·광고·유료 결제 없는 완전 무료</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f4Desc">
             TINYWORK LAB이 모든 Windows 사용자를 위해 무료로 배포합니다. 인터넷 연결이나 계정 로그인 없이 설치 즉시 모든 기능을 제한 없이 사용하세요.
           </p>
         </div>
@@ -183,16 +216,16 @@
     </div>
   </section>
 
-  <!-- 개발자 후원(기부) 섹션 (4개국어 연동) -->
-  <section id="donate" class="py-12 bg-amber-50/75 border-t border-amber-200/70">
+  <!-- 개발자 후원(기부) 섹션 -->
+  <section id="donate" class="py-12 bg-amber-50/75 dark:bg-amber-950/20 border-t border-amber-200/70 dark:border-amber-900/40 transition-colors">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 text-amber-900 text-xs font-extrabold">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 dark:bg-amber-900/60 text-amber-900 dark:text-amber-300 text-xs font-extrabold">
         <i data-lucide="coffee" class="w-3.5 h-3.5"></i> SUPPORT FREEWARE DEVELOPER
       </div>
-      <h2 class="text-xl sm:text-2xl font-black text-slate-900" data-i18n="donateTitle">
+      <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white" data-i18n="donateTitle">
         FINDRUN이 업무 시간을 아껴주었나요?
       </h2>
-      <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed" data-i18n="donateDesc">
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed" data-i18n="donateDesc">
         TINYWORK LAB의 무료 유틸리티는 광고 없이 배포됩니다. 따뜻한 커피 한 잔의 후원은 지속적인 기능 업데이트와 신규 툴 개발에 큰 힘이 됩니다.
       </p>
       <div class="pt-1.5 flex flex-wrap items-center justify-center gap-3">
@@ -209,15 +242,15 @@
     </div>
   </section>
 
-  <section class="py-16 bg-slate-50 border-t border-slate-200/80">
+  <section class="py-16 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-3xl bg-white border border-slate-200 p-8 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xs">
+      <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xs">
         <div class="space-y-2 text-center lg:text-left max-w-2xl">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-extrabold">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 text-xs font-extrabold">
             TINYWORK LAB FLAGSHIP
           </span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900" data-i18n="memtodoBannerTitle">바탕화면 위 포스트잇·캘린더·파일 통합 관리, MEMTODO</h2>
-          <p class="text-sm text-slate-600" data-i18n="memtodoBannerDesc">
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white" data-i18n="memtodoBannerTitle">바탕화면 위 포스트잇·캘린더·파일 통합 관리, MEMTODO</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="memtodoBannerDesc">
             소제목별 할 일 관리부터 폴더·파일 드래그 연결, 커스텀 마감 알림까지 월 구독료 없이 평생 소장하세요.
           </p>
         </div>
@@ -228,24 +261,37 @@
     </div>
   </section>
 
-  <footer class="bg-white border-t border-slate-200 py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2.5">
-        <div class="w-7 h-7 rounded-lg bg-[#1E1E1E] overflow-hidden flex items-center justify-center">
-          <img src="logo.png" alt="TinyWork Lab Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+  <!-- 공통 푸터 -->
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-[#1E1E1E] overflow-hidden flex items-center justify-center">
+            <img src="logo.png" alt="TinyWork Lab Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+          </div>
+          <span class="font-black text-sm text-slate-900 dark:text-white">TINYWORK LAB</span>
+          <span class="text-xs text-slate-400 ml-1">© 2026 All rights reserved.</span>
         </div>
-        <span class="font-black text-sm text-slate-900">TINYWORK LAB</span>
-        <span class="text-xs text-slate-400 ml-1">© 2026 All rights reserved.</span>
+
+        <div class="flex flex-wrap items-center justify-center gap-5 text-xs font-semibold text-slate-600 dark:text-slate-400">
+          <a href="index.html" class="hover:text-slate-900 dark:hover:text-white">MEMTODO</a>
+          <a href="findrun.html" class="hover:text-slate-900 dark:hover:text-white">FINDRUN</a>
+          <a href="guide.html" class="hover:text-slate-900 dark:hover:text-white" data-i18n="footerGuide">사용 설명서</a>
+          <a href="terms.html" class="hover:text-slate-900 dark:hover:text-white font-bold" data-i18n="footerTerms">이용약관 · 환불정책</a>
+          <a href="privacy.html" class="hover:text-slate-900 dark:hover:text-white font-bold" data-i18n="footerPrivacy">개인정보 처리방침</a>
+          <a href="https://www.buymeacoffee.com/tinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:text-amber-700 font-extrabold" data-i18n="footerDonate">
+            ☕ 개발자 후원하기
+          </a>
+        </div>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-500">
-        <a href="index.html" class="hover:text-slate-900">MEMTODO</a>
-        <a href="findrun.html" class="hover:text-slate-900">FINDRUN</a>
-        <a href="guide.html" class="hover:text-slate-900" data-i18n="footerGuide">상세 사용 설명서</a>
-        <a href="https://github.com/tinyworklab-dev/FINDRUN-Release/releases/download/v1.0.0/FINDRUN_Setup_V1.0.0.exe" class="hover:text-slate-900">GitHub</a>
-        <a href="https://www.buymeacoffee.com/tinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 font-extrabold" data-i18n="footerDonate">
-          ☕ 개발자 후원하기
-        </a>
+      <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
+        <div>
+          공식 문의 및 라이선스 지원: <a href="mailto:tinyworklab@gmail.com" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">tinyworklab@gmail.com</a> · <a href="https://pf.kakao.com/_IsuvX" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">카카오톡 채널 (@tinyworklab)</a>
+        </div>
+        <div>
+          <a href="https://github.com/tinyworklab-dev/FINDRUN-Release/releases" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-300">GitHub Releases</a> · 100% Local Desktop Software
+        </div>
       </div>
     </div>
   </footer>
@@ -255,7 +301,7 @@
 
     const i18nFindrun = {
       'ko': {
-        navGuide: '사용 설명서', navPricing: 'MEMTODO 요금제', navDownload: 'FINDRUN 무료 다운로드',
+        navGuide: '사용 설명서', navPricing: 'MEMTODO 요금제', navThemeToggle: '라이트모드',
         heroBadge: 'TINYWORK LAB FREEWARE · 개인·기업 100% 무료',
         heroTitle: '파일도, 폴더도, 앱도 0.1초 만에 즉시 실행 — FINDRUN',
         heroDesc: '깊숙한 폴더 트리를 마우스로 클릭하며 헤매지 마세요. 글로벌 단축키를 누르고 파일명 일부만 입력하면 0.1초 만에 검색되고 Enter 한 번으로 즉시 실행되는 초경량 Windows 런처입니다.',
@@ -275,11 +321,13 @@
         memtodoBannerTitle: '바탕화면 위 포스트잇·캘린더·파일 통합 관리, MEMTODO',
         memtodoBannerDesc: '소제목별 할 일 관리부터 폴더·파일 드래그 연결, 커스텀 마감 알림까지 월 구독료 없이 평생 소장하세요.',
         memtodoBannerCta: 'MEMTODO 살펴보기',
-        footerGuide: '상세 사용 설명서',
+        footerGuide: '사용 설명서',
+        footerTerms: '이용약관 · 환불정책',
+        footerPrivacy: '개인정보 처리방침',
         footerDonate: '☕ 개발자 후원하기'
       },
       'en': {
-        navGuide: 'User Guide', navPricing: 'MEMTODO Pricing', navDownload: 'Download FINDRUN Free',
+        navGuide: 'User Guide', navPricing: 'MEMTODO Pricing', navThemeToggle: 'Light Mode',
         heroBadge: 'TINYWORK LAB FREEWARE · 100% Free for Personal & Commercial Use',
         heroTitle: 'Launch Files, Folders & Apps in 0.1s — FINDRUN',
         heroDesc: 'Stop digging through nested folders with your mouse. Press a global hotkey, type part of a filename, and launch anything in 0.1 seconds with a single Enter key.',
@@ -300,10 +348,12 @@
         memtodoBannerDesc: 'Organize tasks by sub-section, drag & drop folders, and get custom deadline alerts with a one-time license.',
         memtodoBannerCta: 'Explore MEMTODO',
         footerGuide: 'User Manual',
+        footerTerms: 'Terms & Refund Policy',
+        footerPrivacy: 'Privacy Policy',
         footerDonate: '☕ Support Developer'
       },
       'ja': {
-        navGuide: '取扱説明書', navPricing: 'MEMTODO 料金', navDownload: 'FINDRUN 無料ダウンロード',
+        navGuide: '取扱説明書', navPricing: 'MEMTODO 料金', navThemeToggle: 'ライトモード',
         heroBadge: 'TINYWORK LAB FREEWARE · 個人・法人 100% 無料',
         heroTitle: 'ファイルもフォルダもアプリも0.1秒で即起動 — FINDRUN',
         heroDesc: '深いフォルダ階層をマウスで探す手間は不要。ショートカットキーを押してファイル名の一部を入力するだけで0.1秒で検索し、Enter一発で即起動します。',
@@ -324,10 +374,12 @@
         memtodoBannerDesc: '見出し別タスク管理からフォルダのドラッグ連携、独自締切通知まで買い切りで永久利用可能。',
         memtodoBannerCta: 'MEMTODO を見る',
         footerGuide: '取扱説明書',
+        footerTerms: '利用規約・返金ポリシー',
+        footerPrivacy: 'プライバシーポリシー',
         footerDonate: '☕ 開発者を応援する'
       },
       'zh-CN': {
-        navGuide: '使用说明书', navPricing: 'MEMTODO 价格', navDownload: '免费下载 FINDRUN',
+        navGuide: '使用说明书', navPricing: 'MEMTODO 价格', navThemeToggle: '浅色模式',
         heroBadge: 'TINYWORK LAB FREEWARE · 个人与企业 100% 免费',
         heroTitle: '文件、文件夹与程序 0.1 秒极速启动 — FINDRUN',
         heroDesc: '告别层层点击文件夹的繁琐操作。按下全局快捷键并输入部分文件名，0.1 秒内完成检索，按一下 Enter 即可立即启动。',
@@ -348,11 +400,27 @@
         memtodoBannerDesc: '分组待办进度、文件夹拖拽关联与自定义截止提醒，一次付费终身拥有。',
         memtodoBannerCta: '查看 MEMTODO',
         footerGuide: '详细使用说明书',
+        footerTerms: '使用条款与退款政策',
+        footerPrivacy: '隐私政策',
         footerDonate: '☕ 打赏支持开发者'
       }
     };
 
     const langSelector = document.getElementById('langSelector');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+    function updateThemeToggleLabel(lang, isDark) {
+      const span = themeToggleBtn.querySelector('span');
+      if (!span) return;
+      const labels = {
+        'ko': isDark ? '라이트모드' : '다크모드',
+        'en': isDark ? 'Light Mode' : 'Dark Mode',
+        'ja': isDark ? 'ライトモード' : 'ダークモード',
+        'zh-CN': isDark ? '浅色模式' : '深色模式'
+      };
+      span.textContent = labels[lang] || labels['ko'];
+    }
+
     function applyPageLanguage(lang) {
       const dict = i18nFindrun[lang] || i18nFindrun['ko'];
       document.documentElement.lang = lang;
@@ -363,13 +431,27 @@
         if (span) span.textContent = dict[key];
         else el.textContent = dict[key];
       });
+      updateThemeToggleLabel(lang, document.documentElement.classList.contains('dark'));
       localStorage.setItem('tinywork_site_lang', lang);
     }
 
+    function setSiteTheme(isDark) {
+      document.documentElement.classList.toggle('dark', isDark);
+      localStorage.setItem('tinywork_site_theme', isDark ? 'dark' : 'light');
+      updateThemeToggleLabel(langSelector.value, isDark);
+    }
+
+    const savedTheme = localStorage.getItem('tinywork_site_theme') !== 'light';
     const savedLang = localStorage.getItem('tinywork_site_lang') || 'ko';
     langSelector.value = i18nFindrun[savedLang] ? savedLang : 'ko';
     applyPageLanguage(langSelector.value);
+    setSiteTheme(savedTheme);
+
     langSelector.addEventListener('change', (e) => applyPageLanguage(e.target.value));
+    themeToggleBtn.addEventListener('click', () => {
+      const nextDark = !document.documentElement.classList.contains('dark');
+      setSiteTheme(nextDark);
+    });
 
     const findrunItems = [
       { type: 'folder', name: '01_UI_시안_최종폴더 (디자인 에셋)', path: 'D:\\Work\\2026_Launch\\Design_Assets' },
