@@ -1,63 +1,85 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TINYWORK LAB — MEMTODO PRO 결제 완료 및 라이선스 키 신청</title>
+  <title>SINYWORK LAB — MEMTODO PRO 결제 완료 및 라이선스 키 신청</title>
   <link rel="icon" type="image/png" href="logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600;700&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
   <style>
-    body { font-family: 'Noto Sans KR', 'Inter', sans-serif; color: #0F172A; background-color: #FAFAFA; }
+    body {
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
+      color: #0F172A;
+      background-color: #FAFAFA;
+      word-break: keep-all;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    html.dark body { color: #F8FAFC; background-color: #020617; }
   </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between">
 
-  <header class="bg-white border-b border-slate-200/80">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2.5">
+  <header class="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
+      <a href="index.html" class="flex items-center gap-2.5 shrink-0">
         <div class="w-8 h-8 rounded-xl bg-[#1E1E1E] overflow-hidden flex items-center justify-center">
-          <img src="logo.png" alt="TinyWork Lab Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+          <img src="logo.png" alt="SinyWork Lab Logo" class="w-full h-full object-contain p-0.5" onerror="this.style.display='none'" />
         </div>
-        <span class="font-black text-sm sm:text-base tracking-tight text-slate-900">TINYWORK LAB</span>
+        <span class="font-black text-sm sm:text-base tracking-tight text-slate-900 dark:text-white">SINYWORK LAB</span>
       </a>
-      <a href="index.html" class="text-xs font-extrabold text-slate-600 hover:text-slate-900">홈으로 돌아가기</a>
+      <div class="flex items-center gap-3">
+        <button
+          id="themeToggleBtn"
+          type="button"
+          aria-label="Toggle Light Mode"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
+        >
+          <i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-600 dark:hidden"></i>
+          <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400 hidden dark:inline-block"></i>
+          <span class="hidden sm:inline">라이트모드</span>
+        </button>
+        <a href="index.html" class="text-xs font-extrabold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">홈으로 돌아가기</a>
+      </div>
     </div>
   </header>
 
   <main class="max-w-xl mx-auto px-4 sm:px-6 py-12 w-full">
-    <div class="bg-white rounded-3xl border border-slate-200 p-7 sm:p-9 shadow-lg space-y-6">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-7 sm:p-9 shadow-lg space-y-6 transition-colors">
       <div class="text-center space-y-2">
-        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
           <i data-lucide="check-circle-2" class="w-8 h-8"></i>
         </div>
-        <span class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-extrabold">PAYMENT COMPLETED</span>
-        <h1 class="text-2xl font-black text-slate-900">MEMTODO PRO 결제가 완료되었습니다!</h1>
-        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <span class="inline-block px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 text-xs font-extrabold">PAYMENT COMPLETED</span>
+        <h1 class="text-2xl font-black text-slate-900 dark:text-white">MEMTODO PRO 결제가 완료되었습니다!</h1>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           아래에 <strong>결제 이메일(또는 주문번호)</strong>과 MEMTODO 앱 상단 왕관(👑) 아이콘에 표시된 <strong>16자리 기기 코드(HWID)</strong>를 입력해 보내주시면, 확인 후 <strong>영업일 기준 24시간 이내(통상 1~3시간 내)</strong> 영구 라이선스 키를 발송해 드립니다.
         </p>
       </div>
 
-      <div class="space-y-3 bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
+      <div class="space-y-3 bg-slate-50 dark:bg-slate-800/70 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700">
         <div>
-          <label class="block text-xs font-extrabold text-slate-700 mb-1">1. 결제 이메일 또는 주문번호 (Order ID)</label>
+          <label class="block text-xs font-extrabold text-slate-700 dark:text-slate-300 mb-1">1. 결제 이메일 또는 주문번호 (Order ID)</label>
           <input
             id="successOrderInput"
             type="text"
             placeholder="예: buyer@email.com 또는 Polar 주문번호"
-            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:border-blue-500 outline-none"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-xs sm:text-sm font-semibold text-slate-800 dark:text-white focus:border-blue-500 outline-none"
           />
         </div>
 
         <div>
-          <label class="block text-xs font-extrabold text-slate-700 mb-1">2. MEMTODO 16자리 기기 고유 코드 (HWID)</label>
+          <label class="block text-xs font-extrabold text-slate-700 dark:text-slate-300 mb-1">2. MEMTODO 16자리 기기 고유 코드 (HWID)</label>
           <input
             id="successHwidInput"
             type="text"
             maxlength="19"
             placeholder="예: B1F4-98A2-CC01-33E9"
-            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-mono font-bold text-slate-800 uppercase focus:border-blue-500 outline-none"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-xs sm:text-sm font-mono font-bold text-slate-800 dark:text-white uppercase focus:border-blue-500 outline-none"
           />
         </div>
       </div>
@@ -65,7 +87,7 @@
       <div class="space-y-2.5">
         <a
           id="successMailBtn"
-          href="mailto:tinyworklab@gmail.com?subject=MEMTODO%20PRO%20License%20Key%20Request"
+          href="mailto:sinyworklab@gmail.com?subject=MEMTODO%20PRO%20License%20Key%20Request"
           class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-extrabold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition-colors"
         >
           <i data-lucide="mail" class="w-4 h-4"></i> 이메일로 라이선스 키 즉시 신청하기
@@ -75,7 +97,7 @@
           <button
             id="successCopyBtn"
             type="button"
-            class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl text-xs font-extrabold text-slate-800 bg-slate-100 hover:bg-slate-200 transition-colors cursor-pointer"
+            class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl text-xs font-extrabold text-slate-800 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors cursor-pointer"
           >
             <i data-lucide="copy" class="w-3.5 h-3.5"></i> 신청 양식 복사하기
           </button>
@@ -89,20 +111,20 @@
           </a>
         </div>
 
-        <p id="successCopyToast" class="hidden text-center text-xs font-bold text-emerald-600 pt-1">
+        <p id="successCopyToast" class="hidden text-center text-xs font-bold text-emerald-600 dark:text-emerald-400 pt-1">
           ✓ 신청 양식이 복사되었습니다! 이메일 또는 카카오톡 채널에 붙여넣어 전송해 주세요.
         </p>
       </div>
 
-      <div class="pt-4 border-t border-slate-100 text-[11px] text-slate-500 space-y-1 leading-relaxed">
+      <div class="pt-4 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 space-y-1 leading-relaxed">
         <p>• 라이선스는 최초 등록한 <strong>1대의 PC/Mac(HWID 1개)</strong>에 영구 귀속됩니다.</p>
-        <p>• 문의처: <a href="mailto:tinyworklab@gmail.com" class="text-blue-600 font-bold underline">tinyworklab@gmail.com</a> · <a href="terms.html" class="underline">이용약관 및 환불·재발급 정책</a></p>
+        <p>• 문의처: <a href="mailto:sinyworklab@gmail.com" class="text-blue-600 dark:text-blue-400 font-bold underline">sinyworklab@gmail.com</a> · <a href="terms.html" class="underline">이용약관 및 환불·재발급 정책</a></p>
       </div>
     </div>
   </main>
 
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
-    © 2026 TINYWORK LAB · <a href="terms.html" class="hover:text-slate-700">이용약관</a> · <a href="privacy.html" class="hover:text-slate-700">개인정보 처리방침</a>
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-400 transition-colors">
+    © 2026 SINYWORK LAB · <a href="terms.html" class="hover:text-slate-700 dark:hover:text-white">이용약관</a> · <a href="privacy.html" class="hover:text-slate-700 dark:hover:text-white">개인정보 처리방침</a>
   </footer>
 
   <script>
@@ -112,6 +134,18 @@
     const mailBtn = document.getElementById('successMailBtn');
     const copyBtn = document.getElementById('successCopyBtn');
     const copyToast = document.getElementById('successCopyToast');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+    function setTheme(isDark) {
+      document.documentElement.classList.toggle('dark', isDark);
+      localStorage.setItem('sinywork_site_theme', isDark ? 'dark' : 'light');
+      const span = themeToggleBtn.querySelector('span');
+      if (span) span.textContent = isDark ? '라이트모드' : '다크모드';
+    }
+    setTheme(localStorage.getItem('sinywork_site_theme') !== 'light');
+    themeToggleBtn.addEventListener('click', () => {
+      setTheme(!document.documentElement.classList.contains('dark'));
+    });
 
     const params = new URLSearchParams(window.location.search);
     const checkoutId = params.get('checkout_id');
@@ -128,7 +162,7 @@
     function syncMailHref() {
       const sub = encodeURIComponent('MEMTODO PRO License Key Request');
       const body = encodeURIComponent(getFormBody());
-      mailBtn.href = `mailto:tinyworklab@gmail.com?subject=${sub}&body=${body}`;
+      mailBtn.href = `mailto:sinyworklab@gmail.com?subject=${sub}&body=${body}`;
     }
 
     orderIn.addEventListener('input', syncMailHref);

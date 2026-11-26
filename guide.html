@@ -3,12 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TINYWORK LAB — MEMTODO | 바탕화면 위 가장 완벽한 업무 파트너</title>
-  <meta name="description" content="Windows & macOS 지원! 소제목별 할 일, 파일·폴더 드래그 연결, 일체형 캘린더, 자체 마감 알림창. 월 구독료 없는 평생 소장 데스크톱 유틸리티." />
+  <title>상세 사용 설명서 (User Guide) — MEMTODO & FINDRUN | SINYWORK LAB</title>
+  <meta name="description" content="MEMTODO(Windows · macOS M1~M4/Intel)와 FINDRUN의 설치 방법, 보안 경고 해제, 단축키, 파일·폴더 드래그 첨부, 백업/복원, PRO 라이선스 등록 방법 안내." />
   <link rel="icon" type="image/png" href="logo.png" />
-  <meta property="og:title" content="TINYWORK LAB — MEMTODO | 바탕화면 위 업무 파트너" />
-  <meta property="og:description" content="소제목별 할 일 진행률, 메모장 일체형 캘린더, 파일·폴더 드래그 연결, 자체 마감 알림창까지. 월 구독료 없는 평생 소장 툴." />
-  <meta property="og:image" content="memtodo-showcase.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,64 +16,82 @@
       darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: { sans: ['"Noto Sans KR"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'] },
-          boxShadow: { 'soft': '0 20px 50px -12px rgba(15, 23, 42, 0.08)', 'note': '0 22px 45px -10px rgba(15, 23, 42, 0.16), 0 0 1px 1px rgba(15, 23, 42, 0.06)' }
+          fontFamily: {
+            sans: ['"Noto Sans KR"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
         }
       }
     };
   </script>
   <style>
-    body { font-family: 'Noto Sans KR', 'Inter', sans-serif; color: #0F172A; background-color: #FAFAFA; overflow-x: hidden; word-break: keep-all; transition: background-color 0.2s ease, color 0.2s ease; }
+    body {
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
+      color: #0F172A;
+      background-color: #FAFAFA;
+      word-break: keep-all;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
     html.dark body { color: #F8FAFC; background-color: #020617; }
     .glass-nav { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
     html.dark .glass-nav { background: rgba(15, 23, 42, 0.88); }
-    .hero-grid-bg { background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px); background-size: 24px 24px; }
-    html.dark .hero-grid-bg { background-image: radial-gradient(rgba(148, 163, 184, 0.14) 1px, transparent 1px); }
-    @keyframes slideInRight { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes slideOutRight { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(28px); } }
-    .toast-enter { animation: slideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .toast-exit { animation: slideOutRight 0.25s ease forwards; }
+    kbd {
+      display: inline-flex; align-items: center; padding: 2px 7px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+      color: #1E293B; background-color: #F1F5F9; border: 1px solid #CBD5E1;
+      border-bottom-width: 2px; border-radius: 6px;
+    }
+    html.dark kbd {
+      color: #F1F5F9; background-color: #1E293B; border-color: #475569;
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-yellow-200 selection:text-slate-900">
+<body class="antialiased selection:bg-blue-100 selection:text-slate-900">
 
   <!-- 공통 상단 네비게이션 바 -->
   <header class="sticky top-0 z-50 glass-nav border-b border-slate-200/80 dark:border-slate-800 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-3">
-      <a href="index.html" class="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <a href="index.html" class="flex items-center gap-2.5 group shrink-0">
         <div class="w-9 h-9 rounded-xl bg-[#1E1E1E] overflow-hidden flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-          <img src="logo.png" alt="TinyWork Lab Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+          <img src="logo.png" alt="SinyWork Lab Logo" class="w-full h-full object-contain p-0.5" onerror="this.style.display='none'" />
         </div>
         <div class="flex flex-col">
-          <span class="font-black text-sm sm:text-base tracking-tight text-slate-900 dark:text-white leading-none">TINYWORK LAB</span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider mt-0.5">DESKTOP UTILITIES</span>
+          <span class="font-black text-base tracking-tight text-slate-900 dark:text-white leading-none">SINYWORK LAB</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider mt-0.5">USER MANUAL & GUIDE</span>
         </div>
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
-        <a href="index.html" class="text-blue-600 dark:text-blue-400 font-extrabold">MEMTODO</a>
-        <a href="findrun.html" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-1.5">
-          FINDRUN <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">FREE</span>
+        <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">MEMTODO</a>
+        <a href="findrun.html" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">FINDRUN</a>
+        <a href="guide.html" class="text-blue-600 dark:text-blue-400 font-extrabold flex items-center gap-1" data-i18n="navGuide">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> <span>사용 설명서</span>
         </a>
-        <a href="guide.html" class="hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1" data-i18n="navGuide">
-          <i data-lucide="book-open" class="w-3.5 h-3.5 text-slate-400"></i> <span>사용 설명서</span>
-        </a>
-        <a href="#pricing" class="hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1.5">
-          <span data-i18n="navPricing">요금제</span> <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300" data-i18n="navLifetimeBadge">평생소장</span>
-        </a>
-        <a href="#faq" class="hover:text-slate-900 dark:hover:text-white transition-colors">FAQ</a>
+        <a href="index.html#pricing" class="hover:text-slate-900 dark:hover:text-white transition-colors" data-i18n="navPricing">요금제</a>
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-        <button id="themeToggleBtn" type="button" aria-label="Toggle Light Mode" title="다크모드 / 라이트모드 전환" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 transition-colors cursor-pointer">
+        <!-- 다크모드(기본) / 라이트모드 전환 버튼 -->
+        <button
+          id="themeToggleBtn"
+          type="button"
+          aria-label="Toggle Light Mode"
+          title="다크모드 / 라이트모드 전환"
+          class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 transition-colors cursor-pointer"
+        >
           <i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-600 dark:hidden"></i>
           <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400 hidden dark:inline-block"></i>
           <span class="hidden sm:inline" data-i18n="navThemeToggle">라이트모드</span>
         </button>
 
+        <!-- 언어 선택기 -->
         <div class="relative inline-flex items-center">
           <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 absolute left-2.5 pointer-events-none"></i>
-          <select id="langSelector" aria-label="Language Selector" class="pl-7 pr-6 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 outline-none cursor-pointer transition-colors">
+          <select
+            id="langSelector"
+            aria-label="Language Selector"
+            class="pl-7 pr-6 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200/80 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 outline-none cursor-pointer transition-colors"
+          >
             <option value="ko">한국어</option>
             <option value="en">English</option>
             <option value="ja">日本語</option>
@@ -87,1255 +102,678 @@
     </div>
   </header>
 
-  <!-- 1. 히어로 섹션 + 실시간 인터랙티브 UI 목업 -->
-  <section id="memtodo-hero" class="relative hero-grid-bg pt-12 pb-20 lg:pt-16 lg:pb-24 border-b border-slate-200/70 dark:border-slate-800">
+  <!-- 가이드 상단 배너 -->
+  <div class="bg-slate-900 text-white py-12 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/50 border border-amber-200/80 dark:border-amber-800/70 text-amber-900 dark:text-amber-300 text-xs font-bold">
-            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-            <span data-i18n="heroBadge">Windows 10/11 & macOS 공식 지원 · 구독료 없는 평생 소장 툴</span>
-          </div>
-
-          <h1 class="text-3xl sm:text-4xl lg:text-[38px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.28]" data-i18n-html="heroTitle">
-            바탕화면 위 가장 완벽한<br class="hidden sm:inline" /> 업무 파트너, MEMTODO
-          </h1>
-
-          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-[17px] leading-relaxed font-medium" data-i18n="heroDesc">
-            단순한 스티커 메모를 넘어 소제목별 할 일 진행률, 메모장 일체형 월간 달력, 파일·폴더 드래그 연결, 커스텀 마감 알림까지. 외부 서버 전송 없이 내 PC에 100% 안전하게 저장되는 초경량 데스크톱 워크스페이스입니다.
-          </p>
-
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
-            <a href="#download-center" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-extrabold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/20 hover:-translate-y-0.5 transition-all whitespace-nowrap shrink-0">
-              <i data-lucide="download" class="w-4 h-4 shrink-0"></i>
-              <span data-i18n="heroCtaDownload">무료 다운로드 (Windows · Mac)</span>
-            </a>
-            <a href="guide.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all whitespace-nowrap shrink-0">
-              <i data-lucide="book-open" class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0"></i>
-              <span data-i18n="heroCtaGuide">상세 사용 설명서</span>
-            </a>
-          </div>
-
-          <div class="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i> <span data-i18n="trustLocal">100% 로컬 저장 (서버 전송 0)</span></span>
-            <span class="flex items-center gap-1.5"><i data-lucide="globe" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i> <span data-i18n="trustLang">앱 내 8개국어 UI 지원</span></span>
-            <span class="flex items-center gap-1.5"><i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> <span data-i18n="trustTrial">7일 PRO 무료 체험 포함</span></span>
-          </div>
-        </div>
-
-        <!-- 우측 인터랙티브 UI 라이브 목업 -->
-        <div class="lg:col-span-7">
-          <div class="bg-slate-100/90 dark:bg-slate-900/90 p-3 sm:p-4 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-soft transition-colors">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
-              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900 dark:bg-slate-800 text-white text-[11px] font-bold">
-                <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5 text-yellow-400"></i>
-                <span data-i18n="mockBadge">실제 레이아웃 인터랙티브 체험 (직접 클릭해보세요!)</span>
-              </span>
-              <div class="flex items-center gap-2">
-                <button id="mockDarkToggleBtn" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer">
-                  <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-500"></i>
-                  <span>라이트 모드 전환</span>
-                </button>
-                <button id="mockToastTriggerBtn" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-900 text-xs font-extrabold transition-colors cursor-pointer">
-                  <i data-lucide="bell-ring" class="w-3.5 h-3.5"></i>
-                  <span>마감 알림 미리보기</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-2.5 items-stretch">
-              <!-- 좌측: 월간 일정 달력 -->
-              <div id="mockCalendarWindow" class="md:col-span-5 rounded-2xl border-2 border-slate-700 bg-slate-900 text-slate-100 shadow-note p-3 flex flex-col justify-between transition-colors duration-200">
-                <div>
-                  <div class="flex items-center justify-between pb-2 mb-2 border-b border-amber-200/30">
-                    <span class="text-xs font-black flex items-center gap-1.5"><i data-lucide="calendar-days" class="w-3.5 h-3.5 text-blue-400"></i> 월간 일정 달력</span>
-                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-blue-600 text-white">2026년 11월</span>
-                  </div>
-                  <div class="grid grid-cols-7 text-center text-[10px] font-extrabold text-slate-400 mb-1">
-                    <span class="text-red-400">일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span class="text-blue-400">토</span>
-                  </div>
-                  <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold">
-                    <div class="p-1 rounded min-h-[34px] text-red-400">1</div><div class="p-1 rounded min-h-[34px]">2</div><div class="p-1 rounded min-h-[34px]">3</div><div class="p-1 rounded min-h-[34px]">4</div><div class="p-1 rounded min-h-[34px]">5</div><div class="p-1 rounded min-h-[34px]">6</div><div class="p-1 rounded min-h-[34px] text-blue-400">7</div>
-                    <div class="p-1 rounded min-h-[34px] text-red-400">8</div><div class="p-1 rounded min-h-[34px]">9</div><div class="p-1 rounded min-h-[34px]">10</div><div class="p-1 rounded min-h-[34px]">11</div>
-                    <div class="p-1 rounded min-h-[34px] bg-orange-950/50"><div>12</div><span class="block text-[8px] px-0.5 rounded bg-orange-500 text-white truncate">디자인 리뷰</span></div>
-                    <div class="p-1 rounded min-h-[34px]">13</div><div class="p-1 rounded min-h-[34px] text-blue-400">14</div>
-                    <div class="p-1 rounded min-h-[34px] text-red-400">15</div><div class="p-1 rounded min-h-[34px]">16</div><div class="p-1 rounded min-h-[34px]">17</div><div class="p-1 rounded min-h-[34px]">18</div>
-                    <div class="p-1 rounded min-h-[34px] bg-blue-950/50"><div>19</div><span class="block text-[8px] px-0.5 rounded bg-blue-600 text-white truncate">외주 미팅</span></div>
-                    <div class="p-1 rounded min-h-[34px] ring-2 ring-blue-500 bg-blue-950/70"><div class="font-black text-blue-300">20</div><span class="block text-[8px] px-0.5 rounded bg-rose-500 text-white truncate">패키지 검수</span></div>
-                    <div class="p-1 rounded min-h-[34px] text-blue-400">21</div>
-                    <div class="p-1 rounded min-h-[34px] text-red-400">22</div>
-                    <div class="p-1 rounded min-h-[34px]"><div>23</div><span class="block text-[8px] px-0.5 rounded bg-sky-900 text-sky-200 truncate">김민수 연차</span></div>
-                    <div class="p-1 rounded min-h-[34px]"><div>24</div><span class="block text-[8px] px-0.5 rounded bg-amber-500 text-white truncate">시안 확정</span></div>
-                    <div class="p-1 rounded min-h-[34px]">25</div><div class="p-1 rounded min-h-[34px]">26</div>
-                    <div class="p-1 rounded min-h-[34px]"><div>27</div><span class="block text-[8px] px-0.5 rounded bg-emerald-900 text-emerald-200 truncate">주간 회의</span></div>
-                    <div class="p-1 rounded min-h-[34px] text-blue-400">28</div>
-                  </div>
-                </div>
-                <div class="mt-2.5 pt-2 border-t border-slate-700 space-y-1.5">
-                  <div class="text-[10px] font-extrabold text-blue-400 flex items-center gap-1"><i data-lucide="calendar-check" class="w-3 h-3"></i> 11/20(금) 선택 일정 (1)</div>
-                  <div class="p-1.5 rounded-lg bg-slate-800 border border-slate-700 text-[10px] font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
-                    <span class="truncate">제품 패키지 최종 시안 검토 및 발주</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 우측: 소제목 3단 메모장 창 -->
-              <div id="mockNoteWindow" class="md:col-span-7 rounded-2xl border-2 border-slate-700 bg-slate-900 text-slate-100 shadow-note flex flex-col overflow-hidden transition-colors duration-200">
-                <div id="mockNoteHeader" class="px-3.5 py-2 bg-slate-800 border-b border-slate-700 flex items-center justify-between transition-colors duration-200">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                    <span class="font-extrabold text-xs sm:text-sm tracking-tight">2026 하반기 제품 런칭 준비</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 opacity-75">
-                    <i data-lucide="pin" class="w-3.5 h-3.5 text-blue-400"></i>
-                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i>
-                    <i data-lucide="settings" class="w-3.5 h-3.5"></i>
-                  </div>
-                </div>
-
-                <div class="p-2.5 space-y-2.5 flex-1">
-                  <div class="mock-section-card rounded-xl bg-slate-800/90 border border-slate-700 p-2 transition-colors duration-200">
-                    <div class="flex items-center justify-between mb-1">
-                      <span class="font-extrabold text-[11px] text-blue-300">▼ 기획 및 디자인 검수</span>
-                      <span id="mockProgressText" class="text-[10px] font-bold text-blue-400">1/4 (25%)</span>
-                    </div>
-                    <div class="w-full h-1 bg-black/30 rounded-full overflow-hidden mb-2">
-                      <div id="mockProgressBar" class="h-full bg-blue-500 rounded-full transition-all duration-300" style="width: 25%;"></div>
-                    </div>
-                    <div class="space-y-1.5">
-                      <div class="mock-todo-item rounded-lg bg-slate-700/80 p-1.5 border border-slate-600 cursor-pointer transition-all" data-done="false">
-                        <div class="flex items-start gap-1.5">
-                          <div class="mock-check mt-0.5 text-slate-400"><i data-lucide="circle" class="w-3.5 h-3.5"></i></div>
-                          <div class="flex-1 min-w-0">
-                            <p class="mock-todo-title text-[11px] font-bold leading-snug">김민수 매니저 - 메인 대시보드 UI 시안 검수</p>
-                            <div class="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-950/80 border border-blue-800 text-blue-300 text-[10px] font-bold">
-                              <i data-lucide="folder" class="w-3 h-3 text-amber-400 fill-amber-400/20"></i>
-                              <span>01_UI_시안_최종폴더</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mock-todo-item rounded-lg bg-slate-700/80 p-1.5 border border-slate-600 cursor-pointer transition-all" data-done="true">
-                        <div class="flex items-start gap-1.5">
-                          <div class="mock-check mt-0.5 text-blue-400"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i></div>
-                          <div class="flex-1 min-w-0">
-                            <p class="mock-todo-title text-[11px] font-bold leading-snug line-through opacity-45">이지은 디자이너 - 브랜드 가이드라인 최종 확정</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="mock-section-card rounded-xl bg-slate-800/90 border border-slate-700 p-2 transition-colors duration-200">
-                    <div class="flex items-center justify-between mb-1.5">
-                      <span class="font-extrabold text-[11px] text-blue-300">▼ 외주 제작 및 견적 확인</span>
-                    </div>
-                    <div class="mock-todo-item rounded-lg bg-slate-700/80 p-1.5 border border-slate-600 cursor-pointer transition-all" data-done="false">
-                      <div class="flex items-start gap-1.5">
-                        <div class="mock-check mt-0.5 text-slate-400"><i data-lucide="circle" class="w-3.5 h-3.5"></i></div>
-                        <div class="flex-1 min-w-0">
-                          <p class="mock-todo-title text-[11px] font-bold leading-snug">스튜디오온 한지민 - 제품 소개 영상 편집 및 자막 작업</p>
-                          <div class="mt-1 flex flex-wrap items-center gap-1.5">
-                            <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-950/80 border border-blue-800 text-blue-300 text-[10px] font-bold">
-                              <i data-lucide="folder" class="w-3 h-3 text-amber-400 fill-amber-400/20"></i>
-                              <span>02_프로모션_배너_원본함</span>
-                            </span>
-                            <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-red-950 text-red-300 border border-red-800">11/20(금) D-Day</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="mock-section-card rounded-xl bg-slate-800/90 border border-slate-700 p-2 transition-colors duration-200">
-                    <div class="flex items-center justify-between mb-1.5">
-                      <span class="font-extrabold text-[11px] text-purple-300">▼ 최종 승인 및 납품 준비</span>
-                    </div>
-                    <div class="mock-todo-item rounded-lg bg-slate-700/80 p-1.5 border border-slate-600 cursor-pointer transition-all" data-done="false">
-                      <div class="flex items-start gap-1.5">
-                        <div class="mock-check mt-0.5 text-slate-400"><i data-lucide="circle" class="w-3.5 h-3.5"></i></div>
-                        <div class="flex-1 min-w-0">
-                          <p class="mock-todo-title text-[11px] font-bold leading-snug">11/20(금) 10:00~15:00 런칭 패키지 최종 검수 미팅</p>
-                          <div class="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-blue-950/80 border border-blue-800 text-blue-300 text-[10px] font-bold">
-                            <i data-lucide="paperclip" class="w-3 h-3"></i>
-                            <span>2026_하반기_사업계획서_v1.pdf</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center justify-between pt-1 px-1 text-[10px] font-mono text-slate-400">
-                    <span>Developed by TinyWork Lab · 2026</span>
-                    <span class="px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-300 font-sans font-extrabold">MEMTODO V1.0.0 PRO</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-extrabold">
+          OFFICIAL DOCUMENTATION
+        </span>
+        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 text-slate-200 text-xs font-bold">
+          Windows 10/11 · macOS (M1~M4 / Intel)
+        </span>
       </div>
-    </div>
-  </section>
-
-  <!-- 2. 핵심 기능 움직이는 GIF 데모 3종 (상단 높이 일직선 정렬) -->
-  <section id="live-demos" class="py-20 bg-white dark:bg-slate-950 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-amber-600 dark:text-amber-400">ACTION DEMOS · GIF</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="demoSectionTitle">백 마디 설명보다 빠른 핵심 동작 미리보기</h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2.5 leading-relaxed" data-i18n="demoSectionDesc">
-          파일·폴더 드래그 연결, 메모장 간 소제목·할 일 이동, 일체형 달력 하단 일정 등록까지 실제 워크플로우를 확인해 보세요.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-        <!-- 데모 1: demo-drag-attach.gif -->
-        <div class="rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-soft flex flex-col justify-start">
-          <div class="space-y-1.5 md:min-h-[118px] mb-4">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 text-xs font-extrabold">
-              <i data-lucide="folder-plus" class="w-3.5 h-3.5"></i> <span data-i18n="demo1Badge">DEMO 01 · 폴더·파일 드래그 연결</span>
-            </div>
-            <h3 class="text-base font-black text-slate-900 dark:text-white" data-i18n="demo1Title">탐색기·Finder에서 끌어다 바로 연결</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="demo1Desc">작업 폴더나 PDF 문서를 할 일 카드 위로 드롭하면 링크 배지가 생성되며, 클릭 한 번으로 즉시 열립니다.</p>
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
-            <img src="demo-drag-attach.gif" alt="폴더 및 파일 드래그 첨부 데모" class="w-full h-auto block object-cover" onerror="this.parentElement.innerHTML='<div class=\'py-14 px-4 text-center text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed\'>GIF 저장 파일명:<br /><b class=\'text-slate-800 dark:text-slate-200 font-mono\'>demo-drag-attach.gif</b></div>'" />
-          </div>
-        </div>
-
-        <!-- 데모 2: demo-move-tasks.gif -->
-        <div class="rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-soft flex flex-col justify-start">
-          <div class="space-y-1.5 md:min-h-[118px] mb-4">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 text-xs font-extrabold">
-              <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i> <span data-i18n="demo2Badge">DEMO 02 · 메모장 간 소제목·할 일 이동</span>
-            </div>
-            <h3 class="text-base font-black text-slate-900 dark:text-white" data-i18n="demo2Title">다른 메모장으로 소제목·할 일 자유 이동</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="demo2Desc">소제목 그룹이나 다중 선택한 할 일을 다른 프로젝트 메모장으로 드래그해 손쉽게 업무를 재배치합니다.</p>
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
-            <img src="demo-move-tasks.gif" alt="메모장에서 메모장으로 소제목 및 할 일 이동 데모" class="w-full h-auto block object-cover" onerror="this.parentElement.innerHTML='<div class=\'py-14 px-4 text-center text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed\'>GIF 저장 파일명:<br /><b class=\'text-slate-800 dark:text-slate-200 font-mono\'>demo-move-tasks.gif</b></div>'" />
-          </div>
-        </div>
-
-        <!-- 데모 3: demo-calendar-todo.gif -->
-        <div class="rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-soft flex flex-col justify-start">
-          <div class="space-y-1.5 md:min-h-[118px] mb-4">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 text-xs font-extrabold">
-              <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i> <span data-i18n="demo3Badge">DEMO 03 · 달력 하단 즉시 할 일 적용</span>
-            </div>
-            <h3 class="text-base font-black text-slate-900 dark:text-white" data-i18n="demo3Title">달력을 열고 하단에서 할 일 바로 적용</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="demo3Desc">일체형 달력에서 날짜를 선택하고 하단 입력창에서 할 일을 바로 등록·적용해 D-Day까지 한 번에 관리합니다.</p>
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
-            <img src="demo-calendar-todo.gif" alt="달력 열고 하단 할 일 바로 적용 데모" class="w-full h-auto block object-cover" onerror="this.parentElement.innerHTML='<div class=\'py-14 px-4 text-center text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed\'>GIF 저장 파일명:<br /><b class=\'text-slate-800 dark:text-slate-200 font-mono\'>demo-calendar-todo.gif</b></div>'" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. 기존 메모/할 일 도구와 한눈에 비교표 -->
-  <section id="comparison" class="py-20 bg-slate-50 dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400">WHY SWITCH TO MEMTODO</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="compTitle">기존 메모·할 일 도구와 무엇이 다른가요?</h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2.5" data-i18n="compDesc">바탕화면의 직관성과 전문 일정·파일 관리 기능을 하나로 결합했습니다.</p>
-      </div>
-
-      <div class="overflow-x-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft">
-        <table class="w-full text-left border-collapse text-xs sm:text-sm">
-          <thead>
-            <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-800/80">
-              <th class="py-4 px-5 font-black text-slate-700 dark:text-slate-200" data-i18n="compColFeature">비교 항목</th>
-              <th class="py-4 px-4 font-bold text-center text-slate-500 dark:text-slate-400" data-i18n="compColBasic">OS 기본 스티커 메모</th>
-              <th class="py-4 px-4 font-bold text-center text-slate-500 dark:text-slate-400" data-i18n="compColCloud">일반 클라우드 할 일 앱</th>
-              <th class="py-4 px-5 font-black text-center text-blue-600 dark:text-yellow-400 bg-blue-50/70 dark:bg-blue-950/40">MEMTODO PRO</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
-            <tr>
-              <td class="py-3.5 px-5 font-bold" data-i18n="compR1">바탕화면 상시 고정 & 자석 정렬</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR1B">수동 배치만 가능</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR1C">별도 창·브라우저 필요</td>
-              <td class="py-3.5 px-5 text-center font-extrabold text-blue-600 dark:text-yellow-300 bg-blue-50/40 dark:bg-blue-950/20" data-i18n="compR1P">압정 고정 + 원클릭 자동 정렬</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-bold" data-i18n="compR2">작업 폴더·파일 드래그 연결</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR2B">지원 안 함</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR2C">클라우드 업로드 필요</td>
-              <td class="py-3.5 px-5 text-center font-extrabold text-blue-600 dark:text-yellow-300 bg-blue-50/40 dark:bg-blue-950/20" data-i18n="compR2P">로컬 경로 즉시 연결·원클릭 열기</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-bold" data-i18n="compR3">소제목 섹션 & 실시간 진행률 바</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR3B">단순 텍스트 줄바꿈</td>
-              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR3C">일부 지원</td>
-              <td class="py-3.5 px-5 text-center font-extrabold text-blue-600 dark:text-yellow-300 bg-blue-50/40 dark:bg-blue-950/20" data-i18n="compR3P">소제목별 진행률 게이지 자동 계산</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-bold" data-i18n="compR4">메모장 일체형 월간 달력</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR4B">지원 안 함</td>
-              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR4C">별도 탭 전환 필요</td>
-              <td class="py-3.5 px-5 text-center font-extrabold text-blue-600 dark:text-yellow-300 bg-blue-50/40 dark:bg-blue-950/20" data-i18n="compR4P">메모장 좌·우 자동 스냅 결합</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-bold" data-i18n="compR5">데이터 보안 (외부 서버 전송)</td>
-              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR5B">로컬 저장</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR5C">외부 클라우드 서버 저장</td>
-              <td class="py-3.5 px-5 text-center font-extrabold text-emerald-600 dark:text-emerald-400 bg-blue-50/40 dark:bg-blue-950/20" data-i18n="compR5P">100% 로컬 PC 저장 · 서버 전송 0</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-5 font-bold" data-i18n="compR6">요금 및 결제 방식</td>
-              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR6B">무료 (기능 제한)</td>
-              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR6C">매월 정기 구독료 발생</td>
-              <td class="py-3.5 px-5 text-center font-extrabold text-blue-600 dark:text-yellow-300 bg-blue-50/40 dark:bg-blue-950/20" data-i18n="compR6P">1회 결제 평생 소장 · 구독료 없음</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. 핵심 기능 벤토 그리드 -->
-  <section id="features" class="py-20 lg:py-24 bg-white dark:bg-slate-950 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400">6 CRAFTED DETAILS</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="featuresTitle">실무자의 책상 위 흐름에 맞춘 6가지 디테일</h2>
-        <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3 font-medium leading-relaxed" data-i18n-html="featuresDesc">
-          단순 텍스트 입력만 되는 기본 스티커 메모의 한계를 넘어,<br class="hidden sm:inline" /> 실제 업무 파일과 마감 시간까지 한 화면에서 제어합니다.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-soft transition-all">
-          <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-4"><i data-lucide="list-checks" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="feat1Title">소제목 섹션 & 실시간 진행률 바</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="feat1Desc">프로젝트나 담당자별로 소제목을 나누고 완료율을 시각적 게이지로 확인하세요. Ctrl/Shift 다중 선택으로 여러 할 일을 한 번에 드래그 이동할 수 있습니다.</p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-amber-50/60 dark:bg-amber-950/25 border border-amber-200/80 dark:border-amber-800/50 hover:border-amber-400 hover:shadow-soft transition-all">
-          <div class="w-11 h-11 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center mb-4"><i data-lucide="folder-open" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="feat2Title">스마트 파일 & 폴더 드래그 첨부</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="feat2Desc">탐색기나 Finder에서 문서, 도면, 작업 폴더를 할 일 위로 끌어다 놓으세요. 폴더는 폴더 아이콘, 파일은 클립 아이콘으로 자동 구분되며 클릭 즉시 열립니다.</p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-soft transition-all">
-          <div class="w-11 h-11 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-4"><i data-lucide="calendar-range" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="feat3Title">메모장 일체형 월간 일정 달력</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="feat3Desc">메모장 좌·우측 여유 공간을 자동 감지해 달력이 하나로 결합됩니다. 단일 마감일은 물론 시작일~종료일 기간 설정과 스마트 D-Day를 지원합니다.</p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-soft transition-all">
-          <div class="w-11 h-11 rounded-2xl bg-rose-500 text-white flex items-center justify-center mb-4"><i data-lucide="bell-ring" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="feat4Title">자체 커스텀 마감 알림창</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="feat4Desc">놓치기 쉬운 OS 기본 알림 대신 화면 우측 하단에 전용 알림 카드가 뜹니다. 정각·10분 전·사용자 지정 분 설정과 알림창 표시 시간 조절을 지원합니다.</p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-soft transition-all">
-          <div class="w-11 h-11 rounded-2xl bg-sky-600 text-white flex items-center justify-center mb-4"><i data-lucide="magnet" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="feat5Title">원클릭 접기 · 자석 스냅 & 일괄 정렬</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="feat5Desc">보지 않는 메모장은 상단 바 형태로 접어 한쪽에 세로로 쌓아두고, 트레이 메뉴 클릭 한 번으로 우측 세로 정렬 또는 바둑판 격자 정렬을 실행합니다.</p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-soft transition-all">
-          <div class="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-4"><i data-lucide="hard-drive" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="feat6Title">100% 로컬 보안 & 8개국어 UI 지원</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="feat6Desc">모든 업무 데이터는 클라우드 서버로 전송되지 않고 내 컴퓨터(storage.json)에만 저장됩니다. 원클릭 JSON 백업/복원과 앱 내 8개국어 UI 전환을 지원합니다.</p>
-        </div>
-      </div>
-
-      <!-- 사용 설명서 배너 -->
-      <div class="mt-12 rounded-3xl bg-blue-50/80 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/60 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-4 text-center sm:text-left">
-          <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 mx-auto sm:mx-0"><i data-lucide="book-open-check" class="w-6 h-6"></i></div>
-          <div>
-            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white" data-i18n="guideBannerTitle">단축키부터 백업·복원까지 한눈에 익히세요</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-0.5" data-i18n="guideBannerDesc">MEMTODO & FINDRUN 공식 통합 사용 설명서에서 Windows·macOS 설치 및 활용 팁을 확인하실 수 있습니다.</p>
-          </div>
-        </div>
-        <a href="guide.html" class="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-extrabold text-white bg-blue-600 hover:bg-blue-700 transition-colors">
-          <span data-i18n="guideBannerCta">상세 사용 설명서 열기</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. 실무자 직군별 활용 예시 이미지 4종 (가독성 극대화를 위해 2열 대형 카드 + 잘림 없는 전체 비율 표시) -->
-  <section id="use-cases" class="py-20 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">WORKFLOW TEMPLATES</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="usecaseSectionTitle">내 직무에 딱 맞는 바탕화면 세팅 예시</h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2.5" data-i18n="usecaseSectionDesc">프로젝트 성격에 따라 다크모드·파스텔 테마·일체형 달력·원클릭 접기 배치를 조합해 나만의 데스크톱 컨트롤 타워를 만들어 보세요.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- 1. 개발자 · 디자이너 -->
-        <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col justify-between shadow-soft">
-          <div class="bg-slate-950 p-3 sm:p-4 flex items-center justify-center border-b border-slate-200 dark:border-slate-800">
-            <img src="usecase-dev-design.png" alt="개발자 및 디자이너 활용 예시" class="w-full h-auto max-h-[360px] object-contain rounded-xl" onerror="this.parentElement.innerHTML='<div class=\'py-20 text-center text-xs text-slate-400\'>캡처 파일명:<br /><b class=\'font-mono text-slate-200\'>usecase-dev-design.png</b></div>'" />
-          </div>
-          <div class="p-6 space-y-2">
-            <span class="inline-block text-xs font-extrabold px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300" data-i18n="uc1Tag">개발자 · 디자이너</span>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white" data-i18n="uc1Title">시안·빌드 폴더 직통 연결 & 다크모드</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="uc1Desc">버전별 디자인 시안 폴더와 빌드 산출물 경로를 소제목별로 고정해 두고, 눈이 편안한 다크모드로 배치합니다.</p>
-          </div>
-        </div>
-
-        <!-- 2. 기획자 · PM · 마케터 -->
-        <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col justify-between shadow-soft">
-          <div class="bg-slate-900/5 dark:bg-slate-950 p-3 sm:p-4 flex items-center justify-center border-b border-slate-200 dark:border-slate-800">
-            <img src="usecase-pm-planning.png" alt="기획자 PM 마케터 활용 예시" class="w-full h-auto max-h-[360px] object-contain rounded-xl" onerror="this.parentElement.innerHTML='<div class=\'py-20 text-center text-xs text-slate-400\'>캡처 파일명:<br /><b class=\'font-mono text-slate-200\'>usecase-pm-planning.png</b></div>'" />
-          </div>
-          <div class="p-6 space-y-2">
-            <span class="inline-block text-xs font-extrabold px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300" data-i18n="uc2Tag">기획자 · PM · 마케터</span>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white" data-i18n="uc2Title">월간 일정 달력 + 외주·마감 D-Day 통제</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="uc2Desc">좌측에 달력을 붙여 런칭 스케줄과 외주 미팅 기간을 한눈에 보고, 제안서·견적서 파일을 각 태스크에 묶어둡니다.</p>
-          </div>
-        </div>
-
-        <!-- 3. 일반 사무 · 프리랜서 -->
-        <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col justify-between shadow-soft">
-          <div class="bg-slate-900/5 dark:bg-slate-950 p-3 sm:p-4 flex items-center justify-center border-b border-slate-200 dark:border-slate-800">
-            <img src="usecase-office-freelance.png" alt="일반 사무 및 프리랜서 활용 예시" class="w-full h-auto max-h-[360px] object-contain rounded-xl" onerror="this.parentElement.innerHTML='<div class=\'py-20 text-center text-xs text-slate-400\'>캡처 파일명:<br /><b class=\'font-mono text-slate-200\'>usecase-office-freelance.png</b></div>'" />
-          </div>
-          <div class="p-6 space-y-2">
-            <span class="inline-block text-xs font-extrabold px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300" data-i18n="uc3Tag">일반 사무 · 프리랜서</span>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white" data-i18n="uc3Title">반복 정산·보고 일정 & 정각 마감 알림</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="uc3Desc">매주·매월 반복되는 보고와 세금계산서 발행 일정을 자동 반복으로 등록하고, 화면 우측 하단 알림창으로 마감 실수를 방지합니다.</p>
-          </div>
-        </div>
-
-        <!-- 4. 다중 프로젝트 접기 & 세로 도킹 배치 -->
-        <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col justify-between shadow-soft">
-          <div class="bg-slate-950 p-3 sm:p-4 flex items-center justify-center border-b border-slate-200 dark:border-slate-800">
-            <img src="usecase-collapsed-stack.png" alt="원클릭 접기 및 색상별 세로 도킹 배치 활용 예시" class="w-full h-auto max-h-[360px] object-contain rounded-xl" onerror="this.parentElement.innerHTML='<div class=\'py-20 text-center text-xs text-slate-400\'>캡처 파일명:<br /><b class=\'font-mono text-slate-200\'>usecase-collapsed-stack.png</b></div>'" />
-          </div>
-          <div class="p-6 space-y-2">
-            <span class="inline-block text-xs font-extrabold px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300" data-i18n="uc4Tag">다중 프로젝트 · 멀티태스킹</span>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white" data-i18n="uc4Title">원클릭 접기 & 색상별 세로 도킹 배치</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="uc4Desc">여러 프로젝트를 동시에 진행할 때 메모장을 바 형태로 콤팩트하게 접어 바탕화면 한쪽에 정렬해 두고, 필요할 때만 클릭해 즉시 펼쳐 봅니다.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. 사회적 증거: 실사용자 한 줄 후기 4개 -->
-  <section id="reviews" class="py-20 bg-white dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">USER REVIEWS</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="reviewSectionTitle">먼저 써본 실무자들의 한 줄 후기</h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2.5" data-i18n="reviewSectionDesc">매일 책상 앞에서 파일과 마감을 다루는 사용자들이 가장 만족한 포인트를 모았습니다.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
-          <div class="space-y-2.5">
-            <div class="flex items-center gap-0.5 text-amber-400 text-xs">★★★★★</div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 leading-relaxed" data-i18n="rev1Quote">"프로젝트 폴더를 할 일에 끌어다 놓고 클릭 한 번으로 바로 여는 기능이 정말 편합니다. 탐색기 뒤지는 시간이 확 줄었어요."</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-[11px]">
-            <span class="font-extrabold text-slate-900 dark:text-white" data-i18n="rev1Author">김*훈 · UI/UX 디자이너</span>
-            <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">PRO</span>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
-          <div class="space-y-2.5">
-            <div class="flex items-center gap-0.5 text-amber-400 text-xs">★★★★★</div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 leading-relaxed" data-i18n="rev2Quote">"사내 보안 규정 때문에 클라우드 메모 앱을 못 썼는데, 외부 서버 전송 없이 내 PC에만 저장되면서 달력까지 붙어 있어서 바로 정착했습니다."</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-[11px]">
-            <span class="font-extrabold text-slate-900 dark:text-white" data-i18n="rev2Author">박*연 · IT 서비스 기획자</span>
-            <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">PRO</span>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
-          <div class="space-y-2.5">
-            <div class="flex items-center gap-0.5 text-amber-400 text-xs">★★★★★</div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 leading-relaxed" data-i18n="rev3Quote">"매달 나가는 구독료 앱들에 지쳐 있었는데 9,900원 한 번 결제로 평생 소장할 수 있어서 부담 없이 구매했습니다. 가볍고 빠릅니다."</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-[11px]">
-            <span class="font-extrabold text-slate-900 dark:text-white" data-i18n="rev3Author">이*수 · 프리랜서 개발자</span>
-            <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">PRO</span>
-          </div>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
-          <div class="space-y-2.5">
-            <div class="flex items-center gap-0.5 text-amber-400 text-xs">★★★★★</div>
-            <p class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 leading-relaxed" data-i18n="rev4Quote">"우측 하단에 따로 뜨는 마감 알림창 덕분에 외주 납품 시간이나 주간 보고를 한 번도 놓친 적이 없습니다. 다크모드 디자인도 깔끔해요."</p>
-          </div>
-          <div class="pt-3 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-[11px]">
-            <span class="font-extrabold text-slate-900 dark:text-white" data-i18n="rev4Author">최*지 · 브랜드 마케터</span>
-            <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">PRO</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. 다운로드 센터 (Windows + Apple Silicon Mac + Intel Mac 3종 분기) -->
-  <section id="download-center" class="py-16 bg-slate-900 text-white border-t border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-extrabold">DOWNLOAD CENTER · v1.0.0</span>
-        <h2 class="text-2xl sm:text-3xl font-black mt-3" data-i18n="dlTitle">사용 중인 운영체제에 맞춰 다운로드하세요</h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-2" data-i18n="dlDesc">모든 설치 파일에는 무료 버전과 7일 PRO 무료 체험이 기본 포함되어 있습니다.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="rounded-2xl bg-slate-800/90 border border-slate-700 p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-extrabold">Windows</span>
-              <span class="text-[11px] font-mono text-slate-400">.exe (64-bit)</span>
-            </div>
-            <h3 class="text-lg font-black">Windows 10 / 11</h3>
-            <p class="text-xs text-slate-400 mt-1.5 leading-relaxed" data-i18n="dlWinDesc">일반 데스크톱 및 노트북 PC용 표준 설치 파일입니다.</p>
-          </div>
-          <a href="https://github.com/tinyworklab-dev/memtodo-release/releases/download/v1.0.0/MEMTODO-Setup-1.0.0.exe" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold text-white bg-blue-600 hover:bg-blue-500 transition-colors">
-            <i data-lucide="download" class="w-4 h-4"></i> <span data-i18n="dlWinBtn">Windows 다운로드</span>
-          </a>
-        </div>
-
-        <div class="rounded-2xl bg-slate-800/90 border border-slate-700 p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-1 rounded-lg bg-amber-400/20 text-amber-300 text-xs font-extrabold">macOS · M1~M4</span>
-              <span class="text-[11px] font-mono text-slate-400">arm64.dmg</span>
-            </div>
-            <h3 class="text-lg font-black">Apple Silicon Mac</h3>
-            <p class="text-xs text-slate-400 mt-1.5 leading-relaxed" data-i18n="dlMacArmDesc">2020년 말 이후 출시된 M1, M2, M3, M4 칩 탑재 맥북·아이맥 전용입니다.</p>
-          </div>
-          <a href="https://github.com/tinyworklab-dev/memtodo-release/releases/download/v1.0.0/MEMTODO-1.0.0-arm64.dmg" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors">
-            <i data-lucide="download" class="w-4 h-4"></i> <span data-i18n="dlMacArmBtn">Mac (M1~M4) 다운로드</span>
-          </a>
-        </div>
-
-        <div class="rounded-2xl bg-slate-800/90 border border-slate-700 p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-1 rounded-lg bg-slate-700 text-slate-200 text-xs font-extrabold">macOS · Intel</span>
-              <span class="text-[11px] font-mono text-slate-400">x64.dmg</span>
-            </div>
-            <h3 class="text-lg font-black">Intel Mac</h3>
-            <p class="text-xs text-slate-400 mt-1.5 leading-relaxed" data-i18n="dlMacIntelDesc">2020년 이전 출시된 Intel 칩 탑재 구형 맥북·아이맥 전용입니다.</p>
-          </div>
-          <a href="https://github.com/tinyworklab-dev/memtodo-release/releases/download/v1.0.0/MEMTODO-1.0.0.dmg" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold text-white bg-slate-700 hover:bg-slate-600 transition-colors">
-            <i data-lucide="download" class="w-4 h-4"></i> <span data-i18n="dlMacIntelBtn">Mac (Intel) 다운로드</span>
-          </a>
-        </div>
-      </div>
-
-      <p class="text-center text-[11px] text-slate-400 mt-6 leading-relaxed" data-i18n-html="dlMacTip">
-        💡 <strong>지원 사양:</strong> Windows 10/11 (64-bit) · macOS 12 Monterey 이상 (Apple M1~M4 / Intel)<br />
-        Mac에서 처음 실행 시 '손상되었기 때문에 열 수 없습니다'가 뜨면 응용 프로그램 폴더로 옮긴 뒤 터미널에서 <code class="bg-slate-800 text-emerald-300 px-1.5 py-0.5 rounded font-mono">xattr -cr /Applications/MEMTODO.app</code> 입력
+      <h1 class="text-2xl sm:text-4xl font-black tracking-tight" data-i18n="heroTitle">SINYWORK LAB 통합 사용 설명서</h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl" data-i18n="heroDesc">
+        MEMTODO(Windows · macOS)와 FINDRUN을 처음 설치하시는 분부터 고급 단축키·데이터 백업 기능을 활용하려는 실무자까지 한눈에 볼 수 있는 공식 매뉴얼입니다.
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- 8. 요금제 섹션 -->
-  <section id="pricing" class="py-20 lg:py-24 bg-slate-50 dark:bg-slate-900/60 border-y border-slate-200/80 dark:border-slate-800 transition-colors">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-extrabold">NO SUBSCRIPTION · ONE-TIME PURCHASE</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-3 leading-snug" data-i18n-html="pricingTitle">
-          매달 빠져나가는 구독료 없이,<br class="hidden sm:inline" /> 단 한 번의 결제로 매일의 업무 시간을 되찾으세요
-        </h2>
-        <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3 font-medium" data-i18n="pricingDesc">
-          설치 후 앱 상단 왕관(👑) 아이콘에서 7일 PRO 무료 체험을 먼저 써보신 뒤 결정하실 수 있습니다.
-        </p>
-      </div>
+  <!-- 메인 콘텐츠 (좌측 목차 + 우측 본문) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- 좌측 고정 목차 사이드바 (4대 핵심 파트 분리) -->
+      <aside class="lg:col-span-3 lg:sticky lg:top-24 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-2xs transition-colors space-y-5">
+        <div class="text-xs font-black uppercase tracking-wider text-slate-400" data-i18n="tocLabel">목차 (CONTENTS)</div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        <!-- FREE 플랜 -->
-        <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-7 sm:p-8 flex flex-col justify-between transition-colors">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-sm font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wider">FREE STARTER</span>
-              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" data-i18n="freeBadge">영구 무료</span>
-            </div>
-            <div class="mt-4 flex items-baseline gap-2 flex-wrap">
-              <span class="text-4xl font-black text-slate-900 dark:text-white">0원</span>
-              <span class="text-lg font-extrabold text-slate-400">($0)</span>
-              <span class="text-sm font-semibold text-slate-500 dark:text-slate-400" data-i18n="freeSub">/ 기간 제한 없음</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2" data-i18n="freeNote">가벼운 단일 메모와 기본 할 일 관리를 원하는 분께 적합합니다.</p>
-            <ul class="mt-6 space-y-3 text-sm font-medium text-slate-700 dark:text-slate-300">
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i> <span data-i18n="freeF1">메모장 생성 및 무제한 소제목·할 일</span></li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i> <span data-i18n="freeF2">기본 5종 파스텔 테마 색상 지원</span></li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i> <span data-i18n="freeF3">자석 스냅, 창 일괄 정렬, JSON 백업/복원</span></li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i> <span data-i18n="freeF4">앱 내 8개국어 UI 지원</span></li>
-              <li class="flex items-center gap-2.5 text-slate-500 dark:text-slate-400"><i data-lucide="crown" class="w-4 h-4 text-amber-500 shrink-0"></i> <span data-i18n="freeF5">앱 상단 왕관 아이콘에서 7일 PRO 무료 체험 시작</span></li>
-            </ul>
-          </div>
-          <div class="mt-8">
-            <a href="#download-center" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-extrabold text-slate-800 dark:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
-              <i data-lucide="download" class="w-4 h-4"></i> <span data-i18n="freeCta">무료 버전 다운로드</span>
-            </a>
-          </div>
+        <div class="space-y-1">
+          <a href="#sec-install" class="block px-3 py-2 rounded-xl text-sm font-black text-slate-900 dark:text-white bg-slate-100/80 dark:bg-slate-800/80 hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="tocPart1">설치 및 OS 보안 경고 해제</a>
         </div>
 
-        <!-- PRO 평생 소장권 -->
-        <div class="relative rounded-3xl bg-slate-900 text-white p-7 sm:p-8 flex flex-col justify-between shadow-xl ring-2 ring-blue-500">
-          <div class="absolute -top-3.5 right-6 inline-flex items-center gap-1 px-3.5 py-1 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-950 text-xs font-black shadow">
-            <i data-lucide="flame" class="w-3.5 h-3.5"></i> <span data-i18n="proPromo">v1.0 출시 기념 선착순 100명 런칭 특가</span>
-          </div>
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="text-sm font-extrabold text-yellow-400 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="crown" class="w-4 h-4"></i> MEMTODO PRO</span>
-              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">1 PC/Mac Lifetime</span>
-            </div>
-            <div class="mt-4 flex items-baseline gap-2.5 flex-wrap">
-              <span class="text-base font-bold text-slate-400 line-through">14,900원 ($11.99)</span>
-              <span class="text-3xl sm:text-4xl font-black text-white">9,900원</span>
-              <span class="text-lg font-extrabold text-yellow-300">($7.99 USD)</span>
-            </div>
-            <div class="text-xs font-bold text-yellow-400 mt-1" data-i18n="proSub">평생 소장 라이선스 (1회 결제 · 구독료 없음)</div>
-            <p class="text-xs text-slate-400 mt-1.5" data-i18n="proNote">1 PC/Mac 영구 귀속 · v1.x 모든 기능 업데이트 무료 포함</p>
-            <ul class="mt-6 space-y-3 text-sm font-medium text-slate-200">
-              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-yellow-400 shrink-0"></i> <span data-i18n="proF1">메모장 개수 무제한 생성 및 동시 배치</span></li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-yellow-400 shrink-0"></i> <span data-i18n="proF2">파일 & 폴더 드래그 첨부 및 원클릭 열기</span></li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-yellow-400 shrink-0"></i> <span data-i18n="proF3">메모장 일체형 캘린더 & 커스텀 컬러 테마</span></li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-yellow-400 shrink-0"></i> <span data-i18n="proF4">자체 마감 알림창 (사전 알림 + 표시 시간 설정)</span></li>
-              <li class="flex items-center gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-yellow-400 shrink-0"></i> <span data-i18n="proF5">야간 다크 모드, 반복 일정, 완료 항목 자동 정리, 단축키 설정</span></li>
-            </ul>
-          </div>
-          <div class="mt-8 space-y-2.5">
-            <button id="openLicenseGuideBtn" type="button" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-extrabold text-slate-950 bg-yellow-400 hover:bg-yellow-300 shadow-lg shadow-yellow-400/20 transition-all cursor-pointer">
-              <i data-lucide="credit-card" class="w-4 h-4"></i> <span data-i18n="proCta">PRO 평생 소장권 결제 및 인증 안내</span>
-            </button>
-            <p class="text-[11px] text-center text-slate-400 leading-relaxed">
-              결제 전 <a href="terms.html" class="underline hover:text-white">이용약관 및 라이선스·환불 정책</a>을 확인해 주세요.<br />
-              기업 다수 구매 문의: <a href="mailto:tinyworklab@gmail.com" class="underline hover:text-white">tinyworklab@gmail.com</a>
-            </p>
-          </div>
+        <div class="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-1">
+          <a href="#sec-memtodo" class="block px-3 py-1.5 rounded-xl text-sm font-black text-blue-700 dark:text-blue-300 bg-blue-50/70 dark:bg-blue-950/40 transition-colors" data-i18n="tocPart2">MEMTODO 사용설명서</a>
+          <nav class="space-y-1 pl-2 text-xs sm:text-[13px] font-bold text-slate-600 dark:text-slate-300">
+            <a href="#sec-basic" class="block px-2.5 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="toc2">· 메모장·소제목·할 일 기본</a>
+            <a href="#sec-filedrop" class="block px-2.5 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="toc3">· 파일 및 폴더 드래그 첨부</a>
+            <a href="#sec-multiselect" class="block px-2.5 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="toc4">· 다중 선택 및 창 자동 정렬</a>
+            <a href="#sec-calendar" class="block px-2.5 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="toc5">· 일체형 캘린더 &amp; 마감 알림</a>
+            <a href="#sec-shortcuts" class="block px-2.5 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="toc6">· 핵심 단축키 &amp; 트레이/메뉴바</a>
+            <a href="#sec-backup" class="block px-2.5 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="toc7">· 데이터 백업/복원 &amp; 업데이트</a>
+          </nav>
         </div>
-      </div>
+
+        <div class="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-1">
+          <a href="#findrun-guide" class="block px-3 py-2 rounded-xl text-sm font-black text-emerald-700 dark:text-emerald-300 bg-emerald-50/70 dark:bg-emerald-950/40 hover:bg-emerald-100/80 dark:hover:bg-emerald-950/70 transition-colors" data-i18n="tocPart3">FINDRUN 사용 설명서</a>
+        </div>
+
+
+      </aside>
+
+      <!-- 우측 매뉴얼 상세 본문 -->
+      <main id="guideContentBody" class="lg:col-span-9 space-y-10"></main>
     </div>
-  </section>
-
-  <!-- 9. 개발자 후원(기부) 섹션 -->
-  <section id="donate" class="py-12 bg-amber-50/75 dark:bg-amber-950/20 border-b border-amber-200/70 dark:border-amber-900/40 transition-colors">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 dark:bg-amber-900/60 text-amber-900 dark:text-amber-300 text-xs font-extrabold">
-        <i data-lucide="coffee" class="w-3.5 h-3.5"></i> SUPPORT INDIE DEVELOPER
-      </div>
-      <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white" data-i18n="donateTitle">TINYWORK LAB의 툴이 업무에 도움이 되셨나요?</h2>
-      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed" data-i18n="donateDesc">
-        따뜻한 커피 한 잔의 자발적 후원은 1인 개발자가 광고 없는 초경량 유틸리티를 지속적으로 업데이트하고 무료 툴을 제작하는 데 큰 힘이 됩니다.
-      </p>
-      <div class="pt-1.5 flex flex-col items-center justify-center gap-2">
-        <a href="https://www.buymeacoffee.com/tinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-extrabold text-slate-950 bg-[#FFDD00] hover:bg-[#f5d400] shadow-md shadow-amber-400/20 hover:-translate-y-0.5 transition-all">
-          <i data-lucide="coffee" class="w-4 h-4"></i>
-          <span data-i18n="donateCta">개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)</span>
-        </a>
-        <span class="text-[11px] font-semibold text-amber-900/80 dark:text-amber-300/80" data-i18n="donateNotice">※ 개발자 후원은 순수한 자발적 응원이며, MEMTODO PRO 라이선스 키는 발급되지 않습니다.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 10. FINDRUN 교차 소개 배너 -->
-  <section class="py-16 bg-white dark:bg-slate-950 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-3xl bg-slate-900 dark:bg-slate-900 border border-slate-800 text-white p-8 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-        <div class="space-y-2.5 text-center lg:text-left max-w-2xl">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-extrabold">TINYWORK LAB FREEWARE · 100% FREE</div>
-          <h2 class="text-2xl sm:text-3xl font-black" data-i18n="findrunBannerTitle">0.1초 초고속 파일·프로그램 런처, FINDRUN</h2>
-          <p class="text-sm text-slate-300" data-i18n="findrunBannerDesc">자주 여는 폴더와 문서를 단축키 한 번으로 검색하고 즉시 실행하세요. MEMTODO와 함께 쓰면 시너지가 극대화됩니다.</p>
-        </div>
-        <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
-          <a href="findrun.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 transition-colors">
-            <span data-i18n="findrunBannerCta">FINDRUN 자세히 보기</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11. FAQ -->
-  <section id="faq" class="py-20 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400">FAQ</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="faqTitle">자주 묻는 질문</h2>
-      </div>
-      <div class="space-y-3.5">
-        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden">
-          <button type="button" class="faq-btn w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-slate-900 dark:text-white hover:bg-slate-50/70 dark:hover:bg-slate-800/60 transition-colors cursor-pointer">
-            <span data-i18n="faq1Q">Q. Windows나 macOS에서 처음 설치할 때 보안 경고 또는 '손상되었기 때문에 열 수 없습니다' 창이 뜹니다. 안전한가요?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 shrink-0 transition-transform"></i>
-          </button>
-          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3 space-y-2">
-            <p>네, 100% 안전합니다. Apple/Microsoft 유료 개발자 공증 전 단계의 독립 소프트웨어는 OS 보안 안내 창이 표시될 수 있습니다.</p>
-            <p>• <strong>Windows:</strong> 'Windows의 PC 보호' 창 왼쪽의 <strong>[추가 정보]</strong> 클릭 후 아래에 나타나는 <strong>[실행]</strong> 버튼을 누르세요.</p>
-            <p>• <strong>macOS ('손상되었기 때문에 열 수 없습니다' 경고 시):</strong> 창에서 <strong>[취소]</strong>를 누르고 앱을 <strong>응용 프로그램(Applications)</strong> 폴더로 옮긴 뒤, Mac <strong>터미널(Terminal)</strong>을 열어 <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded font-mono text-xs text-slate-900 dark:text-slate-200">xattr -cr /Applications/MEMTODO.app</code> 를 입력하면 격리 속성이 해제되어 즉시 실행됩니다.</p>
-          </div>
-        </div>
-
-        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden">
-          <button type="button" class="faq-btn w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-slate-900 dark:text-white hover:bg-slate-50/70 dark:hover:bg-slate-800/60 transition-colors cursor-pointer">
-            <span data-i18n="faq2Q">Q. PRO 평생 소장권 구매 후 인증 및 기기 교체 규정은 어떻게 되나요?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 shrink-0 transition-transform"></i>
-          </button>
-          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3 space-y-2">
-            <p>1) 상단 <strong>[PRO 평생 소장권 결제]</strong> 버튼을 눌러 카드/Apple Pay(Polar) 또는 카카오톡 채널로 결제를 진행합니다.</p>
-            <p>2) MEMTODO 앱 상단 왕관 아이콘을 눌러 내 PC의 <strong>16자리 기기 코드(HWID)</strong>를 복사한 뒤, 주문번호와 함께 제출해 주시면 영업일 기준 24시간 이내(보통 1~3시간 내) 영구 라이선스 키를 발송해 드립니다.</p>
-            <p>3) 라이선스는 <strong>1대의 PC/Mac(HWID 1개)에 영구 귀속</strong>됩니다. 단, 기기 파손·메인보드 교체·폐기 등 기존 기기에서 영구 삭제 후 사용 불가함이 객관적 증빙으로 확인되는 경우에 한해 <strong>심사 후 생애 1회 한정</strong> 새 HWID 재발급을 지원합니다. (<a href="terms.html" class="text-blue-600 dark:text-blue-400 underline font-bold">자세히 보기</a>)</p>
-          </div>
-        </div>
-
-        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden">
-          <button type="button" class="faq-btn w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-slate-900 dark:text-white hover:bg-slate-50/70 dark:hover:bg-slate-800/60 transition-colors cursor-pointer">
-            <span data-i18n="faq3Q">Q. 새 버전 업데이트가 나오면 기존 프로그램을 지우고 다시 설치해야 하나요?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 shrink-0 transition-transform"></i>
-          </button>
-          <div class="faq-content hidden px-6 pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3">
-            아니요, 기존 프로그램을 삭제하실 필요가 없습니다. 새 설치 파일을 그대로 덮어쓰기 설치하시면 <strong>기존 메모, 할 일, 설정, PRO 라이선스 정보가 100% 유지</strong>됩니다.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- 공통 푸터 -->
   <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-10 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-[#1E1E1E] overflow-hidden flex items-center justify-center"><img src="logo.png" alt="TinyWork Lab Logo" class="w-full h-full object-cover" onerror="this.style.display='none'" /></div>
-          <span class="font-black text-sm text-slate-900 dark:text-white">TINYWORK LAB</span>
+          <div class="w-7 h-7 rounded-lg bg-[#1E1E1E] overflow-hidden flex items-center justify-center">
+            <img src="logo.png" alt="SinyWork Lab Logo" class="w-full h-full object-contain p-0.5" onerror="this.style.display='none'" />
+          </div>
+          <span class="font-black text-sm text-slate-900 dark:text-white">SINYWORK LAB</span>
           <span class="text-xs text-slate-400 ml-1">© 2026 All rights reserved.</span>
         </div>
+
         <div class="flex flex-wrap items-center justify-center gap-5 text-xs font-semibold text-slate-600 dark:text-slate-400">
           <a href="index.html" class="hover:text-slate-900 dark:hover:text-white">MEMTODO</a>
           <a href="findrun.html" class="hover:text-slate-900 dark:hover:text-white">FINDRUN</a>
           <a href="guide.html" class="hover:text-slate-900 dark:hover:text-white" data-i18n="footerGuide">사용 설명서</a>
           <a href="terms.html" class="hover:text-slate-900 dark:hover:text-white font-bold" data-i18n="footerTerms">이용약관 · 환불정책</a>
           <a href="privacy.html" class="hover:text-slate-900 dark:hover:text-white font-bold" data-i18n="footerPrivacy">개인정보 처리방침</a>
-          <a href="https://www.buymeacoffee.com/tinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:text-amber-700 font-extrabold" data-i18n="footerDonate">☕ 개발자 후원하기</a>
+          <a href="https://buymeacoffee.com/sinyworklab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:text-amber-700 font-extrabold" data-i18n="footerDonate">
+            ☕ 개발자 후원하기
+          </a>
         </div>
       </div>
+
       <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
-        <div>공식 문의 및 라이선스 지원: <a href="mailto:tinyworklab@gmail.com" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">tinyworklab@gmail.com</a> · <a href="https://pf.kakao.com/_IsuvX" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">카카오톡 채널 (@tinyworklab)</a></div>
-        <div><a href="https://github.com/tinyworklab-dev/memtodo-release/releases" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-300">GitHub Releases</a> · 100% Local Desktop Software</div>
+        <div>
+          공식 문의 및 라이선스 지원: <a href="mailto:sinyworklab@gmail.com" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">sinyworklab@gmail.com</a> · <a href="https://pf.kakao.com/_IsuvX" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">카카오톡 채널 (@sinyworklab)</a>
+        </div>
+        <div>
+          <a href="https://github.com/sinyworklab/memtodo-release/releases" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-300">GitHub Releases</a> · 100% Local Desktop Software
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- PRO 결제 및 라이선스 발급 신청 통합 모달 -->
-  <div id="licenseModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 backdrop-blur-xs p-4 overflow-y-auto">
-    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 dark:border-slate-800 relative my-8">
-      <button id="closeLicenseModalBtn" type="button" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 dark:hover:text-white p-1 cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 text-xs font-extrabold mb-2.5"><i data-lucide="crown" class="w-3.5 h-3.5"></i> MEMTODO PRO Lifetime</div>
-      <h3 class="text-xl font-black text-slate-900 dark:text-white" data-i18n="modalTitle">선착순 100명 런칭 특가 · 9,900원 ($7.99)</h3>
-      <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" data-i18n="modalSubtitle">정가 14,900원 ($11.99) → 1회 결제로 1 PC/Mac 평생 무제한 사용</p>
-
-      <div class="mt-5 space-y-2.5">
-        <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5"><span class="w-4 h-4 rounded-full bg-blue-600 text-white inline-flex items-center justify-center text-[10px]">1</span><span data-i18n="modalStep1Label">결제 수단 선택 (글로벌 카드 · 국내 간편결제)</span></div>
-        <a id="polarPayBtn" href="https://buy.polar.sh/polar_cl_8fdGNcaoRpPdNC0UZlYPjckWrgCqaU6KxHEkF1X3Fr9" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-between px-4 py-3.5 rounded-2xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white transition-all shadow-md group">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0"><i data-lucide="credit-card" class="w-5 h-5"></i></div>
-            <div class="text-left">
-              <div class="text-sm font-extrabold flex items-center gap-1.5"><span data-i18n="modalCardTitle">해외·국내 신용카드 / Apple Pay 즉시 결제</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 font-black">$7.99</span></div>
-              <div class="text-[11px] text-slate-400" data-i18n="modalCardDesc">Visa · Mastercard · Apple Pay (Polar)</div>
-            </div>
-          </div>
-          <i data-lucide="external-link" class="w-4 h-4 text-slate-400 group-hover:text-white shrink-0"></i>
-        </a>
-
-        <a href="https://pf.kakao.com/_IsuvX" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-between px-4 py-3 rounded-2xl bg-[#FEE500] hover:bg-[#f5dc00] text-[#191919] transition-all shadow-2xs group">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-black/10 flex items-center justify-center shrink-0"><i data-lucide="message-circle" class="w-5 h-5"></i></div>
-            <div class="text-left">
-              <div class="text-sm font-extrabold flex items-center gap-1.5"><span data-i18n="modalKakaoTitle">국내 계좌이체 / 카카오톡 채널 결제 문의</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-black/15 font-black">9,900원</span></div>
-              <div class="text-[11px] text-neutral-800" data-i18n="modalKakaoDesc">원화 송금 및 영수증·HWID 1:1 빠른 키 발급</div>
-            </div>
-          </div>
-          <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-700 shrink-0"></i>
-        </a>
-      </div>
-
-      <div class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-800 space-y-2.5">
-        <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5"><span class="w-4 h-4 rounded-full bg-emerald-600 text-white inline-flex items-center justify-center text-[10px]">2</span><span data-i18n="modalStep2Label">결제 완료 후 라이선스 키 발급 신청 (HWID 입력)</span></div>
-        <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed" data-i18n="modalStep2Desc">결제 후 아래에 <strong>주문번호(또는 결제 이메일)</strong>와 앱 상단 왕관 아이콘에 표시된 <strong>16자리 기기 코드(HWID)</strong>를 입력하고 복사 버튼을 눌러 카카오톡 또는 이메일(tinyworklab@gmail.com)로 보내주세요.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <input id="orderRefInput" type="text" placeholder="주문번호 또는 결제 이메일" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-white focus:border-blue-500 outline-none" />
-          <input id="hwidRefInput" type="text" maxlength="19" placeholder="HWID (예: B1F4-98A2-CC01-33E9)" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-mono font-bold text-slate-800 dark:text-white uppercase focus:border-blue-500 outline-none" />
-        </div>
-        <div class="flex flex-col sm:flex-row gap-2">
-          <button id="copyClaimFormBtn" type="button" class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-extrabold text-white bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"><i data-lucide="copy" class="w-3.5 h-3.5"></i><span data-i18n="modalCopyFormBtn">발급 신청 양식 복사하기</span></button>
-          <a id="mailtoClaimBtn" href="mailto:tinyworklab@gmail.com?subject=MEMTODO%20PRO%20License%20Request" class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5"></i><span data-i18n="modalMailBtn">이메일로 바로 보내기</span></a>
-        </div>
-        <div id="copyFeedbackMsg" class="hidden text-[11px] font-bold text-emerald-600 dark:text-emerald-400 text-center">✓ 신청 양식이 클립보드에 복사되었습니다! 카카오톡 채널 또는 이메일(tinyworklab@gmail.com)에 붙여넣어 전송해 주세요.</div>
-        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700 p-3 text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed space-y-1">
-          <p>• <strong>발급 안내:</strong> 접수 후 영업일 기준 24시간 이내(보통 1~3시간 내) 이메일/카카오톡 발송</p>
-          <p>• <strong>라이선스·환불:</strong> 1 PC/Mac(HWID 1개) 영구 귀속되며, 키 발급 완료 후에는 환불이 제한됩니다. (기기 파손·교체 증빙 심사 시 생애 1회 예외 재발급 지원 · <a href="terms.html" class="underline text-slate-700 dark:text-slate-300 font-semibold">약관 보기</a>)</p>
-        </div>
-      </div>
-
-      <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
-        <a href="#download-center" id="modalGoDownloadBtn" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"><i data-lucide="download" class="w-3.5 h-3.5"></i><span data-i18n="modalTrialLink">먼저 설치하고 7일 무료 체험하기</span></a>
-        <button id="closeLicenseModalBtn2" type="button" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer" data-i18n="modalClose">닫기</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="toastContainer" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
-
   <script>
     lucide.createIcons();
-    const POLAR_CHECKOUT_URL = 'https://buy.polar.sh/polar_cl_8fdGNcaoRpPdNC0UZlYPjckWrgCqaU6KxHEkF1X3Fr9';
-    const SUPPORT_EMAIL = 'tinyworklab@gmail.com';
-    const polarBtn = document.getElementById('polarPayBtn');
-    if (polarBtn) polarBtn.href = POLAR_CHECKOUT_URL;
 
-    const i18nIndex = {
+    const i18nGuideMeta = {
       'ko': {
-        navGuide: '사용 설명서', navPricing: '요금제', navLifetimeBadge: '평생소장', navThemeToggle: '라이트모드',
-        heroBadge: 'Windows 10/11 & macOS 공식 지원 · 구독료 없는 평생 소장 툴',
-        heroTitle: '바탕화면 위 가장 완벽한<br class="hidden sm:inline" /> 업무 파트너, MEMTODO',
-        heroDesc: '단순한 스티커 메모를 넘어 소제목별 할 일 진행률, 메모장 일체형 월간 달력, 파일·폴더 드래그 연결, 커스텀 마감 알림까지. 외부 서버 전송 없이 내 PC에 100% 안전하게 저장되는 초경량 데스크톱 워크스페이스입니다.',
-        heroCtaDownload: '무료 다운로드 (Windows · Mac)', heroCtaGuide: '상세 사용 설명서',
-        trustLocal: '100% 로컬 저장 (서버 전송 0)', trustLang: '앱 내 8개국어 UI 지원', trustTrial: '7일 PRO 무료 체험 포함',
-        mockBadge: '실제 레이아웃 인터랙티브 체험 (직접 클릭해보세요!)',
-        demoSectionTitle: '백 마디 설명보다 빠른 핵심 동작 미리보기', demoSectionDesc: '파일·폴더 드래그 연결, 메모장 간 소제목·할 일 이동, 일체형 달력 하단 일정 등록까지 실제 워크플로우를 확인해 보세요.',
-        demo1Badge: 'DEMO 01 · 폴더·파일 드래그 연결', demo1Title: '탐색기·Finder에서 끌어다 바로 연결', demo1Desc: '작업 폴더나 PDF 문서를 할 일 카드 위로 드롭하면 링크 배지가 생성되며, 클릭 한 번으로 즉시 열립니다.',
-        demo2Badge: 'DEMO 02 · 메모장 간 소제목·할 일 이동', demo2Title: '다른 메모장으로 소제목·할 일 자유 이동', demo2Desc: '소제목 그룹이나 다중 선택한 할 일을 다른 프로젝트 메모장으로 드래그해 손쉽게 업무를 재배치합니다.',
-        demo3Badge: 'DEMO 03 · 달력 하단 즉시 할 일 적용', demo3Title: '달력을 열고 하단에서 할 일 바로 적용', demo3Desc: '일체형 달력에서 날짜를 선택하고 하단 입력창에서 할 일을 바로 등록·적용해 D-Day까지 한 번에 관리합니다.',
-        compTitle: '기존 메모·할 일 도구와 무엇이 다른가요?', compDesc: '바탕화면의 직관성과 전문 일정·파일 관리 기능을 하나로 결합했습니다.',
-        compColFeature: '비교 항목', compColBasic: 'OS 기본 스티커 메모', compColCloud: '일반 클라우드 할 일 앱',
-        compR1: '바탕화면 상시 고정 & 자석 정렬', compR1B: '수동 배치만 가능', compR1C: '별도 창·브라우저 필요', compR1P: '압정 고정 + 원클릭 자동 정렬',
-        compR2: '작업 폴더·파일 드래그 연결', compR2B: '지원 안 함', compR2C: '클라우드 업로드 필요', compR2P: '로컬 경로 즉시 연결·원클릭 열기',
-        compR3: '소제목 섹션 & 실시간 진행률 바', compR3B: '단순 텍스트 줄바꿈', compR3C: '일부 지원', compR3P: '소제목별 진행률 게이지 자동 계산',
-        compR4: '메모장 일체형 월간 달력', compR4B: '지원 안 함', compR4C: '별도 탭 전환 필요', compR4P: '메모장 좌·우 자동 스냅 결합',
-        compR5: '데이터 보안 (외부 서버 전송)', compR5B: '로컬 저장', compR5C: '외부 클라우드 서버 저장', compR5P: '100% 로컬 PC 저장 · 서버 전송 0',
-        compR6: '요금 및 결제 방식', compR6B: '무료 (기능 제한)', compR6C: '매월 정기 구독료 발생', compR6P: '1회 결제 평생 소장 · 구독료 없음',
-        featuresTitle: '실무자의 책상 위 흐름에 맞춘 6가지 디테일',
-        featuresDesc: '단순 텍스트 입력만 되는 기본 스티커 메모의 한계를 넘어,<br class="hidden sm:inline" /> 실제 업무 파일과 마감 시간까지 한 화면에서 제어합니다.',
-        feat1Title: '소제목 섹션 & 실시간 진행률 바', feat1Desc: '프로젝트나 담당자별로 소제목을 나누고 완료율을 시각적 게이지로 확인하세요. Ctrl/Shift 다중 선택으로 여러 할 일을 한 번에 드래그 이동할 수 있습니다.',
-        feat2Title: '스마트 파일 & 폴더 드래그 첨부', feat2Desc: '탐색기나 Finder에서 문서, 도면, 작업 폴더를 할 일 위로 끌어다 놓으세요. 폴더는 폴더 아이콘, 파일은 클립 아이콘으로 자동 구분되며 클릭 즉시 열립니다.',
-        feat3Title: '메모장 일체형 월간 일정 달력', feat3Desc: '메모장 좌·우측 여유 공간을 자동 감지해 달력이 하나로 결합됩니다. 단일 마감일은 물론 시작일~종료일 기간 설정과 스마트 D-Day를 지원합니다.',
-        feat4Title: '자체 커스텀 마감 알림창', feat4Desc: '놓치기 쉬운 OS 기본 알림 대신 화면 우측 하단에 전용 알림 카드가 뜹니다. 정각·10분 전·사용자 지정 분 설정과 알림창 표시 시간 조절을 지원합니다.',
-        feat5Title: '원클릭 접기 · 자석 스냅 & 일괄 정렬', feat5Desc: '보지 않는 메모장은 상단 바 형태로 접어 한쪽에 세로로 쌓아두고, 트레이 메뉴 클릭 한 번으로 우측 세로 정렬 또는 바둑판 격자 정렬을 실행합니다.',
-        feat6Title: '100% 로컬 보안 & 8개국어 UI 지원', feat6Desc: '모든 업무 데이터는 클라우드 서버로 전송되지 않고 내 컴퓨터(storage.json)에만 저장됩니다. 원클릭 JSON 백업/복원과 앱 내 8개국어 UI 전환을 지원합니다.',
-        guideBannerTitle: '단축키부터 백업·복원까지 한눈에 익히세요', guideBannerDesc: 'MEMTODO & FINDRUN 공식 통합 사용 설명서에서 Windows·macOS 설치 및 활용 팁을 확인하실 수 있습니다.', guideBannerCta: '상세 사용 설명서 열기',
-        usecaseSectionTitle: '내 직무에 딱 맞는 바탕화면 세팅 예시', usecaseSectionDesc: '프로젝트 성격에 따라 다크모드·파스텔 테마·일체형 달력·원클릭 접기 배치를 조합해 나만의 데스크톱 컨트롤 타워를 만들어 보세요.',
-        uc1Tag: '개발자 · 디자이너', uc1Title: '시안·빌드 폴더 직통 연결 & 다크모드', uc1Desc: '버전별 디자인 시안 폴더와 빌드 산출물 경로를 소제목별로 고정해 두고, 눈이 편안한 다크모드로 배치합니다.',
-        uc2Tag: '기획자 · PM · 마케터', uc2Title: '월간 일정 달력 + 외주·마감 D-Day 통제', uc2Desc: '좌측에 달력을 붙여 런칭 스케줄과 외주 미팅 기간을 한눈에 보고, 제안서·견적서 파일을 각 태스크에 묶어둡니다.',
-        uc3Tag: '일반 사무 · 프리랜서', uc3Title: '반복 정산·보고 일정 & 정각 마감 알림', uc3Desc: '매주·매월 반복되는 보고와 세금계산서 발행 일정을 자동 반복으로 등록하고, 화면 우측 하단 알림창으로 마감 실수를 방지합니다.',
-        uc4Tag: '다중 프로젝트 · 멀티태스킹', uc4Title: '원클릭 접기 & 색상별 세로 도킹 배치', uc4Desc: '여러 프로젝트를 동시에 진행할 때 메모장을 바 형태로 콤팩트하게 접어 바탕화면 한쪽에 정렬해 두고, 필요할 때만 클릭해 즉시 펼쳐 봅니다.',
-        reviewSectionTitle: '먼저 써본 실무자들의 한 줄 후기', reviewSectionDesc: '매일 책상 앞에서 파일과 마감을 다루는 사용자들이 가장 만족한 포인트를 모았습니다.',
-        rev1Quote: '"프로젝트 폴더를 할 일에 끌어다 놓고 클릭 한 번으로 바로 여는 기능이 정말 편합니다. 탐색기 뒤지는 시간이 확 줄었어요."', rev1Author: '김*훈 · UI/UX 디자이너',
-        rev2Quote: '"사내 보안 규정 때문에 클라우드 메모 앱을 못 썼는데, 외부 서버 전송 없이 내 PC에만 저장되면서 달력까지 붙어 있어서 바로 정착했습니다."', rev2Author: '박*연 · IT 서비스 기획자',
-        rev3Quote: '"매달 나가는 구독료 앱들에 지쳐 있었는데 9,900원 한 번 결제로 평생 소장할 수 있어서 부담 없이 구매했습니다. 가볍고 빠릅니다."', rev3Author: '이*수 · 프리랜서 개발자',
-        rev4Quote: '"우측 하단에 따로 뜨는 마감 알림창 덕분에 외주 납품 시간이나 주간 보고를 한 번도 놓친 적이 없습니다. 다크모드 디자인도 깔끔해요."', rev4Author: '최*지 · 브랜드 마케터',
-        dlTitle: '사용 중인 운영체제에 맞춰 다운로드하세요', dlDesc: '모든 설치 파일에는 무료 버전과 7일 PRO 무료 체험이 기본 포함되어 있습니다.',
-        dlWinDesc: '일반 데스크톱 및 노트북 PC용 표준 설치 파일입니다.', dlWinBtn: 'Windows 다운로드',
-        dlMacArmDesc: '2020년 말 이후 출시된 M1, M2, M3, M4 칩 탑재 맥북·아이맥 전용입니다.', dlMacArmBtn: 'Mac (M1~M4) 다운로드',
-        dlMacIntelDesc: '2020년 이전 출시된 Intel 칩 탑재 구형 맥북·아이맥 전용입니다.', dlMacIntelBtn: 'Mac (Intel) 다운로드',
-        dlMacTip: "💡 <strong>지원 사양:</strong> Windows 10/11 (64-bit) · macOS 12 Monterey 이상 (Apple M1~M4 / Intel)<br />Mac에서 처음 실행 시 '손상되었기 때문에 열 수 없습니다'가 뜨면 응용 프로그램 폴더로 옮긴 뒤 터미널에서 <code class='bg-slate-800 text-emerald-300 px-1.5 py-0.5 rounded font-mono'>xattr -cr /Applications/MEMTODO.app</code> 입력",
-        pricingTitle: '매달 빠져나가는 구독료 없이,<br class="hidden sm:inline" /> 단 한 번의 결제로 매일의 업무 시간을 되찾으세요', pricingDesc: '설치 후 앱 상단 왕관(👑) 아이콘에서 7일 PRO 무료 체험을 먼저 써보신 뒤 결정하실 수 있습니다.',
-        freeBadge: '영구 무료', freeSub: '/ 기간 제한 없음', freeNote: '가벼운 단일 메모와 기본 할 일 관리를 원하는 분께 적합합니다.',
-        freeF1: '메모장 생성 및 무제한 소제목·할 일', freeF2: '기본 5종 파스텔 테마 색상 지원', freeF3: '자석 스냅, 창 일괄 정렬, JSON 백업/복원', freeF4: '앱 내 8개국어 UI 지원', freeF5: '앱 상단 왕관 아이콘에서 7일 PRO 무료 체험 시작', freeCta: '무료 버전 다운로드',
-        proPromo: 'v1.0 출시 기념 선착순 100명 런칭 특가', proSub: '평생 소장 라이선스 (1회 결제 · 구독료 없음)', proNote: '1 PC/Mac 영구 귀속 · v1.x 모든 기능 업데이트 무료 포함',
-        proF1: '메모장 개수 무제한 생성 및 동시 배치', proF2: '파일 & 폴더 드래그 첨부 및 원클릭 열기', proF3: '메모장 일체형 캘린더 & 커스텀 컬러 테마', proF4: '자체 마감 알림창 (사전 알림 + 표시 시간 설정)', proF5: '야간 다크 모드, 반복 일정, 완료 항목 자동 정리, 단축키 설정', proCta: 'PRO 평생 소장권 결제 및 인증 안내',
-        modalTitle: '선착순 100명 런칭 특가 · 9,900원 ($7.99)', modalSubtitle: '정가 14,900원 ($11.99) → 1회 결제로 1 PC/Mac 평생 무제한 사용',
-        modalStep1Label: '결제 수단 선택 (글로벌 카드 · 국내 간편결제)', modalCardTitle: '해외·국내 신용카드 / Apple Pay 즉시 결제', modalCardDesc: 'Visa · Mastercard · Apple Pay (Polar)',
-        modalKakaoTitle: '국내 계좌이체 / 카카오톡 채널 결제 문의', modalKakaoDesc: '원화 송금 및 영수증·HWID 1:1 빠른 키 발급',
-        modalStep2Label: '결제 완료 후 라이선스 키 발급 신청 (HWID 입력)', modalStep2Desc: '결제 후 아래에 주문번호(또는 결제 이메일)와 앱 상단 왕관 아이콘에 표시된 16자리 기기 코드(HWID)를 입력하고 복사 버튼을 눌러 카카오톡 또는 이메일(tinyworklab@gmail.com)로 보내주세요.',
-        modalCopyFormBtn: '발급 신청 양식 복사하기', modalMailBtn: '이메일로 바로 보내기', modalTrialLink: '먼저 설치하고 7일 무료 체험하기', modalClose: '닫기',
-        donateTitle: 'TINYWORK LAB의 툴이 업무에 도움이 되셨나요?', donateDesc: '따뜻한 커피 한 잔의 자발적 후원은 1인 개발자가 광고 없는 초경량 유틸리티를 지속적으로 업데이트하고 무료 툴을 제작하는 데 큰 힘이 됩니다.',
-        donateCta: '개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)', donateNotice: '※ 개발자 후원은 순수한 자발적 응원이며, MEMTODO PRO 라이선스 키는 발급되지 않습니다.',
-        findrunBannerTitle: '0.1초 초고속 파일·프로그램 런처, FINDRUN', findrunBannerDesc: '자주 여는 폴더와 문서를 단축키 한 번으로 검색하고 즉시 실행하세요. MEMTODO와 함께 쓰면 시너지가 극대화됩니다.', findrunBannerCta: 'FINDRUN 자세히 보기',
-        faqTitle: '자주 묻는 질문',
-        faq1Q: "Q. Windows나 macOS에서 처음 설치할 때 보안 경고 또는 '손상되었기 때문에 열 수 없습니다' 창이 뜹니다. 안전한가요?",
-        faq2Q: 'Q. PRO 평생 소장권 구매 후 인증 및 기기 교체 규정은 어떻게 되나요?',
-        faq3Q: 'Q. 새 버전 업데이트가 나오면 기존 프로그램을 지우고 다시 설치해야 하나요?',
-        footerGuide: '사용 설명서', footerTerms: '이용약관 · 환불정책', footerPrivacy: '개인정보 처리방침', footerDonate: '☕ 개발자 후원하기'
+        navGuide: '사용 설명서', navPricing: '요금제', navThemeToggle: '라이트모드',
+        heroTitle: 'SINYWORK LAB 통합 사용 설명서',
+        heroDesc: 'MEMTODO(Windows · macOS)와 FINDRUN을 처음 설치하시는 분부터 고급 단축키·데이터 백업 기능을 활용하려는 실무자까지 한눈에 볼 수 있는 공식 매뉴얼입니다.',
+        tocLabel: '목차 (CONTENTS)',
+        tocPart1: '설치 및 OS 보안 경고 해제',
+        tocPart2: 'MEMTODO 사용설명서',
+        toc2: '· 메모장·소제목·할 일 기본', toc3: '· 파일 및 폴더 드래그 첨부',
+        toc4: '· 다중 선택 및 창 자동 정렬', toc5: '· 일체형 캘린더 & 마감 알림', toc6: '· 핵심 단축키 & 트레이/메뉴바',
+        toc7: '· 데이터 백업/복원 & 업데이트',
+        tocPart3: 'FINDRUN 사용 설명서',
+        footerGuide: '사용 설명서',
+        footerTerms: '이용약관 · 환불정책',
+        footerPrivacy: '개인정보 처리방침',
+        footerDonate: '☕ 개발자 후원하기'
       },
       'en': {
-        navGuide: 'User Guide', navPricing: 'Pricing', navLifetimeBadge: 'Lifetime', navThemeToggle: 'Light Mode',
-        heroBadge: 'Windows 10/11 & macOS Supported · One-Time Purchase, No Subscription',
-        heroTitle: 'Your Ultimate Desktop<br class="hidden sm:inline" /> Workspace Partner, MEMTODO',
-        heroDesc: 'More than sticky notes — organize tasks by sub-sections with live progress bars, integrated monthly calendar, file & folder drag-and-drop links, and custom deadline popups. 100% local storage with zero cloud upload.',
-        heroCtaDownload: 'Free Download (Windows · Mac)', heroCtaGuide: 'User Manual',
-        trustLocal: '100% Local Storage (Zero Cloud)', trustLang: '8 Languages Inside the App', trustTrial: 'Includes 7-Day PRO Free Trial',
-        mockBadge: 'Interactive Layout Preview (Click to try!)',
-        demoSectionTitle: 'Core Action Previews in Seconds', demoSectionDesc: 'See how dragging project folders, moving sections across notes, and adding tasks directly below the calendar streamlines your work.',
-        demo1Badge: 'DEMO 01 · Drag & 1-Click Open', demo1Title: 'Drag Folders & Files Straight from Explorer or Finder', demo1Desc: 'Drop any folder or PDF onto a task card to create an instant link badge that opens in one click.',
-        demo2Badge: 'DEMO 02 · Cross-Note Section & Task Move', demo2Title: 'Move Sections & Tasks Freely Between Notes', demo2Desc: 'Drag sub-sections or multi-selected tasks to another project note to reorganize priorities effortlessly.',
-        demo3Badge: 'DEMO 03 · Calendar Bottom Instant Tasks', demo3Title: 'Open Calendar & Apply Tasks Directly Below', demo3Desc: 'Click a date on the attached monthly calendar and add tasks right below to track D-Day deadlines in one flow.',
-        compTitle: 'How Does MEMTODO Compare to Existing Tools?', compDesc: 'Combining the immediacy of desktop sticky notes with structured task, calendar, and local file control.',
-        compColFeature: 'Feature', compColBasic: 'OS Built-in Sticky Notes', compColCloud: 'Cloud To-Do Apps',
-        compR1: 'Always-on-Top & Magnetic Align', compR1B: 'Manual placement only', compR1C: 'Requires separate window/browser', compR1P: 'Pin on top + 1-click auto-align',
-        compR2: 'Folder & File Drag-and-Drop', compR2B: 'Not supported', compR2C: 'Requires cloud upload', compR2P: 'Instant local path link & 1-click open',
-        compR3: 'Sub-Sections & Progress Bars', compR3B: 'Plain text lines only', compR3C: 'Partially supported', compR3P: 'Auto-calculated section progress gauges',
-        compR4: 'Note-Integrated Monthly Calendar', compR4B: 'Not supported', compR4C: 'Requires tab switching', compR4P: 'Auto-snaps beside your sticky note',
-        compR5: 'Data Privacy (External Servers)', compR5B: 'Local storage', compR5C: 'Stored on external cloud servers', compR5P: '100% Local PC storage · Zero upload',
-        compR6: 'Pricing Model', compR6B: 'Free (basic features)', compR6C: 'Recurring monthly subscription', compR6P: 'One-time purchase · Own forever',
-        featuresTitle: '6 Crafted Details Built for Real Workflows',
-        featuresDesc: 'Go beyond plain text sticky notes — control actual work files,<br class="hidden sm:inline" /> project folders, and deadline alerts in one lightweight window.',
-        feat1Title: 'Sub-Sections & Live Progress Bars', feat1Desc: 'Group tasks by project or owner with visual completion gauges. Use Ctrl/Cmd or Shift multi-select to batch-move items effortlessly.',
-        feat2Title: 'Smart File & Folder Drag-and-Drop', feat2Desc: 'Drag folders, drawings, or documents from Explorer/Finder onto any task. Folders and files get distinct badges and open in one click.',
-        feat3Title: 'Integrated Monthly Calendar Sidebar', feat3Desc: 'Automatically detects screen space and attaches beside your note. Supports single deadlines, date ranges, recurring tasks, and D-Day badges.',
-        feat4Title: 'Custom Deadline Alert Popups', feat4Desc: 'Never miss a deadline with dedicated bottom-right alert cards. Customize advance reminders and popup display duration.',
-        feat5Title: 'One-Click Collapse · Snap & Auto-Align', feat5Desc: 'Collapse idle notes into compact header bars stacked neatly along your screen edge, or auto-arrange all windows via tray presets.',
-        feat6Title: '100% Local Privacy & 8-Language UI', feat6Desc: 'All data stays safely on your computer (storage.json) with one-click JSON backup/restore and instant 8-language UI switching.',
-        guideBannerTitle: 'Master Shortcuts, Backup & OS Setup in Minutes', guideBannerDesc: 'Explore the official MEMTODO & FINDRUN user manual for Windows & macOS installation and productivity tips.', guideBannerCta: 'Open User Manual',
-        usecaseSectionTitle: 'Desktop Setups Tailored to Your Role', usecaseSectionDesc: 'Combine Dark Mode, pastel themes, attached calendars, and collapsed header stacks to build your personal desktop command center.',
-        uc1Tag: 'Developers · Designers', uc1Title: 'Direct Design & Build Folder Links in Dark Mode', uc1Desc: 'Keep versioned asset folders and build directories pinned by sub-section in an eye-friendly Dark Mode workspace.',
-        uc2Tag: 'PMs · Planners · Marketers', uc2Title: 'Monthly Calendar + Vendor & Launch D-Day Control', uc2Desc: 'Attach the calendar to visualize launch schedules while linking proposals and quotes directly to each task.',
-        uc3Tag: 'Office · Freelancers', uc3Title: 'Recurring Billing & Reports with On-Time Popups', uc3Desc: 'Automate weekly reports and monthly invoicing tasks with dedicated bottom-right deadline popups.',
-        uc4Tag: 'Multi-Project · Multitasking', uc4Title: 'One-Click Collapse & Color-Coded Vertical Dock', uc4Desc: 'Collapse multiple project notes into compact title bars stacked along your desktop edge and expand any note in one click.',
-        reviewSectionTitle: 'What Early Users Are Saying', reviewSectionDesc: 'Highlights from professionals who manage files and deadlines at their desks every day.',
-        rev1Quote: '"Dragging project folders onto tasks and opening them in one click is a game changer. I spend half as much time digging through Explorer."', rev1Author: 'Hoon K. · UI/UX Designer',
-        rev2Quote: '"Company security rules block cloud note apps, so having 100% local storage with a snapped monthly calendar made MEMTODO an instant daily driver."', rev2Author: 'Yeon P. · IT Product Planner',
-        rev3Quote: '"Tired of monthly subscriptions, paying $7.99 once to own it forever was an easy decision. Lightweight and fast."', rev3Author: 'Soo L. · Freelance Developer',
-        rev4Quote: '"Thanks to the custom bottom-right deadline popup, I haven’t missed a single vendor delivery or weekly report. Dark Mode looks super clean."', rev4Author: 'Ji C. · Brand Marketer',
-        dlTitle: 'Download for Your Operating System', dlDesc: 'Every installer includes the Free Edition plus a built-in 7-Day PRO Free Trial.',
-        dlWinDesc: 'Standard installer for Windows 10 & Windows 11 (64-bit) PCs.', dlWinBtn: 'Download for Windows',
-        dlMacArmDesc: 'For M1, M2, M3, and M4 Apple Silicon Macs (late 2020 and newer).', dlMacArmBtn: 'Download for Mac (M1–M4)',
-        dlMacIntelDesc: 'For Intel-based Macs released prior to late 2020.', dlMacIntelBtn: 'Download for Mac (Intel)',
-        dlMacTip: '💡 <strong>System Requirements:</strong> Windows 10/11 (64-bit) · macOS 12 Monterey or later (Apple M1–M4 / Intel)<br />If macOS says "is damaged and can\'t be opened", drag MEMTODO to Applications and run: <code class="bg-slate-800 text-emerald-300 px-1.5 py-0.5 rounded font-mono">xattr -cr /Applications/MEMTODO.app</code> in Terminal',
-        pricingTitle: 'No Monthly Subscriptions —<br class="hidden sm:inline" /> Reclaim Your Daily Work Hours Forever', pricingDesc: 'Click the Crown (👑) icon in the app to start your 7-day PRO free trial before you decide.',
-        freeBadge: 'Free Forever', freeSub: '/ No time limit', freeNote: 'Ideal for lightweight desktop notes and basic task tracking.',
-        freeF1: 'Sticky notes with unlimited sections & tasks', freeF2: '5 built-in pastel note themes', freeF3: 'Magnetic snap, window auto-align & JSON backup', freeF4: '8-language UI support inside the app', freeF5: 'Start 7-day PRO free trial from the top Crown icon', freeCta: 'Download Free Version',
-        proPromo: 'Launch Special: First 100 Users ($7.99 / Reg. $11.99)', proSub: 'Lifetime License ($7.99 USD / ₩9,900 KRW · One-Time)', proNote: 'Bound to 1 PC/Mac · Free v1.x updates included',
-        proF1: 'Unlimited sticky note windows simultaneously', proF2: 'Drag & drop files and folders onto tasks', proF3: 'Integrated monthly calendar & custom themes', proF4: 'Custom deadline alert popups & duration control', proF5: 'Dark mode, recurring tasks, auto-sort completed & hotkeys', proCta: 'Buy PRO Lifetime License & Activate',
-        modalTitle: 'Launch Special (First 100 Users) · $7.99 USD', modalSubtitle: 'Regular $11.99 → One-time payment, 1 PC/Mac lifetime license',
-        modalStep1Label: 'Step 1. Choose Payment Method', modalCardTitle: 'Credit Card / Apple Pay Instant Checkout', modalCardDesc: 'Visa · Mastercard · Apple Pay via Polar ($7.99 USD)',
-        modalKakaoTitle: 'Korean Bank Transfer / KakaoTalk Support', modalKakaoDesc: 'KRW transfer & 1:1 license issuance (₩9,900)',
-        modalStep2Label: 'Step 2. Request Your License Key (After Payment)', modalStep2Desc: 'Enter your Order ID (or checkout email) and your 16-character Hardware ID (HWID) found under the Crown icon in MEMTODO, then copy & send it to tinyworklab@gmail.com.',
-        modalCopyFormBtn: 'Copy License Request Form', modalMailBtn: 'Send via Email', modalTrialLink: 'Install first & start 7-day free trial', modalClose: 'Close',
-        donateTitle: 'Did TINYWORK LAB tools save your time at work?', donateDesc: 'Voluntary support helps an indie developer keep building ad-free, lightweight desktop utilities and continuous updates. Thank you for the coffee!',
-        donateCta: 'Buy Me a Coffee (Support Developer)', donateNotice: '* Voluntary donations support development and do not include a MEMTODO PRO license key.',
-        findrunBannerTitle: '0.1s Ultra-Fast File & App Launcher, FINDRUN', findrunBannerDesc: 'Summon FINDRUN with a hotkey to search and launch folders or files in 0.1 seconds. Pairs seamlessly with MEMTODO.', findrunBannerCta: 'Explore FINDRUN',
-        faqTitle: 'Frequently Asked Questions',
-        faq1Q: 'Q. Windows or macOS shows a security prompt or "is damaged and can\'t be opened" on first launch. Is it safe?',
-        faq2Q: 'Q. How do activation and hardware replacement rules work for PRO?',
-        faq3Q: 'Q. Do I need to uninstall the old version when updating?',
-        footerGuide: 'User Manual', footerTerms: 'Terms & Refund Policy', footerPrivacy: 'Privacy Policy', footerDonate: '☕ Support Developer'
+        navGuide: 'User Guide', navPricing: 'Pricing', navThemeToggle: 'Light Mode',
+        heroTitle: 'SINYWORK LAB Official User Manual',
+        heroDesc: 'Complete guide for MEMTODO (Windows & macOS Apple Silicon/Intel) and FINDRUN — from installation and security bypass to shortcuts, file drop, backup, and PRO activation.',
+        tocLabel: 'CONTENTS',
+        tocPart1: 'Installation & OS Security',
+        tocPart2: 'MEMTODO User Manual',
+        toc2: '· Notes, Sections & Tasks', toc3: '· Drag & Drop Files & Folders',
+        toc4: '· Multi-Select & Auto Window Snap', toc5: '· Calendar & Custom Alerts', toc6: '· Shortcuts & Tray / Menu Bar',
+        toc7: '· Backup, Restore & Updates',
+        tocPart3: 'FINDRUN User Guide',
+        footerGuide: 'User Manual',
+        footerTerms: 'Terms & Refund Policy',
+        footerPrivacy: 'Privacy Policy',
+        footerDonate: '☕ Support Developer'
       },
       'ja': {
-        navGuide: '取扱説明書', navPricing: '料金プラン', navLifetimeBadge: '買い切り', navThemeToggle: 'ライトモード',
-        heroBadge: 'Windows 10/11 & macOS 公式対応 · サブスクなしの買い切りツール',
-        heroTitle: 'デスクトップ上の最強の<br class="hidden sm:inline" />業務パートナー、MEMTODO',
-        heroDesc: '単なる付箋メモを超え、見出し別の進捗ゲージ、付箋一体型カレンダー、ファイル・フォルダのドラッグ連携、カスタム締切通知まで搭載。外部サーバー送信なしでPC内に100%安全保存されます。',
-        heroCtaDownload: '無料ダウンロード (Windows · Mac)', heroCtaGuide: '取扱説明書',
-        trustLocal: '100%ローカル保存（サーバー送信ゼロ）', trustLang: 'アプリ内8言語UI対応', trustTrial: '7日間PRO無料体験付き',
-        mockBadge: '実際のレイアウト体験（クリックして試せます！）',
-        demoSectionTitle: '数秒でわかるコア機能の動きプレビュー', demoSectionDesc: 'フォルダのドラッグ連携、付箋間の見出し・タスク移動、カレンダー下部からの即時登録まで実際の操作フローをご覧ください。',
-        demo1Badge: 'DEMO 01 · ドラッグ＆ワンクリック起動', demo1Title: 'エクスプローラー・Finderから直接リンク', demo1Desc: '作業フォルダやPDFをタスク上へドロップすると即座にリンクバッジが生成され、クリック一発で開けます。',
-        demo2Badge: 'DEMO 02 · 付箋間の見出し・タスク移動', demo2Title: '別の付箋へ見出しやタスクを自由に移動', demo2Desc: '見出しグループや複数選択したタスクを別のプロジェクト付箋へドラッグして簡単に業務を再配置できます。',
-        demo3Badge: 'DEMO 03 · カレンダー下部で即タスク適用', demo3Title: 'カレンダーを開いて下部から即タスク適用', demo3Desc: '付箋の横に結合した月間カレンダーで日付を選び、下部入力欄からタスクを直接追加・適用できます。',
-        compTitle: '従来のメモ・タスク管理ツールとの違い', compDesc: 'デスクトップ付箋の手軽さと本格的な日程・ファイル管理を1つに統合しました。',
-        compColFeature: '比較項目', compColBasic: 'OS標準の付箋アプリ', compColCloud: '一般的なクラウドToDoアプリ',
-        compR1: 'デスクトップ最前面固定＆マグネット整列', compR1B: '手動配置のみ', compR1C: '別ウィンドウ・ブラウザが必要', compR1P: 'ピン留め固定＋ワンクリック自動整列',
-        compR2: '作業フォルダ・ファイルのドラッグ連携', compR2B: '非対応', compR2C: 'クラウドへのアップロードが必要', compR2P: 'ローカルパス即時連携・ワンクリック起動',
-        compR3: '見出しセクション＆リアルタイム進捗バー', compR3B: '単純なテキストのみ', compR3C: '一部対応', compR3P: '見出し別完了ゲージを自動計算',
-        compR4: '付箋一体型の月間カレンダー', compR4B: '非対応', compR4C: '画面・タブ切り替えが必要', compR4P: '付箋の左右に自動マグネット結合',
-        compR5: 'データセキュリティ（外部サーバー送信）', compR5B: 'ローカル保存', compR5C: '外部クラウドサーバーに保存', compR5P: '100%ローカルPC保存・サーバー送信ゼロ',
-        compR6: '料金体系', compR6B: '無料（機能制限あり）', compR6C: '毎月の継続サブスク課金', compR6P: '1回買い切り永久ライセンス・月額なし',
-        featuresTitle: '実務のワークフローに合わせた6つのこだわり',
-        featuresDesc: 'テキスト入力だけの付箋とは異なり、<br class="hidden sm:inline" />実際の作業ファイルと締切時間まで1つの画面でコントロールします。',
-        feat1Title: '見出しセクション＆リアルタイム進捗バー', feat1Desc: 'プロジェクトや担当者ごとに見出しを分け、完了率をゲージで確認。Ctrl/Cmd・Shift複数選択で一括移動も可能です。',
-        feat2Title: 'ファイル＆フォルダのスマートドラッグ添付', feat2Desc: 'エクスプローラーやFinderからフォルダや資料をタスクへドラッグ＆ドロップ。ワンクリックで即座に開けます。',
-        feat3Title: '付箋一体型の月間スケジュールカレンダー', feat3Desc: '画面の空きスペースを自動判定して付箋の横にカレンダーが結合。期間指定やD-Day表示にも対応しています。',
-        feat4Title: '独自カスタム締切アラート通知', feat4Desc: '見逃しやすいOS標準通知の代わりに画面右下に専用通知カードを表示。事前通知や表示時間も調整可能です。',
-        feat5Title: 'ワンクリック折りたたみ・吸着＆一括整列', feat5Desc: '使わない付箋はタイトルバー状に折りたたんで画面端に縦並び配置でき、トレイメニューからワンクリック整列も可能です。',
-        feat6Title: '100%ローカルセキュリティ＆8言語UI対応', feat6Desc: '全データは自分のPC内（storage.json）にのみ保存。JSONバックアップ/復元と8言語UI切り替えに対応しています。',
-        guideBannerTitle: 'ショートカットからバックアップ・OS別設定まで網羅', guideBannerDesc: 'MEMTODO & FINDRUN 公式取扱説明書で Windows・macOS の導入方法と活用術をご確認いただけます。', guideBannerCta: '取扱説明書を開く',
-        usecaseSectionTitle: '職種別のデスクトップ活用レイアウト例', usecaseSectionDesc: '業務スタイルに合わせてダークモード・パステルテーマ・一体型カレンダー・折りたたみ縦並び配置を組み合わせられます。',
-        uc1Tag: 'エンジニア · デザイナー', uc1Title: 'デザイン・ビルドフォルダ直結＆ダークモード', uc1Desc: 'バージョン別のデザインフォルダや出力先を見出しごとに固定し、目に優しいダークモードで配置します。',
-        uc2Tag: '企画 · PM · マーケター', uc2Title: '月間カレンダー＋外注・締切D-Day一括管理', uc2Desc: '左側にカレンダーを結合して進行スケジュールを把握し、提案書や見積書ファイルを各タスクに紐づけます。',
-        uc3Tag: '一般事務 · フリーランス', uc3Title: '定期請求・報告スケジュール＆定時アラート通知', uc3Desc: '毎週・毎月の定例報告や請求書発行を繰り返し予定で登録し、画面右下の専用通知で締切漏れを防ぎます。',
-        uc4Tag: '複数プロジェクト · マルチタスク', uc4Title: 'ワンクリック折りたたみ＆色別縦ドッキング配置', uc4Desc: '複数案件を同時進行する際、付箋をバー状にコンパクトに折りたたんで画面端に並べ、必要な時だけクリックで展開します。',
-        reviewSectionTitle: '先行ユーザーのリアルな一言レビュー', reviewSectionDesc: '毎日デスクでファイルと締切を扱う実務者から高く評価されているポイントです。',
-        rev1Quote: '「プロジェクトフォルダをタスクにドラッグしてクリック一発で開けるのが本当に便利。エクスプローラーを探す時間が激減しました。」', rev1Author: 'キム*フン · UI/UXデザイナー',
-        rev2Quote: '「社内セキュリティ規定でクラウドメモが使えませんでしたが、PC内ローカル保存でカレンダーまで結合できるので即導入しました。」', rev2Author: 'パク*ヨン · ITサービス企画',
-        rev3Quote: '「毎月のサブスク課金に疲れていましたが、一度の買い切りで永久に使えるので迷わず購入しました。動作も非常に軽快です。」', rev3Author: 'イ*ス · フリーランスエンジニア',
-        rev4Quote: '「画面右下に独立して出る締切通知のおかげで、外注納品や週次報告を一度も逃していません。ダークモードも洗練されています。」', rev4Author: 'チェ*ジ · ブランドマーケター',
-        dlTitle: 'お使いのOSに合わせてダウンロードしてください', dlDesc: 'すべてのインストーラーに無料版と7日間PRO無料体験が含まれています。',
-        dlWinDesc: 'Windows 10 / 11 (64-bit) PC用の標準インストーラーです。', dlWinBtn: 'Windows版をダウンロード',
-        dlMacArmDesc: '2020年後半以降発売の M1, M2, M3, M4 チップ搭載 Mac 専用です。', dlMacArmBtn: 'Mac (M1〜M4) ダウンロード',
-        dlMacIntelDesc: '2020年以前発売の Intel プロセッサ搭載 Mac 専用です。', dlMacIntelBtn: 'Mac (Intel) ダウンロード',
-        dlMacTip: '💡 <strong>動作環境：</strong>Windows 10/11 (64-bit) · macOS 12 Monterey 以上（Apple M1〜M4 / Intel）<br />初回起動時に「壊れているため開けません」と表示された場合は、アプリケーションフォルダへ移動後、ターミナルで <code class="bg-slate-800 text-emerald-300 px-1.5 py-0.5 rounded font-mono">xattr -cr /Applications/MEMTODO.app</code> を実行してください',
-        pricingTitle: '毎月のサブスク課金なし、<br class="hidden sm:inline" />一度の購入で毎日の業務時間を短縮', pricingDesc: 'アプリ上部の王冠(👑)アイコンから7日間PRO無料体験をお試しいただけます。',
-        freeBadge: '永久無料', freeSub: '/ 期限なし', freeNote: 'シンプルな付箋と基本的なタスク管理に最適です。',
-        freeF1: '付箋作成＆無制限の見出し・タスク', freeF2: '基本5色のパステルテーマ', freeF3: 'マグネット吸着・ウィンドウ整列・JSONバックアップ', freeF4: 'アプリ内8言語UI対応', freeF5: 'アプリ上部の王冠アイコンから7日間PRO無料体験を開始', freeCta: '無料版をダウンロード',
-        proPromo: 'v1.0 リリース記念 先着100名限定特価', proSub: '永久ライセンス（$7.99 USD / 9,900 KRW · 買い切り）', proNote: '1 PC/Mac 永久帰属 · v1.x 全アップデート無料',
-        proF1: '付箋ウィンドウを無制限に作成・同時配置', proF2: 'ファイル＆フォルダのドラッグ添付と即座起動', proF3: '一体型月間カレンダー＆カスタムカラーテーマ', proF4: '独自締切アラート（事前通知＋表示時間設定）', proF5: 'ダークモード・繰り返し予定・完了自動整理・ショートカット設定', proCta: 'PRO永久ライセンス購入・認証案内',
-        modalTitle: 'リリース記念 先着100名限定特価 · $7.99 USD', modalSubtitle: '定価 $11.99 → 1回のお支払いで 1 PC/Mac 永久利用可能',
-        modalStep1Label: 'Step 1. お支払い方法を選択', modalCardTitle: 'クレジットカード / Apple Pay 即時決済', modalCardDesc: 'Visa · Mastercard · Apple Pay (Polar · $7.99 USD)',
-        modalKakaoTitle: '韓国ウォン振込 / KakaoTalk お問い合わせ', modalKakaoDesc: 'KRW送金および1:1ライセンス発行サポート (₩9,900)',
-        modalStep2Label: 'Step 2. 決済完了後のライセンス発行申請 (HWID入力)', modalStep2Desc: '決済後、注文番号（またはメールアドレス）とアプリ上部の王冠アイコンに表示される16桁のデバイスコード（HWID）を入力し、tinyworklab@gmail.com までお送りください。',
-        modalCopyFormBtn: '申請フォームをコピーする', modalMailBtn: 'メールで送信する', modalTrialLink: '先にインストールして7日間無料体験を始める', modalClose: '閉じる',
-        donateTitle: 'TINYWORK LAB のツールはお役に立ちましたか？', donateDesc: '温かいコーヒー1杯のご支援が、広告なしの超軽量ユーティリティの継続的なアップデートと無料ツール開発の大きな励みになります。',
-        donateCta: '開発者にコーヒー1杯を奢る (Buy Me a Coffee)', donateNotice: '※ 開発者への寄付は自発的な応援であり、MEMTODO PRO ライセンスキーは発行されません。',
-        findrunBannerTitle: '0.1秒超高速ファイル・アプリランチャー FINDRUN', findrunBannerDesc: 'よく使うフォルダや書類をショートカット一発で検索・起動。MEMTODOと併用することで作業効率が倍増します。', findrunBannerCta: 'FINDRUN の詳細を見る',
-        faqTitle: 'よくある質問',
-        faq1Q: 'Q. WindowsやmacOSで初回起動時にセキュリティ警告や「壊れているため開けません」と表示されます。安全ですか？',
-        faq2Q: 'Q. PRO永久ライセンス購入後の認証手順と機種変更規定を教えてください。',
-        faq3Q: 'Q. 新バージョンへ更新する際、古いアプリを削除する必要がありますか？',
-        footerGuide: '取扱説明書', footerTerms: '利用規約・返金ポリシー', footerPrivacy: 'プライバシーポリシー', footerDonate: '☕ 開発者を応援する'
+        navGuide: '取扱説明書', navPricing: '料金プラン', navThemeToggle: 'ライトモード',
+        heroTitle: 'SINYWORK LAB 公式取扱説明書',
+        heroDesc: 'MEMTODO（Windows・macOS M1〜M4/Intel）およびFINDRUNのインストール手順、セキュリティ警告の解除方法、ショートカット、バックアップ、PRO認証までわかりやすく解説します。',
+        tocLabel: '目次 (CONTENTS)',
+        tocPart1: 'インストールとセキュリティ解除',
+        tocPart2: 'MEMTODO 取扱説明書',
+        toc2: '・付箋メモ・見出し・タスク基本', toc3: '・ファイル・フォルダのドラッグ添付',
+        toc4: '・複数選択の一括移動とウィンドウ整列', toc5: '・一体型カレンダーとカスタム通知', toc6: '・ショートカットとトレイ/メニューバー',
+        toc7: '・バックアップ・復元と更新',
+        tocPart3: 'FINDRUN 使い方ガイド',
+        footerGuide: '取扱説明書',
+        footerTerms: '利用規約・返金ポリシー',
+        footerPrivacy: 'プライバシーポリシー',
+        footerDonate: '☕ 開発者を応援する'
       },
       'zh-CN': {
-        navGuide: '使用说明书', navPricing: '价格方案', navLifetimeBadge: '终身买断', navThemeToggle: '浅色模式',
-        heroBadge: '官方支持 Windows 10/11 & macOS · 无订阅费终身买断工具',
-        heroTitle: '桌面端最高效的<br class="hidden sm:inline" />工作伙伴，MEMTODO',
-        heroDesc: '超越普通桌面便签，集分组待办进度条、一体化月历、文件与文件夹拖拽关联、自定义截止弹窗提醒于一体。数据100%本地存储，绝不上传云端服务器。',
-        heroCtaDownload: '免费下载 (Windows · Mac)', heroCtaGuide: '详细使用说明书',
-        trustLocal: '100%本地存储（零服务器上传）', trustLang: '软件内置8国语言界面', trustTrial: '内置7天PRO免费试用',
-        mockBadge: '真实界面交互体验（可直接点击试用！）',
-        demoSectionTitle: '数秒掌握核心交互动作动态预览', demoSectionDesc: '直观查看拖拽关联工作文件夹、跨便签移动分组与待办，以及在月历底部直接添加任务的真实体验。',
-        demo1Badge: 'DEMO 01 · 拖拽关联与一键打开', demo1Title: '从资源管理器或 Finder 直接拖入', demo1Desc: '将工作文件夹或 PDF 拖放到任务卡片上即可生成链接徽章，点击一次直接打开目标路径。',
-        demo2Badge: 'DEMO 02 · 跨便签移动分组与待办', demo2Title: '不同便签间自由拖拽小标题与待办', demo2Desc: '将分组小标题或多选的待办事项直接拖拽至其他项目便签，轻松调整工作分配。',
-        demo3Badge: 'DEMO 03 · 日历底部即时添加待办', demo3Title: '打开日历并在底部直接应用当日待办', demo3Desc: '在便签旁磁吸贴合的月历中点击日期，于底部输入框直接添加任务并同步管理 D-Day。',
-        compTitle: '与传统便签及待办工具有何不同？', compDesc: '将桌面便签的随手可用与专业日程、本地文件管理融为一体。',
-        compColFeature: '对比维度', compColBasic: '系统自带桌面便签', compColCloud: '常见云端待办软件',
-        compR1: '桌面置顶固定与磁吸排列', compR1B: '仅支持手动拖动', compR1C: '需打开独立软件或浏览器', compR1P: '图钉置顶 + 一键自动对齐',
-        compR2: '工作文件夹与文件拖拽关联', compR2B: '不支持', compR2C: '需上传至云端服务器', compR2P: '本地路径即时关联·一键直接打开',
-        compR3: '分组小标题与实时进度条', compR3B: '仅支持纯文本换行', compR3C: '部分支持', compR3P: '自动计算各分组完成百分比',
-        compR4: '便签一体化月度日历', compR4B: '不支持', compR4C: '需切换页面或标签页', compR4P: '自动磁吸贴合在便签左右侧',
-        compR5: '数据隐私（外部服务器传输）', compR5B: '本地存储', compR5C: '存储于外部云端服务器', compR5P: '100%本地电脑存储 · 零云端上传',
-        compR6: '收费模式', compR6B: '免费（功能基础）', compR6C: '按月持续订阅扣费', compR6P: '一次性买断终身使用 · 无订阅费',
-        featuresTitle: '专为高效办公打造的 6 大核心细节',
-        featuresDesc: '告别只能输入纯文本的传统便签，<br class="hidden sm:inline" />在一个轻量窗口中直接掌控工作文件与截止时间。',
-        feat1Title: '分组小标题与实时进度条', feat1Desc: '按项目或负责人拆分小标题，直观查看完成百分比。支持 Ctrl/Cmd 或 Shift 多选批量拖拽移动。',
-        feat2Title: '智能文件与文件夹拖拽附件', feat2Desc: '从资源管理器或 Finder 直接拖入文件夹或文档，自动识别文件夹与附件图标并支持一键打开。',
-        feat3Title: '便签一体化月度日历侧边栏', feat3Desc: '自动检测屏幕空间并吸附在便签旁，支持单日截止、起止日期范围、重复日程及 D-Day 倒计时。',
-        feat4Title: '独立自定义截止弹窗提醒', feat4Desc: '在屏幕右下角弹出醒目提醒卡片，支持准点、提前10分钟或自定义分钟提醒，并可调节弹窗停留时长。',
-        feat5Title: '一键折叠 · 窗口磁吸与批量对齐', feat5Desc: '暂不查看的便签可一键折叠成标题栏竖向靠边停靠，托盘菜单一键执行右侧竖排或网格平铺整理。',
-        feat6Title: '100%本地隐私安全与8国语言', feat6Desc: '所有数据仅保存在本地计算机 (storage.json)，支持一键 JSON 备份恢复与软件内8国语言切换。',
-        guideBannerTitle: '快捷键、数据备份及双系统安装全攻略', guideBannerDesc: '在 MEMTODO & FINDRUN 官方使用说明书中查看 Windows 与 macOS 详细教程。', guideBannerCta: '打开使用说明书',
-        usecaseSectionTitle: '适配不同岗位的桌面布局示例', usecaseSectionDesc: '自由组合深色模式、柔和主题、一体化月历与一键折叠停靠，打造专属桌面控制台。',
-        uc1Tag: '开发者 · 设计师', uc1Title: '设计稿与构建目录直连 & 深色模式', uc1Desc: '按版本拆分设计稿与构建文件夹路径并固定在分组下，搭配护眼深色模式高效工作。',
-        uc2Tag: '产品经理 · 策划 · 运营', uc2Title: '月度日历 + 外包排期与截止 D-Day 掌控', uc2Desc: '左侧吸附月历总览上线排期与会议周期，并将方案与报价单直接绑定至对应任务。',
-        uc3Tag: '行政办公 · 自由职业者', uc3Title: '周期性结算汇报 & 准点弹窗提醒', uc3Desc: '将每周汇报与每月开票设为自动重复日程，通过右下角专属弹窗避免遗漏截止时间。',
-        uc4Tag: '多项目并行 · 多任务处理', uc4Title: '一键折叠 & 按颜色竖向停靠排列', uc4Desc: '同时推进多个项目时，可将便签折叠成紧凑标题栏按颜色竖向排列在桌面一侧，需要时点击即刻展开。',
-        reviewSectionTitle: '抢先体验用户的真实一句话评价', reviewSectionDesc: '来自每天在电脑前高频处理文件与项目排期的实务工作者反馈。',
-        rev1Quote: '“把项目文件夹直接拖进待办里，点一下就能打开真的太省事了，每天翻找文件夹的时间少了一大半。”', rev1Author: '金*勋 · UI/UX 设计师',
-        rev2Quote: '“公司内网安全规定不能用云端笔记，MEMTODO 纯本地保存还能直接吸附月历，用了一天就决定买断了。”', rev2Author: '朴*妍 · IT 产品策划',
-        rev3Quote: '“受够了每月扣费的订阅制软件，一次买断终身拥有完全没有负担，体积小巧启动极快。”', rev3Author: '李*洙 · 独立开发者',
-        rev4Quote: '“右下角独立弹出的截止提醒非常醒目，再也没错过外包交付和周报时间，深色模式质感也很好。”', rev4Author: '崔*智 · 品牌市场运营',
-        dlTitle: '请根据您的操作系统选择对应安装包', dlDesc: '所有安装包均已内置免费版与 7 天 PRO 免费试用功能。',
-        dlWinDesc: '适用于常规 Windows 10 / 11 (64位) 台式机与笔记本电脑。', dlWinBtn: '下载 Windows 版',
-        dlMacArmDesc: '专为 2020 年底及之后发布的 M1, M2, M3, M4 芯片 Mac 打造。', dlMacArmBtn: '下载 Mac (M1~M4) 版',
-        dlMacIntelDesc: '专为 2020 年之前发布的 Intel 处理器 Mac 打造。', dlMacIntelBtn: '下载 Mac (Intel) 版',
-        dlMacTip: '💡 <strong>系统要求：</strong>Windows 10/11 (64-bit) · macOS 12 Monterey 及以上（Apple M1~M4 / Intel）<br />Mac 首次打开若提示“已损坏，无法打开”，请拖入“应用程序”文件夹后在终端运行：<code class="bg-slate-800 text-emerald-300 px-1.5 py-0.5 rounded font-mono">xattr -cr /Applications/MEMTODO.app</code>',
-        pricingTitle: '告别按月扣费订阅，<br class="hidden sm:inline" />一次买断永久节省每天工作时间', pricingDesc: '安装后点击软件顶部皇冠(👑)图标即可开启 7 天 PRO 免费试用。',
-        freeBadge: '永久免费', freeSub: '/ 无时间限制', freeNote: '适合轻量级桌面便签与日常待办清单管理。',
-        freeF1: '创建便签窗口，无限分组与待办', freeF2: '内置 5 种柔和护眼主题配色', freeF3: '窗口磁吸、一键排列及 JSON 备份恢复', freeF4: '软件内置 8 国语言界面切换', freeF5: '点击顶部皇冠图标开启 7 天 PRO 免费试用', freeCta: '下载免费版本',
-        proPromo: 'v1.0 首发特惠：前 100 名享首发价', proSub: '终身买断授权（$7.99 USD / 9,900 KRW · 一次性付费）', proNote: '绑定 1 台 PC/Mac · 免费包含 v1.x 全部功能更新',
-        proF1: '无限数量便签窗口同时创建与排列', proF2: '文件与文件夹拖拽关联及一键快速打开', proF3: '一体化月度日历与自定义主题颜色', proF4: '独立截止提醒弹窗（提前提醒 + 停留时间设置）', proF5: '夜间深色模式、重复日程、已完成自动归底、全局快捷键', proCta: 'PRO 终身版购买与激活指南',
-        modalTitle: '首发特惠（前 100 名）· $7.99 USD', modalSubtitle: '原价 $11.99 → 一次性付费，绑定 1 台 PC/Mac 终身使用',
-        modalStep1Label: '第 1 步：选择支付方式', modalCardTitle: '国际信用卡 / Apple Pay 即时支付', modalCardDesc: 'Visa · Mastercard · Apple Pay (Polar · $7.99 USD)',
-        modalKakaoTitle: '韩国银行转账 / KakaoTalk 客服咨询', modalKakaoDesc: '韩元转账及 1 对 1 密钥发放支持 (₩9,900)',
-        modalStep2Label: '第 2 步：付款后申请永久激活密钥 (填写 HWID)', modalStep2Desc: '付款完成后，请在下方输入订单号（或付款邮箱）以及 MEMTODO 顶部皇冠图标中的 16 位设备码 (HWID)，发送至 tinyworklab@gmail.com 即可。',
-        modalCopyFormBtn: '复制密钥申请模板', modalMailBtn: '通过邮件发送', modalTrialLink: '先下载安装并开启 7 天免费试用', modalClose: '关闭',
-        donateTitle: 'TINYWORK LAB 的工具是否提升了您的工作效率？', donateDesc: '您的自愿打赏将直接支持独立开发者持续更新无广告的轻量级办公工具，并推出更多实用免费软件！',
-        donateCta: '请开发者喝杯咖啡 (Buy Me a Coffee)', donateNotice: '※ 开发者打赏属于自愿支持，不包含 MEMTODO PRO 激活密钥。',
-        findrunBannerTitle: '0.1秒极速文件与程序启动器，FINDRUN', findrunBannerDesc: '按下快捷键即可秒搜并打开常用文件夹与文档，与 MEMTODO 搭配使用效率翻倍。', findrunBannerCta: '了解 FINDRUN 详情',
-        faqTitle: '常见问题解答',
-        faq1Q: 'Q. Windows 或 macOS 首次安装时弹出安全提示或“已损坏，无法打开”，软件安全吗？',
-        faq2Q: 'Q. 购买 PRO 终身买断版后如何激活授权及更换设备？',
-        faq3Q: 'Q. 发布新版本更新时，需要先卸载旧版本再安装吗？',
-        footerGuide: '详细使用说明书', footerTerms: '使用条款与退款政策', footerPrivacy: '隐私政策', footerDonate: '☕ 打赏支持开发者'
+        navGuide: '使用说明书', navPricing: '价格方案', navThemeToggle: '浅色模式',
+        heroTitle: 'SINYWORK LAB 官方使用说明书',
+        heroDesc: '涵盖 MEMTODO（Windows · macOS Apple Silicon/Intel）与 FINDRUN 的安装指南、系统安全提示解除、快捷键、文件拖拽关联、本地备份及 PRO 永久激活教程。',
+        tocLabel: '目录 (CONTENTS)',
+        tocPart1: '安装及系统安全提示解除',
+        tocPart2: 'MEMTODO 使用说明书',
+        toc2: '· 便签、分组标题与待办基础', toc3: '· 文件与文件夹拖拽关联',
+        toc4: '· 多选批量移动与窗口自动对齐', toc5: '· 一体化月历与自定义截止提醒', toc6: '· 核心快捷键与托盘/菜单栏',
+        toc7: '· 数据备份恢复与版本更新',
+        tocPart3: 'FINDRUN 使用说明',
+        footerGuide: '详细使用说明书',
+        footerTerms: '使用条款与退款政策',
+        footerPrivacy: '隐私政策',
+        footerDonate: '☕ 打赏支持开发者'
       }
+    };
+
+    const guideBodies = {
+      'ko': `
+        <section id="sec-install" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-5">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">1</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">설치 및 OS 보안 경고 해제 안내 (Windows · macOS)</h2>
+          </div>
+          <div class="space-y-6 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700 space-y-3">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <h3 class="font-black text-base text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-xs font-extrabold">Windows</span>
+                  Windows 10 / 11 (64-bit) 설치 방법
+                </h3>
+                <code class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-2 py-0.5 rounded font-mono text-xs text-slate-700 dark:text-slate-200">MEMTODO-Setup-1.0.0.exe</code>
+              </div>
+              <p class="text-xs sm:text-sm">다운로드한 <code class="bg-white dark:bg-slate-900 px-1.5 py-0.5 rounded border dark:border-slate-700 font-mono text-xs">MEMTODO-Setup-1.0.0.exe</code> 파일을 실행하면 별도의 복잡한 경로 지정 없이 자동으로 설치되고 바탕화면 바로가기가 생성됩니다.</p>
+              <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-slate-800 dark:text-slate-200">
+                <div class="font-extrabold text-amber-900 dark:text-amber-300 flex items-center gap-1.5 mb-1">
+                  <i data-lucide="shield-alert" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+                  'Windows의 PC 보호' 파란색 SmartScreen 창이 나타나는 경우
+                </div>
+                <p class="text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+                  1) 팝업 본문 좌측 하단의 <strong><u>추가 정보</u></strong> 글자를 클릭합니다.<br />
+                  2) 우측 하단에 새로 나타나는 <strong>[실행]</strong> 버튼을 클릭하면 정상적으로 설치가 진행됩니다.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700 space-y-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <h3 class="font-black text-base text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-slate-900 dark:bg-slate-700 text-white text-xs font-extrabold">macOS</span>
+                  Mac (Apple Silicon M1~M4 / Intel) 설치 방법
+                </h3>
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">macOS 12 Monterey 이상 권장</span>
+              </div>
+              <div class="overflow-x-auto bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                <table class="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr class="border-b border-slate-200 dark:border-slate-700 bg-slate-100/70 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                      <th class="py-2.5 px-3.5 font-extrabold">내 Mac 기종 구분</th>
+                      <th class="py-2.5 px-3.5 font-extrabold">설치 파일명</th>
+                      <th class="py-2.5 px-3.5 font-extrabold">대상 모델</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                    <tr>
+                      <td class="py-2.5 px-3.5 font-extrabold text-blue-700 dark:text-blue-400">Apple Silicon (M1~M4)</td>
+                      <td class="py-2.5 px-3.5 font-mono">MEMTODO-1.0.0-arm64.dmg</td>
+                      <td class="py-2.5 px-3.5">2020년 11월 이후 출시된 M1, M2, M3, M4 칩 탑재 MacBook / iMac</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3.5 font-extrabold text-slate-800 dark:text-slate-200">Intel 프로세서</td>
+                      <td class="py-2.5 px-3.5 font-mono">MEMTODO-1.0.0.dmg (x64)</td>
+                      <td class="py-2.5 px-3.5">2020년 이전 출시된 Intel 칩 탑재 구형 MacBook / iMac</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-400">💡 <strong>칩셋 확인:</strong> 화면 좌측 상단 <strong> → [이 Mac에 관하여]</strong>에서 'Apple M1~M4' 또는 'Intel'을 확인하세요. 다운로드한 <code class="font-mono">.dmg</code>를 열고 MEMTODO 아이콘을 <strong>Applications(응용 프로그램)</strong> 폴더로 드래그합니다.</p>
+              <div class="p-4 rounded-xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/60 text-slate-800 dark:text-slate-200 space-y-3">
+                <div class="font-extrabold text-rose-900 dark:text-rose-300 flex items-center gap-1.5">
+                  <i data-lucide="lock-open" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+                  macOS 보안 경고 또는 '손상되었기 때문에 열 수 없습니다' 창이 뜨는 경우
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-rose-300 dark:border-rose-800/70 shadow-2xs space-y-1.5 text-xs">
+                  <div class="font-extrabold text-rose-700 dark:text-rose-400 flex items-center gap-1.5">
+                    <span>★ 'MEMTODO'은(는) 손상되었기 때문에 열 수 없습니다 해결법 (터미널 명령어)</span>
+                  </div>
+                  <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Apple 공증 전 앱을 브라우저로 다운로드할 때 macOS가 붙이는 격리 속성 때문에 나타나는 정상적인 현상입니다. <strong>[휴지통으로 이동]을 누르지 말고 [취소]</strong>를 누른 뒤 아래 순서대로 실행하세요.
+                  </p>
+                  <p class="text-slate-700 dark:text-slate-200 leading-relaxed">
+                    1) MEMTODO 앱을 <strong>Applications(응용 프로그램)</strong> 폴더로 옮깁니다.<br />
+                    2) Mac에서 <strong>터미널(Terminal)</strong>을 열고(<kbd>Cmd</kbd>+<kbd>Space</kbd> → <code class="font-mono">터미널</code>) 아래 명령어를 입력 후 Enter를 누릅니다:
+                  </p>
+                  <div class="bg-slate-900 text-emerald-300 font-mono text-xs px-3 py-2 rounded-lg select-all border border-slate-700">
+                    xattr -cr /Applications/MEMTODO.app
+                  </div>
+                  <p class="text-slate-500 dark:text-slate-400">이후 응용 프로그램 폴더에서 MEMTODO를 더블클릭하면 경고 없이 즉시 실행됩니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div id="sec-memtodo" class="scroll-mt-24 pt-2 flex items-center justify-between border-b-2 border-blue-500/40 pb-2.5">
+          <span class="text-lg sm:text-xl font-black text-blue-600 dark:text-blue-400">MEMTODO 사용설명서</span>
+          <span class="text-xs font-mono text-slate-400">DESKTOP WORKSPACE</span>
+        </div>
+
+        <section id="sec-basic" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">2</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">메모장 · 소제목 · 할 일 기본 사용법</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-600 dark:text-slate-300">
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700">
+              <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5">📌 메모장 생성 및 항상 위 고정</h3>
+              <ul class="space-y-1.5 text-xs leading-relaxed">
+                <li>• 상단 <strong>[+ 새 메모]</strong> 버튼으로 프로젝트별 메모장을 추가합니다. (무료 1개 / PRO 무제한)</li>
+                <li>• <strong>압정(Pin) 아이콘</strong>을 켜면 다른 창을 클릭해도 메모장이 항상 화면 맨 위에 유지됩니다.</li>
+                <li>• 메모장 제목, 소제목, 할 일 텍스트를 클릭하면 즉시 인라인 편집이 가능합니다.</li>
+              </ul>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700">
+              <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5">📊 소제목 그룹화 및 진행률 바</h3>
+              <ul class="space-y-1.5 text-xs leading-relaxed">
+                <li>• 하단 <strong>[+ 소제목 추가]</strong>를 눌러 업무 단계별로 카드를 나눌 수 있습니다.</li>
+                <li>• 소제목 좌측 화살표(<code class="font-mono">▼</code>)를 눌러 완료된 그룹을 접어둘 수 있습니다.</li>
+                <li>• 빗자루 아이콘을 누르면 완료(체크)된 항목만 리스트 맨 아래로 깔끔하게 정렬됩니다.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="sec-filedrop" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-amber-400 text-slate-900 font-black text-sm flex items-center justify-center">3</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">스마트 파일 & 폴더 드래그 첨부 (PRO)</h2>
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/70 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+            <li>• <strong>새 할 일로 바로 추가:</strong> 탐색기/Finder에서 소제목 빈 곳으로 파일이나 폴더를 드롭하면 파일명 그대로 새 할 일이 생성됩니다.</li>
+            <li>• <strong>기존 할 일 아래에 첨부:</strong> 이미 작성된 할 일 카드 위로 드롭하면 해당 항목 아래에 파란색 링크 배지로 첨부됩니다.</li>
+            <li>• <strong>자동 아이콘 구분:</strong> 폴더는 <strong>노란 폴더 아이콘(📁)</strong>, 문서는 <strong>클립 아이콘(📎)</strong>으로 구분되며 클릭 즉시 열립니다.</li>
+          </ul>
+        </section>
+
+        <section id="sec-multiselect" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">4</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">다중 선택 일괄 이동 & 창 자동 정렬</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+            <div class="p-4 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/60">
+              <h3 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">☑️ 여러 할 일 한 번에 이동/삭제</h3>
+              <p>할 일 좌측 핸들(<code class="font-mono">⋮⋮</code>)을 <kbd>Ctrl</kbd>(Mac은 <kbd>Cmd</kbd>)+클릭하거나 <kbd>Shift</kbd>+클릭하여 다중 선택한 뒤 다른 소제목이나 메모장으로 일괄 이동할 수 있습니다.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/60">
+              <h3 class="font-extrabold text-slate-900 dark:text-white text-sm mb-1.5">🧲 자석 스냅 & 트레이 일괄 창 정렬</h3>
+              <p>모니터 가장자리와 메모장 테두리끼리 자석처럼 맞물리며, 트레이/메뉴바 아이콘에서 <strong>[우측 세로 정렬]</strong> 또는 <strong>[바둑판 격자 정렬]</strong>을 실행할 수 있습니다.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="sec-calendar" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white font-black text-sm flex items-center justify-center">5</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">일체형 캘린더 & 자체 커스텀 마감 알림</h2>
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <li>• <strong>스마트 위치 결합:</strong> 달력 아이콘을 누르면 모니터 좌·우 여유 공간을 계산해 메모장 바로 옆에 달력이 결합됩니다.</li>
+            <li>• <strong>단일일 / 기간 & 반복 설정:</strong> [단일일] 버튼을 눌러 [기간] 모드로 전환하면 시작일~마감일 범위를 지정할 수 있으며 반복 일정도 지원합니다.</li>
+            <li>• <strong>자체 커스텀 알림 팝업:</strong> 설정에서 알림 표시 시간(3초~30초 또는 수동 닫기)과 사전 알림 시간을 조절할 수 있습니다.</li>
+          </ul>
+        </section>
+
+        <section id="sec-shortcuts" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-black text-sm flex items-center justify-center">6</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">핵심 단축키 & 시스템 트레이/메뉴바 안내</h2>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+                  <th class="py-2.5 px-3 font-extrabold">단축키 (Win · Mac)</th>
+                  <th class="py-2.5 px-3 font-extrabold">동작 설명</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                <tr><td class="py-2.5 px-3 font-semibold"><kbd>Alt</kbd>+<kbd>M</kbd> / <kbd>Option</kbd>+<kbd>M</kbd></td><td class="py-2.5 px-3">모든 메모장 창 한 번에 보이기 / 숨기기 토글</td></tr>
+                <tr><td class="py-2.5 px-3 font-semibold"><kbd>Ctrl</kbd>+<kbd>N</kbd> / <kbd>Cmd</kbd>+<kbd>N</kbd></td><td class="py-2.5 px-3">새 메모장 창 추가 (PRO)</td></tr>
+                <tr><td class="py-2.5 px-3 font-semibold"><kbd>Ctrl</kbd>(<kbd>Cmd</kbd>) / <kbd>Shift</kbd> + 클릭</td><td class="py-2.5 px-3">할 일 항목 다중 선택 및 일괄 이동/삭제</td></tr>
+                <tr><td class="py-2.5 px-3 font-semibold"><kbd>Esc</kbd></td><td class="py-2.5 px-3">다중 선택 해제 또는 열린 팝업 닫기</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-3">💡 창 닫기(<code class="font-mono">✕</code>)를 눌러도 트레이/메뉴바에 상주하며 마감 알림을 유지합니다. 완전 종료는 트레이 아이콘 → <strong>[MEMTODO 완전 종료]</strong>를 눌러주세요.</p>
+        </section>
+
+        <section id="sec-backup" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white font-black text-sm flex items-center justify-center">7</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">데이터 백업 · 복원 및 프로그램 업데이트</h2>
+          </div>
+          <div class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p>• <strong>로컬 저장 경로:</strong> Windows <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded font-mono text-xs">%APPDATA%\MEMTODO\storage.json</code> / macOS <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded font-mono text-xs">~/Library/Application Support/MEMTODO/storage.json</code></p>
+            <p>• <strong>백업 및 기기 이전:</strong> 설정의 <strong>[백업 파일 내보내기 / 불러오기]</strong>(<code class="font-mono text-xs">.json</code>)를 이용하면 Windows와 macOS 간에도 데이터를 그대로 이전할 수 있습니다.</p>
+            <p>• <strong>무손실 업데이트:</strong> 기존 프로그램을 지우지 않고 새 버전 설치 파일을 그대로 덮어쓰기 설치하면 모든 데이터와 PRO 라이선스가 유지됩니다.</p>
+          </div>
+        </section>
+
+        <section id="sec-license" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-amber-500 text-slate-950 font-black text-sm flex items-center justify-center">8</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">PRO 7일 체험 및 영구인증</h2>
+          </div>
+          <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <li>메모장 상단 <strong>왕관 아이콘(PRO)</strong>에서 <strong>[7일 무료 체험 시작]</strong>으로 즉시 모든 PRO 기능을 테스트할 수 있습니다.</li>
+            <li>영구 소장권 구매(런칭 특가 9,900원 / $7.99 · 1 PC/Mac 귀속) 시 표시된 16자리 <strong>기기 코드(HWID)</strong>를 주문번호와 함께 <a href="mailto:sinyworklab@gmail.com" class="text-blue-600 dark:text-blue-400 underline font-bold">sinyworklab@gmail.com</a> 또는 카카오톡 채널로 보내주세요.</li>
+            <li>발급받은 라이선스 키를 입력하고 <strong>[인증하기]</strong>를 누르면 기한 제한 없는 영구 PRO 라이선스로 전환됩니다.</li>
+          </ol>
+        </section>
+
+        <section id="findrun-guide" class="scroll-mt-24 bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-lg space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-400/20 text-emerald-300 font-black text-xs">FINDRUN</span>
+              <h2 class="text-xl sm:text-2xl font-black">FINDRUN 사용 설명서 (Windows)</h2>
+            </div>
+            <a href="https://github.com/sinyworklab/FINDRUN-Release/releases/download/v1.0.1/FINDRUN_Setup_V1.0.1.exe" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 transition-colors">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Windows용 설치 파일 다운로드 (V1.0.1)
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-300">
+            <div class="bg-white/5 border border-white/10 p-4 rounded-2xl space-y-2">
+              <h3 class="font-extrabold text-emerald-300 text-sm">⚡ 호출 · 검색 · 내부 폴더 탐색</h3>
+              <ul class="space-y-1.5 text-xs leading-relaxed">
+                <li>• <strong>창 호출 및 숨김:</strong> 기본 단축키 <kbd>Alt</kbd>+<kbd>Space</kbd>(설정에서 키 조합 직접 녹화 가능)로 창을 띄우고 <kbd>Esc</kbd> 또는 트레이 클릭으로 숨깁니다.</li>
+                <li>• <strong>빠른 검색 및 필터:</strong> 한글 초성(<code class="font-mono text-emerald-300">ㅍㄹㅈㅌ</code>), 띄어쓰기 AND 검색, 카테고리(전체·문서·도면·이미지·압축), 포함/제외 확장자 및 제외 폴더 설정을 지원합니다.</li>
+                <li>• <strong>내부 폴더 탐색:</strong> 폴더 항목을 열면 FINDRUN 내부에서 하위 목록을 바로 탐색할 수 있으며, <kbd>Backspace</kbd> 또는 상단 <strong>⬅ / ⬆ / Esc</strong> 버튼으로 이전·상위·전체 검색으로 이동합니다.</li>
+                <li>• <strong>7종 정렬:</strong> 정확도순, 최신순, 오래된순, 이름순, 큰 파일순, 작은 파일순, 확장자순 메뉴로 결과를 빠르게 정렬합니다.</li>
+              </ul>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 p-4 rounded-2xl space-y-2">
+              <h3 class="font-extrabold text-emerald-300 text-sm">🖥️ 미리보기 · 창 제어 · 명령어 실행</h3>
+              <ul class="space-y-1.5 text-xs leading-relaxed">
+                <li>• <strong>미리보기 패널:</strong> 우측 미리보기 패널에서 문서·이미지·PPT 등을 확인할 수 있으며, PPT는 별도 분리 렌더링 및 캐싱으로 화면 멈춤을 줄였습니다.</li>
+                <li>• <strong>창 크기·최대화·우측 끝 확장:</strong> <code class="font-mono">—</code> / <code class="font-mono">□</code> / <code class="font-mono">✕</code> 버튼과 최대화·복원을 지원합니다. 화면 우측 끝에 둔 상태에서 미리보기를 켜면 좌측으로 넓어졌다가 끌 때 원래 자리로 돌아옵니다.</li>
+                <li>• <strong>즐겨찾기 &amp; 앱데이터 저장:</strong> 자주 쓰는 폴더와 파일을 드래그해 상단 즐겨찾기에 등록할 수 있으며, 설정·캐시는 <code class="font-mono text-emerald-300">AppData</code>에 안전하게 저장됩니다.</li>
+                <li>• <strong>시스템 명령어(<code class="font-mono">&gt;</code>):</strong> 검색창에 <code class="font-mono text-emerald-300">&gt;cmd</code>, <code class="font-mono text-emerald-300">&gt;calc</code>, <code class="font-mono text-emerald-300">&gt;control</code> 등 <code class="font-mono">&gt;</code> 접두사를 입력해 Windows 명령을 바로 실행합니다.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      `,
+      'en': `
+        <section id="sec-install" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-5">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">1</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Installation & OS Security Warning Bypass (Windows · macOS)</h2>
+          </div>
+          <div class="space-y-6 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700 space-y-3">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <h3 class="font-black text-base text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-xs font-extrabold">Windows</span>
+                  Windows 10 / 11 (64-bit) Installation
+                </h3>
+                <code class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-2 py-0.5 rounded font-mono text-xs text-slate-700 dark:text-slate-200">MEMTODO-Setup-1.0.0.exe</code>
+              </div>
+              <p class="text-xs sm:text-sm">Run <code class="bg-white dark:bg-slate-900 px-1.5 py-0.5 rounded border dark:border-slate-700 font-mono text-xs">MEMTODO-Setup-1.0.0.exe</code> to install automatically and create a desktop shortcut.</p>
+              <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-slate-800 dark:text-slate-200">
+                <div class="font-extrabold text-amber-900 dark:text-amber-300 flex items-center gap-1.5 mb-1">
+                  <i data-lucide="shield-alert" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+                  If Windows SmartScreen ("Windows protected your PC") appears:
+                </div>
+                <p class="text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+                  1) Click <strong><u>More info</u></strong> on the left side of the dialog.<br />
+                  2) Click the <strong>[Run anyway]</strong> button that appears at the bottom right.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700 space-y-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <h3 class="font-black text-base text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-slate-900 dark:bg-slate-700 text-white text-xs font-extrabold">macOS</span>
+                  Mac (Apple Silicon M1–M4 / Intel) Installation
+                </h3>
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">macOS 12 Monterey or later</span>
+              </div>
+              <div class="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-rose-300 dark:border-rose-800/70 shadow-2xs space-y-1.5 text-xs">
+                <div class="font-extrabold text-rose-700 dark:text-rose-400">★ Fix for "'MEMTODO' is damaged and can't be opened" (Terminal Command)</div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Click <strong>[Cancel]</strong> (do NOT click Move to Trash), drag MEMTODO into <strong>Applications</strong>, open <strong>Terminal</strong>, and run:
+                </p>
+                <div class="bg-slate-900 text-emerald-300 font-mono text-xs px-3 py-2 rounded-lg select-all border border-slate-700">
+                  xattr -cr /Applications/MEMTODO.app
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sec-basic" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">2</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Sticky Notes, Sub-Sections & Basic Task Management</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Create sticky notes per project (1 Free / Unlimited PRO), toggle Always-on-Top Pin, group tasks by sub-section, and sort completed tasks to the bottom in one click.</p>
+        </section>
+
+        <section id="sec-filedrop" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-amber-400 text-slate-900 font-black text-sm flex items-center justify-center">3</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Smart File & Folder Drag-and-Drop Attachment (PRO)</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Drag any file or folder from Explorer/Finder onto an empty section or existing task card to attach clickable folder/file badges.</p>
+        </section>
+
+        <section id="sec-multiselect" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">4</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Multi-Select Batch Move & Auto Window Alignment</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Use Ctrl/Cmd+Click or Shift+Click on task handles to move multiple tasks at once, and arrange notes via Tray / Menu Bar alignment presets.</p>
+        </section>
+
+        <section id="sec-calendar" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white font-black text-sm flex items-center justify-center">5</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Integrated Monthly Calendar & Custom Deadline Alerts</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Snap the monthly calendar beside your note and customize bottom-right alert popup durations and advance reminders.</p>
+        </section>
+
+        <section id="sec-shortcuts" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-black text-sm flex items-center justify-center">6</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Essential Shortcuts & System Tray / Menu Bar</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300"><kbd>Alt</kbd>+<kbd>M</kbd> / <kbd>Option</kbd>+<kbd>M</kbd> toggles all notes; <kbd>Ctrl</kbd>+<kbd>N</kbd> / <kbd>Cmd</kbd>+<kbd>N</kbd> creates a new note.</p>
+        </section>
+
+        <section id="sec-backup" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white font-black text-sm flex items-center justify-center">7</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Local Data Backup, Restore & Seamless Updates</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Export/import <code class="font-mono text-xs">storage.json</code> backups across Windows and macOS, and install updates in place without losing data.</p>
+        </section>
+
+        <section id="sec-license" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-amber-500 text-slate-950 font-black text-sm flex items-center justify-center">8</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">7-Day PRO Free Trial & Lifetime License Activation</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Start your 7-day trial from the Crown icon. After purchasing ($7.99 / ₩9,900 · 1 PC/Mac), send your Order ID and 16-character HWID to <a href="mailto:sinyworklab@gmail.com" class="text-blue-600 dark:text-blue-400 underline font-bold">sinyworklab@gmail.com</a>.</p>
+        </section>
+
+        <section id="findrun-guide" class="scroll-mt-24 bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-lg space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-emerald-400 text-slate-950 font-black text-sm flex items-center justify-center">9</span>
+              <h2 class="text-xl sm:text-2xl font-black">FINDRUN Ultra-Fast Launcher Guide (Windows)</h2>
+            </div>
+            <a href="https://github.com/sinyworklab/FINDRUN-Release/releases/download/v1.0.1/FINDRUN_Setup_V1.0.1.exe" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 transition-colors">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> Download Windows Installer
+            </a>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300">Press <kbd>Alt</kbd>+<kbd>Space</kbd> (or your custom recorded hotkey) anywhere to summon FINDRUN. Supports 10 pastel themes & Dark Mode, DPI-aware multi-monitor window restore, folder exclusion filters, and <code class="font-mono text-emerald-300">&gt;</code> system commands.</p>
+        </section>
+      `,
+      'ja': `
+        <section id="sec-install" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">1</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">インストールおよびセキュリティ解除 (Windows · macOS)</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Windowsで「WindowsによってPCが保護されました」と表示された場合は<strong>［詳細情報］→［実行］</strong>をクリックしてください。macOSで「壊れているため開けません」と表示された場合は、アプリケーションフォルダへ移動後にターミナルで <code class="font-mono bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">xattr -cr /Applications/MEMTODO.app</code> を実行してください。</p>
+        </section>
+        <section id="sec-basic" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">2. 付箋メモ・見出し・タスク基本操作</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">上部「+ 新規メモ」でプロジェクト別の付箋を作成し、ピン留めで常に最前面に表示できます。</p>
+        </section>
+        <section id="sec-filedrop" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">3. ファイル・フォルダのドラッグ添付 (PRO)</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">エクスプローラーやFinderからファイル・フォルダをタスクへドラッグ＆ドロップするとワンクリックで開けます。</p>
+        </section>
+        <section id="sec-multiselect" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">4. 複数選択の一括移動とウィンドウ整列</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Ctrl/CmdまたはShift+クリックで複数タスクを一括移動でき、トレイメニューから整列可能です。</p>
+        </section>
+        <section id="sec-calendar" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">5. 一体型カレンダーとカスタム通知</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">付箋の横に月間カレンダーを結合し、独自の締切ポップアップ通知を表示します。</p>
+        </section>
+        <section id="sec-shortcuts" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">6. ショートカットとトレイ/メニューバー</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300"><kbd>Alt</kbd>+<kbd>M</kbd> / <kbd>Option</kbd>+<kbd>M</kbd> で全付箋の表示/非表示を切り替えられます。</p>
+        </section>
+        <section id="sec-backup" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">7. データバックアップ・復元と更新</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">設定画面からJSON形式でバックアップ書き出し・読み込みが可能です。</p>
+        </section>
+        <section id="sec-license" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">8. PRO 7日間無料体験と永久ライセンス</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">購入後、注文番号と16桁のHWIDを <a href="mailto:sinyworklab@gmail.com" class="text-blue-400 underline font-bold">sinyworklab@gmail.com</a> までお送りください。</p>
+        </section>
+        <section id="findrun-guide" class="scroll-mt-24 bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-lg space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h2 class="text-xl font-black">9. FINDRUN 超高速ランチャーの使い方 (Windows)</h2>
+            <a href="https://github.com/sinyworklab/FINDRUN-Release/releases/download/v1.0.1/FINDRUN_Setup_V1.0.1.exe" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300">Windows版をダウンロード</a>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300"><kbd>Alt</kbd>+<kbd>Space</kbd>（設定でショートカット直接録音可能）で検索窓を呼び出し、パステル10種・ダークモード、DPI位置復元、除外フォルダフィルタ、<code class="font-mono text-emerald-300">&gt;</code>システムコマンド実行に対応しています。</p>
+        </section>
+      `,
+      'zh-CN': `
+        <section id="sec-install" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">1</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">安装及系统安全提示解除指南 (Windows · macOS)</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Windows 弹出安全提示时请点击 <strong>[更多信息] → [仍要运行]</strong>。macOS 若提示“已损坏，无法打开”，请拖入“应用程序”文件夹后在终端运行 <code class="font-mono bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">xattr -cr /Applications/MEMTODO.app</code>。</p>
+        </section>
+        <section id="sec-basic" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">2. 便签、分组标题与待办基础</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">点击顶部“+ 新建便签”按项目创建窗口，开启图钉图标即可置顶显示。</p>
+        </section>
+        <section id="sec-filedrop" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">3. 文件与文件夹拖拽关联 (PRO)</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">将文件或文件夹直接拖入任务卡片即可生成快捷链接徽章，点击直接打开。</p>
+        </section>
+        <section id="sec-multiselect" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">4. 多选批量移动与窗口自动对齐</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">按住 Ctrl/Cmd 或 Shift 点击任务手柄可批量移动，支持托盘一键排列。</p>
+        </section>
+        <section id="sec-calendar" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">5. 一体化月历与自定义截止提醒</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">月历自动吸附在便签侧边，支持自定义右下角弹窗提醒时长。</p>
+        </section>
+        <section id="sec-shortcuts" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">6. 核心快捷键与托盘/菜单栏</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">使用 <kbd>Alt</kbd>+<kbd>M</kbd> / <kbd>Option</kbd>+<kbd>M</kbd> 一键显示或隐藏全部便签窗口。</p>
+        </section>
+        <section id="sec-backup" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">7. 数据备份恢复与版本更新</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">可在设置中导出或导入 JSON 备份文件，覆盖安装新版不会丢失数据。</p>
+        </section>
+        <section id="sec-license" class="scroll-mt-24 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xs transition-colors">
+          <h2 class="text-lg font-black text-slate-900 dark:text-white mb-2">8. PRO 7天试用与永久授权激活</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">购买后请将订单号与 16 位 HWID 发送至 <a href="mailto:sinyworklab@gmail.com" class="text-blue-400 underline font-bold">sinyworklab@gmail.com</a> 获取永久激活码。</p>
+        </section>
+        <section id="findrun-guide" class="scroll-mt-24 bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-lg space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h2 class="text-xl font-black">9. FINDRUN 极速启动器使用说明 (Windows)</h2>
+            <a href="https://github.com/sinyworklab/FINDRUN-Release/releases/download/v1.0.1/FINDRUN_Setup_V1.0.1.exe" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300">下载 Windows 安装包</a>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300">按下 <kbd>Alt</kbd>+<kbd>Space</kbd>（支持设置中直接录制自定义快捷键）呼出搜索框，支持 10 款柔和配色与深色模式、DPI 位置恢复、排除文件夹过滤及 <code class="font-mono text-emerald-300">&gt;</code> 系统命令执行。</p>
+        </section>
+      `
     };
 
     const langSelector = document.getElementById('langSelector');
     const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const guideContentBody = document.getElementById('guideContentBody');
 
     function updateThemeToggleLabel(lang, isDark) {
       const span = themeToggleBtn.querySelector('span');
       if (!span) return;
-      const labels = { 'ko': isDark ? '라이트모드' : '다크모드', 'en': isDark ? 'Light Mode' : 'Dark Mode', 'ja': isDark ? 'ライトモード' : 'ダークモード', 'zh-CN': isDark ? '浅色模式' : '深色模式' };
+      const labels = {
+        'ko': isDark ? '라이트모드' : '다크모드',
+        'en': isDark ? 'Light Mode' : 'Dark Mode',
+        'ja': isDark ? 'ライトモード' : 'ダークモード',
+        'zh-CN': isDark ? '浅色模式' : '深色模式'
+      };
       span.textContent = labels[lang] || labels['ko'];
     }
 
-    function applyPageLanguage(lang) {
-      const dict = i18nIndex[lang] || i18nIndex['ko'];
+    function applyGuideLanguage(lang) {
+      const meta = i18nGuideMeta[lang] || i18nGuideMeta['ko'];
       document.documentElement.lang = lang;
+
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (!dict[key]) return;
+        if (!meta[key]) return;
         const span = el.querySelector('span');
-        if (span) span.textContent = dict[key];
-        else el.textContent = dict[key];
+        if (span) span.textContent = meta[key];
+        else el.textContent = meta[key];
       });
-      document.querySelectorAll('[data-i18n-html]').forEach(el => {
-        const key = el.getAttribute('data-i18n-html');
-        if (!dict[key]) return;
-        el.innerHTML = dict[key];
-      });
+
+      guideContentBody.innerHTML = guideBodies[lang] || guideBodies['ko'];
       updateThemeToggleLabel(lang, document.documentElement.classList.contains('dark'));
-      localStorage.setItem('tinywork_site_lang', lang);
-    }
-
-    const mockTodoItems = document.querySelectorAll('.mock-todo-item');
-    const mockProgressBar = document.getElementById('mockProgressBar');
-    const mockProgressText = document.getElementById('mockProgressText');
-
-    function updateMockProgress() {
-      const total = mockTodoItems.length;
-      let doneCount = 0;
-      mockTodoItems.forEach(item => {
-        const isDone = item.getAttribute('data-done') === 'true';
-        if (isDone) doneCount++;
-        const titleEl = item.querySelector('.mock-todo-title');
-        const checkWrap = item.querySelector('.mock-check');
-        if (isDone) {
-          titleEl.classList.add('line-through', 'opacity-45');
-          checkWrap.innerHTML = '<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-blue-600"></i>';
-        } else {
-          titleEl.classList.remove('line-through', 'opacity-45');
-          checkWrap.innerHTML = '<i data-lucide="circle" class="w-3.5 h-3.5 text-slate-400"></i>';
-        }
-      });
-      const pct = Math.round((doneCount / total) * 100);
-      mockProgressBar.style.width = pct + '%';
-      mockProgressBar.style.backgroundColor = pct === 100 ? '#10B981' : '#2563EB';
-      mockProgressText.textContent = `${doneCount}/${total} (${pct}%)`;
       lucide.createIcons();
+      localStorage.setItem('sinywork_site_lang', lang);
     }
-
-    mockTodoItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const current = item.getAttribute('data-done') === 'true';
-        item.setAttribute('data-done', String(!current));
-        updateMockProgress();
-      });
-    });
-
-    let isMockDark = true;
-    const mockDarkToggleBtn = document.getElementById('mockDarkToggleBtn');
-    const mockNoteWindow = document.getElementById('mockNoteWindow');
-    const mockNoteHeader = document.getElementById('mockNoteHeader');
-    const mockSectionCards = document.querySelectorAll('.mock-section-card');
-    const mockCalendarWindow = document.getElementById('mockCalendarWindow');
-
-    function setMockTheme(darkState) {
-      isMockDark = darkState;
-      if (isMockDark) {
-        mockNoteWindow.className = 'md:col-span-7 rounded-2xl border-2 border-slate-700 bg-slate-900 text-slate-100 shadow-note flex flex-col overflow-hidden transition-colors duration-200';
-        mockNoteHeader.className = 'px-3.5 py-2 bg-slate-800 border-b border-slate-700 flex items-center justify-between transition-colors duration-200';
-        mockCalendarWindow.className = 'md:col-span-5 rounded-2xl border-2 border-slate-700 bg-slate-900 text-slate-100 shadow-note p-3 flex flex-col justify-between transition-colors duration-200';
-        mockSectionCards.forEach(card => { card.className = 'mock-section-card rounded-xl bg-slate-800/90 border border-slate-700 p-2 transition-colors duration-200'; });
-        mockTodoItems.forEach(el => { el.classList.remove('bg-white/95', 'border-slate-200/70'); el.classList.add('bg-slate-700/80', 'border-slate-600'); });
-        mockDarkToggleBtn.innerHTML = '<i data-lucide="sun" class="w-3.5 h-3.5 text-amber-500"></i><span>라이트 모드 전환</span>';
-      } else {
-        mockNoteWindow.className = 'md:col-span-7 rounded-2xl border-2 border-amber-300 bg-[#FFFDF0] text-slate-800 shadow-note flex flex-col overflow-hidden transition-colors duration-200';
-        mockNoteHeader.className = 'px-3.5 py-2 bg-[#FEF08A] border-b border-amber-300/80 flex items-center justify-between transition-colors duration-200';
-        mockCalendarWindow.className = 'md:col-span-5 rounded-2xl border-2 border-amber-300 bg-[#FFFDF0] text-slate-800 shadow-note p-3 flex flex-col justify-between transition-colors duration-200';
-        mockSectionCards.forEach((card, i) => {
-          card.className = i === 2 ? 'mock-section-card rounded-xl bg-[#F3E8FF] border border-purple-200/80 p-2 transition-colors duration-200' : 'mock-section-card rounded-xl bg-[#EFF6FF] border border-blue-200/80 p-2 transition-colors duration-200';
-        });
-        mockTodoItems.forEach(el => { el.classList.remove('bg-slate-700/80', 'border-slate-600'); el.classList.add('bg-white/95', 'border-slate-200/70'); });
-        mockDarkToggleBtn.innerHTML = '<i data-lucide="moon" class="w-3.5 h-3.5 text-indigo-600"></i><span>다크 모드 전환</span>';
-      }
-      lucide.createIcons();
-    }
-
-    mockDarkToggleBtn.addEventListener('click', () => setMockTheme(!isMockDark));
 
     function setSiteTheme(isDark) {
       document.documentElement.classList.toggle('dark', isDark);
-      localStorage.setItem('tinywork_site_theme', isDark ? 'dark' : 'light');
+      localStorage.setItem('sinywork_site_theme', isDark ? 'dark' : 'light');
       updateThemeToggleLabel(langSelector.value, isDark);
-      setMockTheme(isDark);
     }
 
-    const savedTheme = localStorage.getItem('tinywork_site_theme') !== 'light';
-    const savedLang = localStorage.getItem('tinywork_site_lang') || 'ko';
-    langSelector.value = i18nIndex[savedLang] ? savedLang : 'ko';
-    applyPageLanguage(langSelector.value);
+    const savedTheme = localStorage.getItem('sinywork_site_theme') !== 'light';
+    const savedLang = localStorage.getItem('sinywork_site_lang') || 'ko';
+    langSelector.value = i18nGuideMeta[savedLang] ? savedLang : 'ko';
+    applyGuideLanguage(langSelector.value);
     setSiteTheme(savedTheme);
 
-    langSelector.addEventListener('change', (e) => applyPageLanguage(e.target.value));
+    langSelector.addEventListener('change', (e) => applyGuideLanguage(e.target.value));
     themeToggleBtn.addEventListener('click', () => {
       const nextDark = !document.documentElement.classList.contains('dark');
       setSiteTheme(nextDark);
     });
-
-    const mockToastTriggerBtn = document.getElementById('mockToastTriggerBtn');
-    const toastContainer = document.getElementById('toastContainer');
-    mockToastTriggerBtn.addEventListener('click', () => {
-      const toast = document.createElement('div');
-      toast.className = `pointer-events-auto w-80 rounded-2xl p-3.5 shadow-2xl border toast-enter ${isMockDark ? 'bg-slate-900/95 border-slate-700 text-slate-100' : 'bg-[#FFFDF0]/98 border-amber-400/70 text-slate-800'}`;
-      toast.innerHTML = `
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-1.5 text-[11px] font-black ${isMockDark ? 'text-yellow-400' : 'text-amber-700'}"><span class="w-2.5 h-2.5 rounded-xs bg-yellow-400 inline-block"></span><span>MEMTODO</span></div>
-          <button type="button" class="toast-close text-xs opacity-60 hover:opacity-100 px-1 cursor-pointer">✕</button>
-        </div>
-        <div class="text-[13px] font-extrabold mt-1 truncate">⏰ [최종 승인 및 납품 준비] 10분 전 알림입니다!</div>
-        <div class="text-xs opacity-80 mt-0.5">런칭 패키지 최종 검수 미팅 (10:00)</div>
-      `;
-      toastContainer.appendChild(toast);
-      const closeToast = () => { toast.classList.remove('toast-enter'); toast.classList.add('toast-exit'); setTimeout(() => toast.remove(), 250); };
-      toast.querySelector('.toast-close').addEventListener('click', closeToast);
-      setTimeout(closeToast, 5000);
-    });
-
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const content = btn.nextElementSibling;
-        const icon = btn.querySelector('svg');
-        const isHidden = content.classList.contains('hidden');
-        content.classList.toggle('hidden');
-        if (icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-      });
-    });
-
-    const licenseModal = document.getElementById('licenseModal');
-    document.getElementById('openLicenseGuideBtn').addEventListener('click', () => { licenseModal.classList.remove('hidden'); licenseModal.classList.add('flex'); });
-    document.getElementById('modalGoDownloadBtn').addEventListener('click', () => { licenseModal.classList.add('hidden'); licenseModal.classList.remove('flex'); });
-    ['closeLicenseModalBtn', 'closeLicenseModalBtn2'].forEach(id => {
-      document.getElementById(id).addEventListener('click', () => { licenseModal.classList.add('hidden'); licenseModal.classList.remove('flex'); });
-    });
-    licenseModal.addEventListener('click', (e) => { if (e.target === licenseModal) { licenseModal.classList.add('hidden'); licenseModal.classList.remove('flex'); } });
-
-    const orderRefInput = document.getElementById('orderRefInput');
-    const hwidRefInput = document.getElementById('hwidRefInput');
-    const copyClaimFormBtn = document.getElementById('copyClaimFormBtn');
-    const mailtoClaimBtn = document.getElementById('mailtoClaimBtn');
-    const copyFeedbackMsg = document.getElementById('copyFeedbackMsg');
-
-    function buildClaimText() {
-      const orderVal = (orderRefInput.value || '').trim() || '(결제 주문번호 또는 이메일 입력)';
-      const hwidVal = (hwidRefInput.value || '').trim().toUpperCase() || '(XXXX-XXXX-XXXX-XXXX)';
-      return `[MEMTODO PRO 라이선스 키 발급 신청]\n- 주문번호 / 결제 이메일: ${orderVal}\n- 기기 고유 코드 (HWID): ${hwidVal}`;
-    }
-
-    function updateMailtoHref() {
-      mailtoClaimBtn.href = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('MEMTODO PRO License Key Request')}&body=${encodeURIComponent(buildClaimText())}`;
-    }
-
-    orderRefInput.addEventListener('input', updateMailtoHref);
-    hwidRefInput.addEventListener('input', updateMailtoHref);
-    updateMailtoHref();
-
-    copyClaimFormBtn.addEventListener('click', async () => {
-      const text = buildClaimText();
-      try {
-        await navigator.clipboard.writeText(text);
-        copyFeedbackMsg.classList.remove('hidden');
-        setTimeout(() => copyFeedbackMsg.classList.add('hidden'), 4500);
-      } catch (err) { alert(text); }
-    });
   </script>
 
   <!-- Buy Me a Coffee 플로팅 후원 위젯 -->
-  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="tinyworklab" data-description="Support TINYWORK LAB on Buy me a coffee!" data-message="MEMTODO & FINDRUN 개발을 응원해 주셔서 감사합니다 ☕" data-color="#FFDD00" data-position="Right" data-x_margin="20" data-y_margin="84"></script>
+  <script
+    data-name="BMC-Widget"
+    data-cfasync="false"
+    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="sinyworklab"
+    data-description="Support SINYWORK LAB on Buy me a coffee!"
+    data-message="따뜻한 커피 한 잔 응원 감사합니다 ☕"
+    data-color="#FFDD00"
+    data-position="Right"
+    data-x_margin="20"
+    data-y_margin="20"
+  ></script>
 </body>
 </html>
