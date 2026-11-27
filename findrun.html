@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FINDRUN — 0.1초 초고속 파일·프로그램 실행 런처 | SINYWORK LAB</title>
   <meta name="description" content="파일도, 폴더도, 프로그램도 단축키 한 번으로 0.1초 만에 검색하고 즉시 실행하는 초경량 Windows 런처 유틸리티 FINDRUN." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FINDRUN — 0.1초 초고속 파일·프로그램 실행 런처 | SINYWORK LAB" />
+  <meta property="og:description" content="파일도, 폴더도, 프로그램도 단축키 한 번으로 0.1초 만에 검색하고 즉시 실행하는 초경량 Windows 런처 유틸리티 FINDRUN." />
+  <meta property="og:image" content="https://sinyworklab.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://sinyworklab.com/logo.png" />
   <link rel="icon" type="image/png" href="logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -19,6 +25,9 @@
           fontFamily: {
             sans: ['"Noto Sans KR"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'soft': '0 20px 50px -12px rgba(15, 23, 42, 0.08)'
           }
         }
       }
@@ -33,6 +42,7 @@
       word-break: keep-all;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
+    html[lang="ja"] body, html[lang="zh-CN"] body { word-break: normal; overflow-wrap: anywhere; }
     html.dark body { color: #F8FAFC; background-color: #020617; }
     .glass-nav { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
     html.dark .glass-nav { background: rgba(15, 23, 42, 0.88); }
@@ -67,7 +77,6 @@
       </nav>
 
       <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
-        <!-- 다크모드(기본) / 라이트모드 전환 버튼 -->
         <button
           id="themeToggleBtn"
           type="button"
@@ -80,7 +89,6 @@
           <span class="hidden sm:inline" data-i18n="navThemeToggle">라이트모드</span>
         </button>
 
-        <!-- 언어 선택기 -->
         <div class="relative inline-flex items-center">
           <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 absolute left-2.5 pointer-events-none"></i>
           <select
@@ -98,7 +106,8 @@
     </div>
   </header>
 
-  <section class="hero-grid-bg pt-14 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+  <!-- 1. 히어로 섹션 + 실시간 검색 체험 -->
+  <section class="hero-grid-bg pt-14 pb-20 lg:pt-20 lg:pb-24 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
@@ -108,16 +117,16 @@
             <span data-i18n="heroBadge">SINYWORK LAB FREEWARE · 개인·기업 100% 무료</span>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.55] sm:leading-[1.6] mt-3 mb-5" data-i18n="heroTitle">
+          <h1 class="text-2xl sm:text-4xl lg:text-[38px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.4] sm:leading-[1.45] mt-3 mb-4 break-words" data-i18n="heroTitle">
             파일도, 폴더도, 앱도 0.1초 만에 즉시 실행 — FINDRUN
           </h1>
 
-          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-[17px] leading-[1.75] font-medium mt-3 mb-2" data-i18n="heroDesc">
-            깊숙한 폴더 트리를 마우스로 클릭하며 헤매지 마세요.<br/>글로벌 단축키를 누르고 파일명 일부만 입력하면 0.1초 만에 검색되고 Enter 한 번으로 즉시 실행되는 초경량 Windows 런처입니다.
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-[17px] leading-[1.75] font-medium" data-i18n-html="heroDesc">
+            깊숙한 폴더 트리를 마우스로 클릭하며 헤매지 마세요.<br/>단축키(<kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-xs font-mono">Alt+Space</kbd>)를 누르고 초성이나 파일명 일부만 입력하면 0.1초 만에 검색되고, 파일은 즉시 실행·폴더는 별도의 Windows 탐색기 창으로 바로 열립니다.
           </p>
 
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
-            <a href="https://github.com/sinyworklab/FINDRUN-Release/releases/download/v1.0.1/FINDRUN_Setup_V1.0.1.exe" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-sm sm:text-base font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 shadow-lg shadow-emerald-500/20 transition-all whitespace-nowrap">
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
+            <a href="https://github.com/sinyworklab/FINDRUN-Release/releases/download/v1.0.1/FINDRUN_Setup_V1.0.1.exe" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-sm sm:text-base font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5 transition-all whitespace-nowrap">
               <i data-lucide="download" class="w-5 h-5"></i>
               <span data-i18n="heroCtaDownload">Windows용 무료 다운로드 (V1.0.1)</span>
             </a>
@@ -127,20 +136,20 @@
             </a>
           </div>
 
-          <!-- V1.0.1 업데이트 요약 카드 -->
+          <!-- V1.0.1 최신 업데이트 요약 카드 -->
           <div class="p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-emerald-200/80 dark:border-emerald-800/60 text-left space-y-2 shadow-2xs">
             <div class="flex items-center justify-between gap-2">
               <span class="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 dark:text-emerald-400">
-                <span class="px-2 py-0.5 rounded-md bg-emerald-500/20">NEW</span>
-                <span data-i18n="updateTitle">V1.0.1 업데이트 요약</span>
+                <span class="px-2 py-0.5 rounded-md bg-emerald-500/20">V1.0.1</span>
+                <span data-i18n="updateTitle">최신 엔진 &amp; 편의 기능 업데이트 요약</span>
               </span>
-              <span class="text-[11px] font-mono text-slate-400">2026.11.22</span>
+              <span class="text-[11px] font-mono text-slate-400">SINYWORK LAB</span>
             </div>
             <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
-              <li data-i18n="update1">• 내부 폴더 탐색·7종 정렬·최대화/복원 및 PPT 격리 미리보기·캐싱 추가</li>
-              <li data-i18n="update2">• 우측 끝 좌측 확장 복원·입력 딜레이 감소·연속 클릭 오작동 방지 적용</li>
-              <li data-i18n="update3">• 파스텔 10종·다크모드·커스텀 테마 및 즐겨찾기 영역 높이 자동 조절</li>
-              <li data-i18n="update4">• DPI 창 복원·자석 스냅·AppData 저장·자동 실행·확장자 편집·&gt; 명령어 지원</li>
+              <li data-i18n="update1">• 고속 스캔(os.scandir)·가상 리스트·부분 재스캔 및 초기 실행/설정(⚙) 속도 최적화</li>
+              <li data-i18n="update2">• 폴더 선택 시 별도 Windows 탐색기 창 즉시 열기 &amp; 상단 검색 문법 가이드(📖) 팝업 추가</li>
+              <li data-i18n="update3">• 한글 초성·정규식(re:)·중복 파일(dup:)·제외(!)·수식 계산(=)·시스템 명령(&gt;) 지원</li>
+              <li data-i18n="update4">• Windows Shell/PPT 격리 미리보기, 즐겨찾기 바, 묶음 드래그, 13종 테마 지원</li>
             </ul>
           </div>
 
@@ -150,11 +159,12 @@
 
           <div class="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
             <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i> <span data-i18n="trustFree">광고·결제 없는 완전 무료</span></span>
-            <span class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i> <span data-i18n="trustLight">초저점유율 백그라운드 상주</span></span>
-            <span class="flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4 text-slate-600 dark:text-slate-400"></i> <span data-i18n="trustLocal">오프라인 로컬 인덱싱</span></span>
+            <span class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i> <span data-i18n="trustLight">관리자 권한 불필요 · 초경량 상주</span></span>
+            <span class="flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4 text-slate-600 dark:text-slate-400"></i> <span data-i18n="trustLocal">100% 오프라인 로컬 인덱싱</span></span>
           </div>
         </div>
 
+        <!-- 우측 인터랙티브 검색 데모 -->
         <div class="lg:col-span-6">
           <div class="bg-slate-900 p-4 sm:p-6 rounded-3xl shadow-2xl border border-slate-800">
             <div class="flex items-center justify-between mb-3">
@@ -170,20 +180,30 @@
                 <input
                   id="findrunSearchInput"
                   type="text"
-                  placeholder="검색어 입력 (예: 시안, 일정표, MEMTODO, >cmd...)"
+                  placeholder="검색어 입력 (예: 시안, ㅅㅇ, ext:xlsx, dup:, =45000*1.1, >cmd...)"
                   class="w-full bg-transparent text-sm sm:text-base font-semibold text-white placeholder-slate-500 outline-none"
                 />
                 <button id="clearSearchBtn" type="button" class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 hover:text-white cursor-pointer" data-i18n="mockClear">초기화</button>
               </div>
 
+              <!-- 빠른 문법 테스트 칩 -->
+              <div class="px-3.5 py-2 bg-slate-900/60 border-b border-slate-800/80 flex flex-wrap items-center gap-1.5 text-[10px]">
+                <span class="text-slate-400 font-bold mr-1" data-i18n="mockQuickTry">빠른 입력:</span>
+                <button type="button" class="demo-chip px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-300 font-mono cursor-pointer" data-q="시안">시안</button>
+                <button type="button" class="demo-chip px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-300 font-mono cursor-pointer" data-q="ext:xlsx">ext:xlsx</button>
+                <button type="button" class="demo-chip px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-amber-300 font-mono cursor-pointer" data-q="=45000*1.1">=45000*1.1</button>
+                <button type="button" class="demo-chip px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-sky-300 font-mono cursor-pointer" data-q=">cmd">&gt;cmd</button>
+                <button type="button" class="demo-chip px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-rose-300 font-mono cursor-pointer" data-q="dup:">dup:</button>
+              </div>
+
               <div id="findrunResults" class="p-2.5 space-y-1.5 max-h-72 overflow-y-auto"></div>
 
               <div class="px-4 py-2.5 bg-slate-900 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400">
-                <span data-i18n="mockHintLeft">↑↓ 방향키 이동 · Ctrl+Enter 폴더 열기</span>
-                <span class="font-mono text-emerald-400 font-bold" data-i18n="mockHintRight">Enter ↵ 즉시 실행</span>
+                <span data-i18n="mockHintLeft">Enter 파일 실행 · 폴더는 새 탐색기 창 열기</span>
+                <span class="font-mono text-emerald-400 font-bold" data-i18n="mockHintRight">📖 검색 문법 가이드 내장</span>
               </div>
               <div class="px-4 py-2.5 bg-slate-900/70 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px]">
-                <span class="text-slate-300 font-medium" data-i18n="demoPerkText">실제 앱: 내부 폴더 탐색·7종 정렬·미리보기 모두 무료</span>
+                <span class="text-slate-300 font-medium" data-i18n="demoPerkText">실제 앱: 7종 정렬·탐색기식 미리보기·묶음 드래그 모두 무료</span>
                 <a href="#donate" class="inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-extrabold shrink-0" data-i18n="demoDonateLink">
                   <span>☕ 편하게 쓰셨다면 커피 한 잔 후원</span>
                 </a>
@@ -196,60 +216,170 @@
     </div>
   </section>
 
-  <section class="py-20 bg-white dark:bg-slate-950 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">SPEED & SIMPLICITY</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="featMainTitle">마우스 손을 떼는 순간 업무가 빨라집니다.</h2>
+  <!-- 2. Windows 탐색기 vs Everything vs FINDRUN 비교표 섹션 -->
+  <section id="comparison" class="py-20 bg-slate-50 dark:bg-slate-900/60 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400" data-i18n="compEyebrow">WHY CHOOSE FINDRUN</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="compTitle">Windows 탐색기 · Everything · FINDRUN 한눈에 비교</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2.5 leading-relaxed" data-i18n="compDesc">
+          파일 검색 속도는 기본, 한국어 초성 검색부터 문서 미리보기·즐겨찾기·묶음 드래그·계산기·명령어 실행까지 실무에 필요한 런처 기능을 하나로 담았습니다.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-          <div class="w-11 h-11 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center mb-4"><i data-lucide="folder-search" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f1Title">런처 안 내부 폴더 탐색 &amp; 7종 정렬</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f1Desc">
-            탐색기를 따로 띄우지 않고 FINDRUN 안에서 바로 하위 폴더와 파일을 훑어보세요.<br/>뒤로가기·상위 이동과 7가지 정렬 기준까지 모두 무료로 제공합니다.
+      <div class="overflow-x-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft">
+        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-800/80">
+              <th class="py-4 px-5 font-black text-slate-700 dark:text-slate-200 min-w-[150px]" data-i18n="compColFeature">비교 항목</th>
+              <th class="py-4 px-4 font-bold text-center text-slate-500 dark:text-slate-400 min-w-[150px]" data-i18n="compColExplorer">Windows 탐색기</th>
+              <th class="py-4 px-4 font-bold text-center text-slate-500 dark:text-slate-400 min-w-[160px]" data-i18n="compColEverything">Everything</th>
+              <th class="py-4 px-5 font-black text-center text-emerald-700 dark:text-emerald-300 bg-emerald-50/80 dark:bg-emerald-950/50 min-w-[210px]">
+                <span class="inline-flex items-center gap-1.5"><i data-lucide="zap" class="w-4 h-4 text-emerald-500"></i> FINDRUN</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+            <tr>
+              <td class="py-3.5 px-5 font-bold" data-i18n="compR1">검색 속도 &amp; 반응성</td>
+              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR1E">느림 (매번 디스크 실시간 탐색)</td>
+              <td class="py-3.5 px-4 text-center text-slate-600 dark:text-slate-300 font-semibold" data-i18n="compR1V">초고속 (NTFS MFT 색인)</td>
+              <td class="py-3.5 px-5 text-center font-extrabold text-emerald-700 dark:text-emerald-300 bg-emerald-50/40 dark:bg-emerald-950/20" data-i18n="compR1F">0.1초 즉시 검색 (os.scandir + 캐시 + 가상 리스트)</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-bold" data-i18n="compR2">한글 초성 검색 (예: ㅍㄹㅈㅌ)</td>
+              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR2E">미지원</td>
+              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR2V">기본 미지원 (별도 설정 필요)</td>
+              <td class="py-3.5 px-5 text-center font-extrabold text-emerald-700 dark:text-emerald-300 bg-emerald-50/40 dark:bg-emerald-950/20" data-i18n="compR2F">기본 내장 (초성만 입력해도 즉시 검색)</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-bold" data-i18n="compR3">런처 올인원 도구 (=수식, &gt;명령, dup:, re:)</td>
+              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR3E">기본 파일 필터만 지원</td>
+              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR3V">파일 검색 문법 특화</td>
+              <td class="py-3.5 px-5 text-center font-extrabold text-emerald-700 dark:text-emerald-300 bg-emerald-50/40 dark:bg-emerald-950/20" data-i18n="compR3F">수식 계산(=) · 시스템 명령(&gt;) · 중복(dup:) · 정규식(re:) 통합</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-bold" data-i18n="compR4">문서 · PPT · 이미지 미리보기</td>
+              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR4E">탐색기 창 내에서만 지원</td>
+              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR4V">단순 미리보기 위주</td>
+              <td class="py-3.5 px-5 text-center font-extrabold text-emerald-700 dark:text-emerald-300 bg-emerald-50/40 dark:bg-emerald-950/20" data-i18n="compR4F">Windows Shell + PPT 격리 렌더링·캐싱 하이브리드 뷰어</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-bold" data-i18n="compR5">상단 즐겨찾기 바 &amp; 묶음 드래그</td>
+              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR5E">즐겨찾기 고정 지원</td>
+              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR5V">북마크 메뉴 방식</td>
+              <td class="py-3.5 px-5 text-center font-extrabold text-emerald-700 dark:text-emerald-300 bg-emerald-50/40 dark:bg-emerald-950/20" data-i18n="compR5F">폴더·앱 드래그 핀 고정 + 다중 선택 묶음 드래그(Batch Drag)</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-5 font-bold" data-i18n="compR6">실행 권한 · 네트워크 드라이브 · UI</td>
+              <td class="py-3.5 px-4 text-center text-slate-500 dark:text-slate-400" data-i18n="compR6E">일반 권한 · 기본 창 UI</td>
+              <td class="py-3.5 px-4 text-center text-slate-400" data-i18n="compR6V">관리자 권한/서비스 필요 · 고전 UI</td>
+              <td class="py-3.5 px-5 text-center font-extrabold text-emerald-700 dark:text-emerald-300 bg-emerald-50/40 dark:bg-emerald-950/20" data-i18n="compR6F">일반 권한 즉시 실행 · 네트워크 폴더 지원 · 파스텔/다크 13종 테마</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FINDRUN 핵심 차별화 장점 3가지 배너 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200/80 dark:border-emerald-800/60">
+          <div class="text-xs font-black text-emerald-600 dark:text-emerald-400 mb-1" data-i18n="adv1Tag">ADVANTAGE 01 · 한국어 &amp; 실무 최적화</div>
+          <h3 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white" data-i18n="adv1Title">초성만 쳐도, 자주 쓰는 파일이 맨 위에</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed" data-i18n="adv1Desc">
+            영문·한글 전환 없이 자음(<code class="font-mono">ㅍㄹㅈㅌ</code>)만으로 즉시 찾고, 내가 자주 열어본 파일과 최근 실행 항목에 가산점을 부여해 원하는 파일이 항상 최상단에 뜹니다.
           </p>
         </div>
 
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-          <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-4"><i data-lucide="eye" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f2Title">안정적인 미리보기 &amp; 스마트 창 확장</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f2Desc">
-            PPT 격리 렌더링과 캐싱으로 멈춤 없이 파일을 확인하고, 최대화·복원 버튼으로 화면을 넓게 쓰세요.<br/>화면 우측 끝에 붙여 두어도 좌측으로 자연스럽게 넓어졌다가 원래 자리로 돌아옵니다.
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200/80 dark:border-emerald-800/60">
+          <div class="text-xs font-black text-emerald-600 dark:text-emerald-400 mb-1" data-i18n="adv2Tag">ADVANTAGE 02 · 검색과 실행의 완벽한 연결</div>
+          <h3 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white" data-i18n="adv2Title">파일 실행은 물론 탐색기·MEMTODO 연동까지</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed" data-i18n="adv2Desc">
+            폴더는 별도의 Windows 탐색기 창으로 즉시 열어주고, 검색 결과에서 여러 파일을 다중 선택한 뒤 이메일이나 MEMTODO 할 일 카드로 한 번에 드래그해 첨부할 수 있습니다.
           </p>
         </div>
 
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-          <div class="w-11 h-11 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f3Title">끊김 없는 타이핑 &amp; 안전한 클릭 판별</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f3Desc">
-            검색어 입력 딜레이를 줄여 빠르게 쳐도 글자가 밀리지 않고 매끄럽게 반응합니다.<br/>항목을 하나씩 연속으로 누를 때 발생하던 오작동도 막아 안심하고 조작할 수 있습니다.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-          <div class="w-11 h-11 rounded-2xl bg-slate-900 dark:bg-slate-800 text-white flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
-          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f4Title">설치부터 사용까지 광고·결제 없는 완전 무료</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f4Desc">
-            파스텔·다크 테마, 단축키 녹화, 확장자 편집과 MEMTODO 연동까지 모두 무료로 열려 있습니다.<br/>회원가입이나 유료 결제 없이 지금 바로 다운로드해 업무 속도를 높여보세요.
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-200/80 dark:border-emerald-800/60">
+          <div class="text-xs font-black text-emerald-600 dark:text-emerald-400 mb-1" data-i18n="adv3Tag">ADVANTAGE 03 · 보안 환경에서도 무설치급 간편함</div>
+          <h3 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white" data-i18n="adv3Title">관리자 권한 없이 내 작업 폴더만 콕 집어 초고속 색인</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed" data-i18n="adv3Desc">
+            회사 PC 보안 정책으로 관리자 권한이나 백그라운드 서비스 등록이 어려워도 일반 사용자 권한 그대로 실행되며, 네트워크 공유 폴더까지 원하는 경로만 지정해 빠르게 검색합니다.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 개발자 후원(기부) 섹션 -->
+  <!-- 3. 핵심 기능 6가지 카드 섹션 -->
+  <section class="py-20 bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400" data-i18n="featEyebrow">SPEED &amp; SIMPLICITY</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-2" data-i18n="featMainTitle">마우스 손을 떼는 순간 업무가 빨라집니다.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="w-11 h-11 rounded-2xl bg-emerald-500 text-slate-950 flex items-center justify-center mb-4"><i data-lucide="folder-open" class="w-5 h-5"></i></div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f1Title">폴더 즉시 탐색기 오픈 &amp; 7종 정렬</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f1Desc">
+            검색한 폴더를 선택하면 별도의 Windows 탐색기 창이 바로 열려 후속 파일 작업을 이어갈 수 있습니다.<br/>정확도순·최신순·오래된순·이름순·크기순·확장자순 7가지 정렬도 즉시 전환됩니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-4"><i data-lucide="eye" class="w-5 h-5"></i></div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f2Title">탐색기식 미리보기 &amp; 스마트 창 확장</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f2Desc">
+            Windows Shell 뷰어와 PPT 격리 렌더링·캐싱으로 멈춤 없이 문서·도면·이미지를 확인하세요.<br/>화면 우측 끝에 붙여 두어도 좌측으로 자연스럽게 넓어졌다가 닫으면 원래 위치로 돌아옵니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="w-11 h-11 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center mb-4"><i data-lucide="terminal" class="w-5 h-5"></i></div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f3Title">고급 검색 연산자 · 계산기 · 시스템 명령</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f3Desc">
+            <code class="font-mono text-xs">!제외</code>, <code class="font-mono text-xs">ext:</code>, <code class="font-mono text-xs">re:정규식</code>, <code class="font-mono text-xs">dup:중복파일</code>은 물론 <code class="font-mono text-xs">=수식</code> 계산과 <code class="font-mono text-xs">&gt;cmd</code> 명령 실행까지 지원합니다.<br/>상단 <code class="font-mono text-xs">📖</code> 아이콘을 누르면 정리된 검색 문법 안내창이 바로 열립니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="w-11 h-11 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-4"><i data-lucide="star" class="w-5 h-5"></i></div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f4Title">상단 폴더·앱 즐겨찾기 &amp; 묶음 드래그</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f4Desc">
+            자주 여는 폴더와 프로그램 아이콘을 상단 즐겨찾기 바에 끌어다 놓고 이름 변경·순서 조정을 할 수 있습니다.<br/>검색 결과에서 여러 파일을 다중 선택해 외부 앱으로 한 번에 드래그(Batch Drag)할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="w-11 h-11 rounded-2xl bg-rose-500 text-white flex items-center justify-center mb-4"><i data-lucide="gauge" class="w-5 h-5"></i></div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f5Title">초고속 색인 캐시 &amp; 즉각적인 초기 반응</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f5Desc">
+            <code class="font-mono text-xs">os.scandir</code> 고속 수집과 가상 리스트 렌더링, 변경된 폴더만 부분 재스캔하는 구조로 매끄럽게 동작합니다.<br/>프로그램 실행과 설정(<code class="font-mono text-xs">⚙</code>) 창 오픈 딜레이까지 최소화했습니다.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="w-11 h-11 rounded-2xl bg-slate-900 dark:bg-slate-800 text-white flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white" data-i18n="f6Title">파스텔·다크 13종 테마 &amp; 100% 완전 무료</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed" data-i18n="f6Desc">
+            파스텔 10종·다크모드 3종·커스텀 색상, 전역 단축키 녹화, 카테고리별 확장자 편집까지 모두 무료입니다.<br/>광고·회원가입·유료 잠금 없이 지금 바로 다운로드해 업무 속도를 높여보세요.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 개발자 후원(기부) 섹션 -->
   <section id="donate" class="py-14 bg-amber-50/75 dark:bg-amber-950/20 border-t border-amber-200/70 dark:border-amber-900/40 transition-colors">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 dark:bg-amber-900/60 text-amber-900 dark:text-amber-300 text-xs font-extrabold">
-        <i data-lucide="coffee" class="w-3.5 h-3.5"></i> SUPPORT FREEWARE DEVELOPER
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/70 dark:bg-amber-900/60 text-amber-900 dark:text-amber-300 text-xs font-extrabold" data-i18n="donateBadge">
+        <i data-lucide="coffee" class="w-3.5 h-3.5"></i> <span>SUPPORT FREEWARE DEVELOPER</span>
       </div>
       <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white" data-i18n="donateTitle">
         하루 수십 번의 폴더 클릭과 탐색 시간을 아껴주었나요?
       </h2>
       <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed" data-i18n="donateDesc">
-        FINDRUN은 광고와 유료 잠금 없이 누구나 자유롭게 쓸 수 있습니다.<br/>커피 한 잔 정도의 가벼운 후원은 V1.0.1 이후 안정성 개선과 새 무료 유틸리티 개발에 직접 쓰입니다.
+        FINDRUN은 광고와 유료 잠금 없이 누구나 자유롭게 쓸 수 있습니다.<br/>커피 한 잔 정도의 가벼운 후원은 안정성 개선과 새 무료 유틸리티 개발에 직접 쓰입니다.
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-2xl mx-auto text-left pt-1">
@@ -277,17 +407,22 @@
           <i data-lucide="coffee" class="w-4 h-4"></i>
           <span data-i18n="donateCta">개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)</span>
         </a>
-        <a
-          href="mailto:sinyworklab@gmail.com?subject=FINDRUN%20%ED%94%BC%EB%93%9C%EB%B0%B1%20%EB%B0%8C%20%EA%B0%9C%EC%84%A0%20%EC%A0%9C%EC%95%88"
-          class="inline-flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-          data-i18n="donateFeedbackCta"
-        >
-          <span>💬 기능 제안·버그 제보</span>
-        </a>
+        <div class="flex flex-col items-center gap-1.5">
+          <button
+            type="button"
+            onclick="copySupportEmail(this)"
+            class="inline-flex items-center gap-1.5 px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+          >
+            <span data-i18n="donateFeedbackCta">💬 기능 제안·버그 제보</span>
+            <span class="font-mono text-xs text-emerald-600 dark:text-emerald-400">(sinyworklab@gmail.com)</span>
+          </button>
+          <span class="copy-email-feedback hidden text-[11px] font-bold text-emerald-600 dark:text-emerald-400">✓ sinyworklab@gmail.com 주소가 복사되었습니다. 사용 중인 메일로 보내주세요!</span>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- 5. MEMTODO 교차 소개 배너 -->
   <section class="py-16 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xs">
@@ -297,7 +432,7 @@
           </span>
           <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white" data-i18n="memtodoBannerTitle">바탕화면 위 포스트잇·캘린더·파일 통합 관리, MEMTODO</h2>
           <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="memtodoBannerDesc">
-            소제목별 할 일 관리부터 폴더·파일 드래그 연결, 커스텀 마감 알림까지 월 구독료 없이 평생 소장하세요.
+            FINDRUN으로 찾은 파일과 폴더를 MEMTODO 할 일 카드로 바로 드래그해 연결해 보세요. 월 구독료 없이 평생 소장할 수 있습니다.
           </p>
         </div>
         <a href="index.html" class="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-extrabold text-white bg-blue-600 hover:bg-blue-700 transition-colors">
@@ -316,7 +451,7 @@
             <img src="logo.png" alt="SinyWork Lab Logo" class="w-full h-full object-contain p-0.5" onerror="this.style.display='none'" />
           </div>
           <span class="font-black text-sm text-slate-900 dark:text-white">SINYWORK LAB</span>
-          <span class="text-xs text-slate-400 ml-1">© 2026 All rights reserved.</span>
+          <span class="text-xs text-slate-400 ml-1" data-i18n="footerCopyright">© 2026 All rights reserved.</span>
         </div>
 
         <div class="flex flex-wrap items-center justify-center gap-5 text-xs font-semibold text-slate-600 dark:text-slate-400">
@@ -333,10 +468,11 @@
 
       <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
         <div>
-          공식 문의 및 라이선스 지원: <a href="mailto:sinyworklab@gmail.com" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">sinyworklab@gmail.com</a> · <a href="https://pf.kakao.com/_IsuvX" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">카카오톡 채널 (@sinyworklab)</a>
+          <span data-i18n="footerContactPrefix">공식 문의 및 라이선스 지원:</span>
+          <button type="button" onclick="copySupportEmail(this)" class="text-slate-600 dark:text-slate-300 font-bold hover:underline cursor-pointer" title="Copy email">sinyworklab@gmail.com</button><span id="footerKakaoWrap"> · <a href="http://pf.kakao.com/_ZVHvX" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-300 font-bold hover:underline">카카오톡 채널 (SINYWORK LAB)</a></span>
         </div>
         <div>
-          <a href="https://github.com/sinyworklab/FINDRUN-Release/releases" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-300">GitHub Releases</a> · 100% Local Desktop Software
+          <a href="https://github.com/sinyworklab/FINDRUN-Release/releases" target="_blank" rel="noopener noreferrer" class="hover:text-slate-600 dark:hover:text-slate-300" data-i18n="footerGithub">GitHub Releases</a> · <span data-i18n="footerLocalNote">100% Local Desktop Software</span>
         </div>
       </div>
     </div>
@@ -347,169 +483,297 @@
 
     const i18nFindrun = {
       'ko': {
+        pageTitle: 'FINDRUN — 0.1초 초고속 파일·프로그램 실행 런처 | SINYWORK LAB',
         navGuide: '사용 설명서', navPricing: 'MEMTODO 요금제', navThemeToggle: '라이트모드',
         heroBadge: 'SINYWORK LAB FREEWARE · 개인·기업 100% 무료',
         heroTitle: '파일도, 폴더도, 앱도 0.1초 만에 즉시 실행 — FINDRUN',
-        heroDesc: '깊숙한 폴더 트리를 마우스로 클릭하며 헤매지 마세요.<br/>글로벌 단축키를 누르고 파일명 일부만 입력하면 0.1초 만에 검색되고 Enter 한 번으로 즉시 실행되는 초경량 Windows 런처입니다.',
+        heroDesc: '깊숙한 폴더 트리를 마우스로 클릭하며 헤매지 마세요.<br/>단축키(<kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-xs font-mono">Alt+Space</kbd>)를 누르고 초성이나 파일명 일부만 입력하면 0.1초 만에 검색되고, 파일은 즉시 실행·폴더는 별도의 Windows 탐색기 창으로 바로 열립니다.',
         heroCtaDownload: 'Windows용 무료 다운로드 (V1.0.1)', heroCtaGuide: 'FINDRUN 사용 가이드',
-        updateTitle: 'V1.0.1 업데이트 요약',
-        update1: '• 내부 폴더 탐색·7종 정렬·최대화/복원 및 PPT 격리 미리보기·캐싱 추가',
-        update2: '• 우측 끝 좌측 확장 복원·입력 딜레이 감소·연속 클릭 오작동 방지 적용',
-        update3: '• 파스텔 10종·다크모드·커스텀 테마 및 즐겨찾기 영역 높이 자동 조절',
-        update4: '• DPI 창 복원·자석 스냅·AppData 저장·자동 실행·확장자 편집·> 명령어 지원',
+        updateTitle: '최신 엔진 & 편의 기능 업데이트 요약',
+        update1: '• 고속 스캔(os.scandir)·가상 리스트·부분 재스캔 및 초기 실행/설정(⚙) 속도 최적화',
+        update2: '• 폴더 선택 시 별도 Windows 탐색기 창 즉시 열기 & 상단 검색 문법 가이드(📖) 팝업 추가',
+        update3: '• 한글 초성·정규식(re:)·중복 파일(dup:)·제외(!)·수식 계산(=)·시스템 명령(&gt;) 지원',
+        update4: '• Windows Shell/PPT 격리 미리보기, 즐겨찾기 바, 묶음 드래그, 13종 테마 지원',
         smartscreenTip: "💡 Windows 설치 시 'Windows의 PC 보호' 창이 뜨면 [추가 정보] → [실행]을 눌러주세요.",
-        trustFree: '광고·결제 없는 완전 무료', trustLight: '초저점유율 백그라운드 상주', trustLocal: '오프라인 로컬 인덱싱',
+        trustFree: '광고·결제 없는 완전 무료', trustLight: '관리자 권한 불필요 · 초경량 상주', trustLocal: '100% 오프라인 로컬 인덱싱',
         mockBadge: '실시간 검색 체험 (직접 타이핑해 보세요!)', mockClear: '초기화',
-        mockHintLeft: '↑↓ 방향키 이동 · Ctrl+Enter 폴더 열기', mockHintRight: 'Enter ↵ 즉시 실행',
-        demoPerkText: '실제 앱: 내부 폴더 탐색·7종 정렬·미리보기 모두 무료',
+        mockQuickTry: '빠른 입력:',
+        mockSearchPh: '검색어 입력 (예: 시안, ext:xlsx, =45000*1.1, >cmd, dup:...)',
+        mockEmpty: '일치하는 파일이나 명령어가 없습니다.',
+        mockHintLeft: 'Enter 파일 실행 · 폴더는 새 탐색기 창 열기', mockHintRight: '📖 검색 문법 가이드 내장',
+        demoPerkText: '실제 앱: 7종 정렬·탐색기식 미리보기·묶음 드래그 모두 무료',
         demoDonateLink: '☕ 편하게 쓰셨다면 커피 한 잔 후원',
+        compEyebrow: 'WHY CHOOSE FINDRUN',
+        compTitle: 'Windows 탐색기 · Everything · FINDRUN 한눈에 비교',
+        compDesc: '파일 검색 속도는 기본, 한국어 초성 검색부터 문서 미리보기·즐겨찾기·묶음 드래그·계산기·명령어 실행까지 실무에 필요한 런처 기능을 하나로 담았습니다.',
+        compColFeature: '비교 항목', compColExplorer: 'Windows 탐색기', compColEverything: 'Everything',
+        compR1: '검색 속도 & 반응성', compR1E: '느림 (매번 디스크 실시간 탐색)', compR1V: '초고속 (NTFS MFT 색인)', compR1F: '0.1초 즉시 검색 (os.scandir + 캐시 + 가상 리스트)',
+        compR2: '한글 초성 검색 (예: ㅍㄹㅈㅌ)', compR2E: '미지원', compR2V: '기본 미지원 (별도 설정 필요)', compR2F: '기본 내장 (초성만 입력해도 즉시 검색)',
+        compR3: '런처 올인원 도구 (=수식, >명령, dup:, re:)', compR3E: '기본 파일 필터만 지원', compR3V: '파일 검색 문법 특화', compR3F: '수식 계산(=) · 시스템 명령(>) · 중복(dup:) · 정규식(re:) 통합',
+        compR4: '문서 · PPT · 이미지 미리보기', compR4E: '탐색기 창 내에서만 지원', compR4V: '단순 미리보기 위주', compR4F: 'Windows Shell + PPT 격리 렌더링·캐싱 하이브리드 뷰어',
+        compR5: '상단 즐겨찾기 바 & 묶음 드래그', compR5E: '즐겨찾기 고정 지원', compR5V: '북마크 메뉴 방식', compR5F: '폴더·앱 드래그 핀 고정 + 다중 선택 묶음 드래그(Batch Drag)',
+        compR6: '실행 권한 · 네트워크 드라이브 · UI', compR6E: '일반 권한 · 기본 창 UI', compR6V: '관리자 권한/서비스 필요 · 고전 UI', compR6F: '일반 권한 즉시 실행 · 네트워크 폴더 지원 · 파스텔/다크 13종 테마',
+        adv1Tag: 'ADVANTAGE 01 · 한국어 & 실무 최적화',
+        adv1Title: '초성만 쳐도, 자주 쓰는 파일이 맨 위에',
+        adv1Desc: '영문·한글 전환 없이 자음(ㅍㄹㅈㅌ)만으로 즉시 찾고, 내가 자주 열어본 파일과 최근 실행 항목에 가산점을 부여해 원하는 파일이 항상 최상단에 뜹니다.',
+        adv2Tag: 'ADVANTAGE 02 · 검색과 실행의 완벽한 연결',
+        adv2Title: '파일 실행은 물론 탐색기·MEMTODO 연동까지',
+        adv2Desc: '폴더는 별도의 Windows 탐색기 창으로 즉시 열어주고, 검색 결과에서 여러 파일을 다중 선택한 뒤 이메일이나 MEMTODO 할 일 카드로 한 번에 드래그해 첨부할 수 있습니다.',
+        adv3Tag: 'ADVANTAGE 03 · 보안 환경에서도 무설치급 간편함',
+        adv3Title: '관리자 권한 없이 내 작업 폴더만 콕 집어 초고속 색인',
+        adv3Desc: '회사 PC 보안 정책으로 관리자 권한이나 백그라운드 서비스 등록이 어려워도 일반 사용자 권한 그대로 실행되며, 네트워크 공유 폴더까지 원하는 경로만 지정해 빠르게 검색합니다.',
+        featEyebrow: 'SPEED & SIMPLICITY',
         featMainTitle: '마우스 손을 떼는 순간 업무가 빨라집니다.',
-        f1Title: '런처 안 내부 폴더 탐색 & 7종 정렬', f1Desc: '탐색기를 따로 띄우지 않고 FINDRUN 안에서 바로 하위 폴더와 파일을 훑어보세요.<br/>뒤로가기·상위 이동과 7가지 정렬 기준까지 모두 무료로 제공합니다.',
-        f2Title: '안정적인 미리보기 & 스마트 창 확장', f2Desc: 'PPT 격리 렌더링과 캐싱으로 멈춤 없이 파일을 확인하고, 최대화·복원 버튼으로 화면을 넓게 쓰세요.<br/>화면 우측 끝에 붙여 두어도 좌측으로 자연스럽게 넓어졌다가 원래 자리로 돌아옵니다.',
-        f3Title: '끊김 없는 타이핑 & 안전한 클릭 판별', f3Desc: '검색어 입력 딜레이를 줄여 빠르게 쳐도 글자가 밀리지 않고 매끄럽게 반응합니다.<br/>항목을 하나씩 연속으로 누를 때 발생하던 오작동도 막아 안심하고 조작할 수 있습니다.',
-        f4Title: '설치부터 사용까지 광고·결제 없는 완전 무료', f4Desc: '파스텔·다크 테마, 단축키 녹화, 확장자 편집과 MEMTODO 연동까지 모두 무료로 열려 있습니다.<br/>회원가입이나 유료 결제 없이 지금 바로 다운로드해 업무 속도를 높여보세요.',
+        f1Title: '폴더 즉시 탐색기 오픈 & 7종 정렬', f1Desc: '검색한 폴더를 선택하면 별도의 Windows 탐색기 창이 바로 열려 후속 파일 작업을 이어갈 수 있습니다.<br/>정확도순·최신순·오래된순·이름순·크기순·확장자순 7가지 정렬도 즉시 전환됩니다.',
+        f2Title: '탐색기식 미리보기 & 스마트 창 확장', f2Desc: 'Windows Shell 뷰어와 PPT 격리 렌더링·캐싱으로 멈춤 없이 문서·도면·이미지를 확인하세요.<br/>화면 우측 끝에 붙여 두어도 좌측으로 자연스럽게 넓어졌다가 닫으면 원래 위치로 돌아옵니다.',
+        f3Title: '고급 검색 연산자 · 계산기 · 시스템 명령', f3Desc: '!제외, ext:, re:정규식, dup:중복파일은 물론 =수식 계산과 >cmd 명령 실행까지 지원합니다.<br/>상단 📖 아이콘을 누르면 정리된 검색 문법 안내창이 바로 열립니다.',
+        f4Title: '상단 폴더·앱 즐겨찾기 & 묶음 드래그', f4Desc: '자주 여는 폴더와 프로그램 아이콘을 상단 즐겨찾기 바에 끌어다 놓고 이름 변경·순서 조정을 할 수 있습니다.<br/>검색 결과에서 여러 파일을 다중 선택해 외부 앱으로 한 번에 드래그(Batch Drag)할 수 있습니다.',
+        f5Title: '초고속 색인 캐시 & 즉각적인 초기 반응', f5Desc: 'os.scandir 고속 수집과 가상 리스트 렌더링, 변경된 폴더만 부분 재스캔하는 구조로 매끄럽게 동작합니다.<br/>프로그램 실행과 설정(⚙) 창 오픈 딜레이까지 최소화했습니다.',
+        f6Title: '파스텔·다크 13종 테마 & 100% 완전 무료', f6Desc: '파스텔 10종·다크모드 3종·커스텀 색상, 전역 단축키 녹화, 카테고리별 확장자 편집까지 모두 무료입니다.<br/>광고·회원가입·유료 잠금 없이 지금 바로 다운로드해 업무 속도를 높여보세요.',
+        donateBadge: 'SUPPORT FREEWARE DEVELOPER',
         donateTitle: '하루 수십 번의 폴더 클릭과 탐색 시간을 아껴주었나요?',
-        donateDesc: 'FINDRUN은 광고와 유료 잠금 없이 누구나 자유롭게 쓸 수 있습니다.<br/>커피 한 잔 정도의 가벼운 후원은 V1.0.1 이후 안정성 개선과 새 무료 유틸리티 개발에 직접 쓰입니다.',
-        donatePerks1Title: '⚡ 시간 절약 체감',
-        donatePerks1Desc: '하루 20번만 줄여도 한 달 수백 번의 경로 이동 절약',
-        donatePerks2Title: '☕ 부담 없는 응원',
-        donatePerks2Desc: '구독이나 잠금 없이 원할 때 커피 한 잔으로 가볍게 후원',
-        donatePerks3Title: '🛠️ 개발 지속 지원',
-        donatePerks3Desc: '배포·빌드 유지보수 및 다음 무료 툴 제작에 활용',
+        donateDesc: 'FINDRUN은 광고와 유료 잠금 없이 누구나 자유롭게 쓸 수 있습니다.<br/>커피 한 잔 정도의 가벼운 후원은 안정성 개선과 새 무료 유틸리티 개발에 직접 쓰입니다.',
+        donatePerks1Title: '⚡ 시간 절약 체감', donatePerks1Desc: '하루 20번만 줄여도 한 달 수백 번의 경로 이동 절약',
+        donatePerks2Title: '☕ 부담 없는 응원', donatePerks2Desc: '구독이나 잠금 없이 원할 때 커피 한 잔으로 가볍게 후원',
+        donatePerks3Title: '🛠️ 개발 지속 지원', donatePerks3Desc: '배포·빌드 유지보수 및 다음 무료 툴 제작에 활용',
         donateCta: '개발자에게 커피 한 잔 후원하기 (Buy Me a Coffee)',
         donateFeedbackCta: '💬 기능 제안·버그 제보',
         memtodoBannerTitle: '바탕화면 위 포스트잇·캘린더·파일 통합 관리, MEMTODO',
-        memtodoBannerDesc: '소제목별 할 일 관리부터 폴더·파일 드래그 연결, 커스텀 마감 알림까지 월 구독료 없이 평생 소장하세요.',
+        memtodoBannerDesc: 'FINDRUN으로 찾은 파일과 폴더를 MEMTODO 할 일 카드로 바로 드래그해 연결해 보세요. 월 구독료 없이 평생 소장할 수 있습니다.',
         memtodoBannerCta: 'MEMTODO 살펴보기',
-        footerGuide: '사용 설명서',
-        footerTerms: '이용약관 · 환불정책',
-        footerPrivacy: '개인정보 처리방침',
-        footerDonate: '☕ 개발자 후원하기'
+        footerCopyright: '© 2026 All rights reserved.',
+        footerGuide: '사용 설명서', footerTerms: '이용약관 · 환불정책', footerPrivacy: '개인정보 처리방침', footerDonate: '☕ 개발자 후원하기',
+        footerContactPrefix: '공식 문의 및 라이선스 지원:', footerGithub: 'GitHub Releases', footerLocalNote: '100% Local Desktop Software'
       },
       'en': {
+        pageTitle: 'FINDRUN — 0.1s Ultra-Fast File & App Launcher | SINYWORK LAB',
         navGuide: 'User Guide', navPricing: 'MEMTODO Pricing', navThemeToggle: 'Light Mode',
         heroBadge: 'SINYWORK LAB FREEWARE · 100% Free for Personal & Commercial Use',
         heroTitle: 'Launch Files, Folders & Apps in 0.1s — FINDRUN',
-        heroDesc: 'Stop digging through nested folders with your mouse. Press a global hotkey, type part of a filename, and launch anything in 0.1 seconds with a single Enter key.',
+        heroDesc: 'Stop digging through nested folders with your mouse.<br/>Press <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-xs font-mono">Alt+Space</kbd>, type part of a filename or Korean initials, and launch files immediately or open folders in a dedicated Windows Explorer window.',
         heroCtaDownload: 'Free Download for Windows (V1.0.1)', heroCtaGuide: 'FINDRUN User Guide',
-        updateTitle: "V1.0.1 Summary",
-        update1: '• Added in-app folder browsing, 7 sort modes, maximize/restore & isolated PPT preview cache',
-        update2: '• Added left-expansion near screen edge, faster typing & accidental multi-click guard',
-        update3: '• Added 10 pastel themes, Dark Mode, custom themes & auto-height favorites bar',
-        update4: '• Added DPI restore, magnetic snap, AppData storage, autostart, ext editor & > commands',
-        smartscreenTip: "💡 If Windows SmartScreen appears, click [More info] → [Run anyway].",
-        trustFree: '100% Free · Zero Ads', trustLight: 'Ultra-Low Memory Footprint', trustLocal: 'Offline Local Indexing',
+        updateTitle: 'Latest Engine & Productivity Highlights',
+        update1: '• Fast os.scandir indexing, virtual list view, partial folder re-scan & faster startup/Settings response',
+        update2: '• Opens folders in a separate Windows Explorer window + built-in Search Syntax Guide (📖) popup',
+        update3: '• Supports Korean Chosung, regex (re:), duplicate finder (dup:), exclusions (!), math (=) & commands (>)',
+        update4: '• Windows Shell / isolated PPT preview, top favorites bar, batch drag-out & 13 themes',
+        smartscreenTip: '💡 If Windows SmartScreen appears, click [More info] → [Run anyway].',
+        trustFree: '100% Free · Zero Ads', trustLight: 'No Admin Required · Ultra-Light', trustLocal: '100% Offline Local Indexing',
         mockBadge: 'Live Search Demo (Try typing below!)', mockClear: 'Clear',
-        mockHintLeft: '↑↓ Navigate · Ctrl+Enter Open Folder', mockHintRight: 'Enter ↵ Launch',
-        demoPerkText: 'Full app: folder browse, 7 sort modes & preview all free',
+        mockQuickTry: 'Try:',
+        mockSearchPh: 'Search (e.g., mockup, ext:xlsx, =45000*1.1, >cmd, dup:...)',
+        mockEmpty: 'No matching files or commands found.',
+        mockHintLeft: 'Enter launches file · Folders open in Windows Explorer', mockHintRight: '📖 Built-in Syntax Guide',
+        demoPerkText: 'Full app: 7 sort modes, Explorer preview & batch drag all free',
         demoDonateLink: '☕ Enjoying it? Buy a coffee',
+        compEyebrow: 'WHY CHOOSE FINDRUN',
+        compTitle: 'Windows Explorer vs. Everything vs. FINDRUN',
+        compDesc: 'Instant search speed meets Korean consonant matching, hybrid document previews, favorites, batch drag-out, calculator, and command launching in one lightweight tool.',
+        compColFeature: 'Feature', compColExplorer: 'Windows Explorer', compColEverything: 'Everything',
+        compR1: 'Search Speed & Responsiveness', compR1E: 'Slow (live disk traversal each time)', compR1V: 'Ultra-fast (NTFS MFT indexing)', compR1F: '0.1s instant search (os.scandir + cache + virtual list)',
+        compR2: 'Korean Initial Consonant Search', compR2E: 'Not supported', compR2V: 'Not built-in (requires setup)', compR2F: 'Built-in (match Korean consonants instantly)',
+        compR3: 'All-in-One Launcher (=math, >cmd, dup:, re:)', compR3E: 'Basic file filters only', compR3V: 'Focused on file search syntax', compR3F: 'Calculator (=) + Commands (>) + Duplicates (dup:) + Regex (re:)',
+        compR4: 'Document, PPT & Image Preview', compR4E: 'Inside Explorer windows only', compR4V: 'Basic preview only', compR4F: 'Windows Shell + isolated PPT render/cache hybrid preview',
+        compR5: 'Top Favorites Bar & Batch Drag-Out', compR5E: 'Quick Access pinning', compR5V: 'Bookmark menu based', compR5F: 'Drag-to-pin folder/app bar + multi-select Batch Drag-out',
+        compR6: 'Permissions, Network Drives & UI', compR6E: 'Standard user · Default UI', compR6V: 'Requires admin/service · Classic UI', compR6F: 'Standard user rights · Network folders · 13 Pastel/Dark themes',
+        adv1Tag: 'ADVANTAGE 01 · SMART RANKING & CHOSUNG',
+        adv1Title: 'Frequent Files Rank First — Even by Initials',
+        adv1Desc: 'Search effortlessly with Korean consonants or partial keywords while FINDRUN learns your frequently opened files and recent history to surface the right file at the top.',
+        adv2Tag: 'ADVANTAGE 02 · SEAMLESS WORKFLOW HANDOFF',
+        adv2Title: 'Open Folders in Explorer & Batch-Drag to MEMTODO',
+        adv2Desc: 'Folders open directly in a separate Windows Explorer window, and you can multi-select search results to batch-drag files straight into email or MEMTODO task cards.',
+        adv3Tag: 'ADVANTAGE 03 · ZERO ADMIN FRICTION',
+        adv3Title: 'Works Under Standard User Permissions & Network Paths',
+        adv3Desc: 'Even on locked-down office PCs where admin services are restricted, FINDRUN runs smoothly under standard user permissions and indexes your chosen local or network folders.',
+        featEyebrow: 'SPEED & SIMPLICITY',
         featMainTitle: 'Work Faster the Moment Your Hands Leave the Mouse.',
-        f1Title: 'In-App Folder Browse & 7 Sort Modes', f1Desc: 'Browse subfolders and files right inside FINDRUN without opening Explorer.<br/>Back/up navigation and all 7 sort options are included for free.',
-        f2Title: 'Safer Preview & Smart Edge Expansion', f2Desc: 'Preview PPTs smoothly with isolated rendering and caching, and maximize or restore anytime.<br/>Docked on the far right, it expands leftward cleanly and returns to its original spot.',
-        f3Title: 'Snappier Typing & Safer Multi-Click', f3Desc: 'Reduced typing delay keeps input responsive even when you type fast.<br/>Guards against accidental launches when clicking items one after another.',
-        f4Title: '100% Free — Zero Ads or Paywalls', f4Desc: 'Themes, hotkey recording, extension filters, and MEMTODO synergy are all free.<br/>Download now with no sign-up or payment and speed up your daily workflow.',
+        f1Title: 'Direct Explorer Folder Open & 7 Sort Modes', f1Desc: 'Selecting a folder immediately opens a separate Windows Explorer window for follow-up work.<br/>Switch across 7 sort modes (Relevance, Newest, Oldest, Name, Largest, Smallest, Type) anytime.',
+        f2Title: 'Explorer-Style Preview & Smart Edge Expand', f2Desc: 'Preview Office docs, PDFs, images, and PPTs smoothly via Windows Shell and isolated PPT caching.<br/>Docked on the right screen edge, it expands leftward cleanly and restores when closed.',
+        f3Title: 'Power Search Operators, Math & Commands', f3Desc: 'Supports !exclude, ext:, re:regex, dup:duplicates, =math expressions, and >cmd system commands.<br/>Click the top 📖 icon anytime for a clean notepad-style syntax reference.',
+        f4Title: 'Top Folder/App Favorites & Batch Drag-Out', f4Desc: 'Drag frequent folders and apps onto the top favorites bar with custom renaming and reordering.<br/>Select multiple search results and batch-drag them directly into external apps.',
+        f5Title: 'Fast Index Cache & Instant UI Startup', f5Desc: 'Powered by os.scandir scanning, virtual list rendering, and partial folder re-indexing on file changes.<br/>Deferred startup tasks keep initial launch and Settings (⚙) opening snappy.',
+        f6Title: '13 Themes & 100% Free Forever', f6Desc: '10 pastel themes, 3 dark modes, custom colors, hotkey recording, and extension filters are all free.<br/>Download now with zero ads, sign-ups, or paywalls.',
+        donateBadge: 'SUPPORT FREEWARE DEVELOPER',
         donateTitle: 'Did FINDRUN save dozens of folder clicks a day?',
-        donateDesc: 'FINDRUN is completely free with zero ads or paywalls.<br/>A small coffee goes directly toward V1.0.1 stability polish and future free utilities.',
-        donatePerks1Title: '⚡ Real Time Saved',
-        donatePerks1Desc: '20 fewer clicks a day adds up to hundreds a month',
-        donatePerks2Title: '☕ Low-Pressure Tip',
-        donatePerks2Desc: 'No subscription or lock-in—tip a coffee whenever you like',
-        donatePerks3Title: '🛠️ Ongoing Updates',
-        donatePerks3Desc: 'Supports builds, maintenance & new free desktop tools',
+        donateDesc: 'FINDRUN is completely free with zero ads or paywalls.<br/>A small coffee goes directly toward stability improvements and future free utilities.',
+        donatePerks1Title: '⚡ Real Time Saved', donatePerks1Desc: '20 fewer clicks a day adds up to hundreds a month',
+        donatePerks2Title: '☕ Low-Pressure Tip', donatePerks2Desc: 'No subscription or lock-in—tip a coffee whenever you like',
+        donatePerks3Title: '🛠️ Ongoing Updates', donatePerks3Desc: 'Supports builds, maintenance & new free desktop tools',
         donateCta: 'Buy Me a Coffee (Support Developer)',
         donateFeedbackCta: '💬 Feature Request & Bug Report',
         memtodoBannerTitle: 'Sticky Notes, Calendar & File Management on Desktop — MEMTODO',
-        memtodoBannerDesc: 'Organize tasks by sub-section, drag & drop folders, and get custom deadline alerts with a one-time license.',
+        memtodoBannerDesc: 'Drag files and folders found in FINDRUN straight onto MEMTODO task cards. Own it forever with a one-time license.',
         memtodoBannerCta: 'Explore MEMTODO',
-        footerGuide: 'User Manual',
-        footerTerms: 'Terms & Refund Policy',
-        footerPrivacy: 'Privacy Policy',
-        footerDonate: '☕ Support Developer'
+        footerCopyright: '© 2026 All rights reserved.',
+        footerGuide: 'User Manual', footerTerms: 'Terms & Refund Policy', footerPrivacy: 'Privacy Policy', footerDonate: '☕ Support Developer',
+        footerContactPrefix: 'Official Support & Licensing:', footerGithub: 'GitHub Releases', footerLocalNote: '100% Local Desktop Software'
       },
       'ja': {
+        pageTitle: 'FINDRUN — 0.1秒超高速ファイル・アプリランチャー | SINYWORK LAB',
         navGuide: '取扱説明書', navPricing: 'MEMTODO 料金', navThemeToggle: 'ライトモード',
         heroBadge: 'SINYWORK LAB FREEWARE · 個人・法人 100% 無料',
-        heroTitle: 'ファイルもフォルダもアプリも0.1秒で即起動 — FINDRUN',
-        heroDesc: '深いフォルダ階層をマウスで探す手間は不要。ショートカットキーを押してファイル名の一部を入力するだけで0.1秒で検索し、Enter一発で即起動します。',
+        heroTitle: 'ファイルもフォルダも0.1秒で即起動 — FINDRUN',
+        heroDesc: '深いフォルダ階層をマウスで探す手間は不要。<br/><kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-xs font-mono">Alt+Space</kbd> を押してファイル名の一部や子音を入力するだけで0.1秒で検索し、ファイルは即起動・フォルダは別のエクスプローラーウィンドウで開きます。',
         heroCtaDownload: 'Windows版 無料ダウンロード (V1.0.1)', heroCtaGuide: 'FINDRUN 使い方ガイド',
-        updateTitle: 'V1.0.1 更新サマリー',
-        update1: '• 内部フォルダ探索・7種並び替え・最大化/復元とPPT分離プレビュー＆キャッシュを追加',
-        update2: '• 画面端での左拡張復元・入力遅延の低減・連続クリック誤作動防止を実装',
-        update3: '• パステル10種・ダークモード・カスタムテーマとお気に入り領域の高さ自動調整に対応',
-        update4: '• DPI復元・マグネット吸着・AppData保存・自動起動・拡張子編集・> コマンドに対応',
-        smartscreenTip: "💡 Windowsで保護警告が出た場合は［詳細情報］→［実行］をクリックしてください。",
-        trustFree: '広告・課金なしの完全無料', trustLight: '超軽量バックグラウンド常駐', trustLocal: 'オフラインローカル索引',
+        updateTitle: '最新エンジン＆便利機能アップデート要約',
+        update1: '• 高速スキャン(os.scandir)・仮想リスト・部分再スキャンと起動/設定(⚙)の高速化',
+        update2: '• フォルダ選択時に別エクスプローラー起動＆上部検索構文ガイド(📖)ポップアップ追加',
+        update3: '• ハングル子音・正規表現(re:)・重複検出(dup:)・除外(!)・数式計算(=)・コマンド(>)対応',
+        update4: '• Windows Shell/PPT分離プレビュー、お気に入りバー、一括ドラッグ、13種テーマ対応',
+        smartscreenTip: '💡 Windowsで保護警告が出た場合は［詳細情報］→［実行］をクリックしてください。',
+        trustFree: '広告・課金なしの完全無料', trustLight: '管理者権限不要・超軽量常駐', trustLocal: '100%オフラインローカル索引',
         mockBadge: 'リアルタイム検索体験（入力して試せます！）', mockClear: 'リセット',
-        mockHintLeft: '↑↓ 移動 · Ctrl+Enter フォルダを開く', mockHintRight: 'Enter ↵ 即時実行',
-        demoPerkText: '製品版：内部フォルダ探索・7種並び替え・プレビューも無料',
+        mockQuickTry: 'クイック入力:',
+        mockSearchPh: '検索語を入力（例: デザイン, ext:xlsx, =45000*1.1, >cmd, dup:...）',
+        mockEmpty: '一致するファイルやコマンドが見つかりません。',
+        mockHintLeft: 'Enter ファイル起動 · フォルダは別エクスプローラー起動', mockHintRight: '📖 検索構文ガイド内蔵',
+        demoPerkText: '製品版：7種並び替え・プレビュー・一括ドラッグすべて無料',
         demoDonateLink: '☕ 便利ならコーヒー1杯で応援',
+        compEyebrow: 'WHY CHOOSE FINDRUN',
+        compTitle: 'Windows エクスプローラー · Everything · FINDRUN 比較表',
+        compDesc: '検索スピードはもちろん、子音検索・ハイブリッドプレビュー・お気に入りバー・一括ドラッグ・計算機・コマンド実行まで実務に必要な機能を1つに凝縮しました。',
+        compColFeature: '比較項目', compColExplorer: 'Windows エクスプローラー', compColEverything: 'Everything',
+        compR1: '検索速度・応答性', compR1E: '遅い（毎回ディスクをリアルタイム走査）', compR1V: '超高速（NTFS MFT索引）', compR1F: '0.1秒即座検索（os.scandir + キャッシュ + 仮想リスト）',
+        compR2: '韓国語子音検索（例: ㅍㄹㅈㅌ）', compR2E: '非対応', compR2V: '標準非対応（別途設定が必要）', compR2F: '標準内蔵（子音入力だけで即座にヒット）',
+        compR3: 'オールインワン機能（=数式, >コマンド, dup:, re:）', compR3E: '基本フィルタのみ', compR3V: 'ファイル検索構文に特化', compR3F: '数式計算(=)・コマンド(>)・重複検出(dup:)・正規表現(re:)統合',
+        compR4: '文書・PPT・画像プレビュー', compR4E: 'エクスプローラー内のみ', compR4V: '簡易プレビュー中心', compR4F: 'Windows Shell + PPT分離レンダリング＆キャッシュ',
+        compR5: '上部お気に入りバー＆一括ドラッグ', compR5E: 'クイックアクセス固定', compR5V: 'ブックマークメニュー方式', compR5F: 'フォルダ/アプリドラッグ固定 + 複数選択一括ドラッグ',
+        compR6: '実行権限・ネットワーク共有・UI', compR6E: '一般権限・標準UI', compR6V: '管理者権限/サービス必要・クラシックUI', compR6F: '一般権限で即起動・ネットワークフォルダ対応・13種テーマ',
+        adv1Tag: 'ADVANTAGE 01 · 頻度学習＆子音検索',
+        adv1Title: 'よく使うファイルが常に最上位に表示',
+        adv1Desc: '使用頻度と最近の履歴を自動学習し、子音や短いキーワードでも目的のファイルを1〜2行目に素早く表示します。',
+        adv2Tag: 'ADVANTAGE 02 · 検索から次工程へ直結',
+        adv2Title: 'フォルダは別エクスプローラー起動＆MEMTODOへ一括ドラッグ',
+        adv2Desc: 'フォルダはエクスプローラーで即座に開き、検索結果から複数ファイルをMEMTODOやメールへ一括ドラッグできます。',
+        adv3Tag: 'ADVANTAGE 03 · 社内PCでも安心の一般権限動作',
+        adv3Title: '管理者権限なしで指定フォルダ・ネットワーク共有を高速索引',
+        adv3Desc: '管理者権限や常駐サービス登録が制限された環境でも一般ユーザー権限のまま軽快に動作します。',
+        featEyebrow: 'SPEED & SIMPLICITY',
         featMainTitle: 'マウスから手を離した瞬間、業務スピードが変わります。',
-        f1Title: 'ランチャー内フォルダ探索＆7種並び替え', f1Desc: 'エクスプローラーを開かずにFINDRUN内でそのまま中身を辿れます。<br/>戻る・上へ移動や7種類の並び替えもすべて無料で使えます。',
-        f2Title: '安心のプレビュー＆スマート画面拡張', f2Desc: 'PPTの分離レンダリングとキャッシュで快適に表示し、最大化・元のサイズ復元にも対応。<br/>画面右端に置いても左へ自然に広がり、閉じると元の位置へ戻ります。',
-        f3Title: '快適な入力反応＆連続クリック誤作動防止', f3Desc: '入力遅延を抑えて素早いタイピングにも軽快に追従します。<br/>次々と項目をクリックした際の誤起動も防いで安心して操作できます。',
-        f4Title: '導入から利用まで広告・課金なしの完全無料', f4Desc: 'テーマ変更、ショートカット録画、拡張子編集、MEMTODO連携もすべて無料です。<br/>登録や課金なしで今すぐダウンロードして日々の作業を加速しましょう。',
+        f1Title: 'フォルダ即エクスプローラー起動＆7種並び替え', f1Desc: '検索したフォルダを選ぶと別ウィンドウのエクスプローラーが即座に開きます。<br/>関連度順・新しい順・古い順・名前順・サイズ順・拡張子順の7種並び替えに対応。',
+        f2Title: 'エクスプローラー風プレビュー＆スマート画面拡張', f2Desc: 'Windows ShellビューアとPPT分離レンダリング・キャッシュで快適に中身を確認できます。<br/>画面右端に置いても左へ自然に広がり、閉じると元の位置へ戻ります。',
+        f3Title: '高度検索演算子・計算機・システムコマンド', f3Desc: '!除外、ext:、re:正規表現、dup:重複検出に加え、=数式計算や >cmd コマンド実行に対応。<br/>上部の 📖 アイコンから見やすい検索構文ガイドをいつでも開けます。',
+        f4Title: '上部お気に入りバー＆一括ドラッグ(Batch Drag)', f4Desc: 'よく使うフォルダやアプリを上部にドラッグ登録し、名前変更や並び替えが可能です。<br/>検索結果を複数選択して他アプリへ一括ドラッグできます。',
+        f5Title: '高速キャッシュ＆軽快な起動・設定応答', f5Desc: 'os.scandir走査、仮想リスト描画、変更フォルダのみの部分再スキャンで軽快に動作。<br/>起動直後や設定(⚙)ボタン押下時の待ち時間も短縮しました。',
+        f6Title: 'パステル・ダーク13種テーマ＆完全無料', f6Desc: 'パステル10種・ダーク3種・カスタム配色、ホットキー録音、拡張子編集まで全て無料。<br/>広告や課金なしで今すぐダウンロードして作業効率を高めましょう。',
+        donateBadge: 'SUPPORT FREEWARE DEVELOPER',
         donateTitle: '毎日のフォルダ操作や検索時間を短縮できましたか？',
-        donateDesc: 'FINDRUNは広告や有料制限なしでどなたでも無料使えます。<br/>コーヒー1杯ほどの気軽なご支援は、V1.0.1以降の改善や新しい無料ツールの開発に役立てます。',
-        donatePerks1Title: '⚡ 時短を実感',
-        donatePerks1Desc: '1日20回減らすだけで月数百回の移動操作を節約',
-        donatePerks2Title: '☕ 気軽なサポート',
-        donatePerks2Desc: 'サブスクや機能制限なし。気持ちだけでコーヒー1杯',
-        donatePerks3Title: '🛠️ 開発継続の力に',
-        donatePerks3Desc: 'リリース維持や次回無料ユーティリティの開発に活用',
+        donateDesc: 'FINDRUNは広告や有料制限なしでどなたでも無料使えます。<br/>コーヒー1杯ほどの気軽なご支援は、安定性改善や新しい無料ツールの開発に役立てます。',
+        donatePerks1Title: '⚡ 時短を実感', donatePerks1Desc: '1日20回減らすだけで月数百回の操作を節約',
+        donatePerks2Title: '☕ 気軽なサポート', donatePerks2Desc: 'サブスクや機能制限なし。気持ちだけでコーヒー1杯',
+        donatePerks3Title: '🛠️ 開発継続の力に', donatePerks3Desc: 'リリース維持や次回無料ユーティリティの開発に活用',
         donateCta: '開発者にコーヒー1杯を奢る (Buy Me a Coffee)',
         donateFeedbackCta: '💬 機能要望・不具合報告',
         memtodoBannerTitle: 'デスクトップ付箋・カレンダー・ファイル統合管理、MEMTODO',
-        memtodoBannerDesc: '見出し別タスク管理からフォルダのドラッグ連携、独自締切通知まで買い切りで永久利用可能。',
+        memtodoBannerDesc: 'FINDRUNで見つけたファイルやフォルダをMEMTODOのタスクへ直接ドラッグして連携できます。買い切りで永久利用可能。',
         memtodoBannerCta: 'MEMTODO を見る',
-        footerGuide: '取扱説明書',
-        footerTerms: '利用規約・返金ポリシー',
-        footerPrivacy: 'プライバシーポリシー',
-        footerDonate: '☕ 開発者を応援する'
+        footerCopyright: '© 2026 All rights reserved.',
+        footerGuide: '取扱説明書', footerTerms: '利用規約・返金ポリシー', footerPrivacy: 'プライバシーポリシー', footerDonate: '☕ 開発者を応援する',
+        footerContactPrefix: '公式お問い合わせ・ライセンス窓口:', footerGithub: 'GitHub Releases', footerLocalNote: '100% Local Desktop Software'
       },
       'zh-CN': {
+        pageTitle: 'FINDRUN — 0.1秒极速文件与程序启动器 | SINYWORK LAB',
         navGuide: '使用说明书', navPricing: 'MEMTODO 价格', navThemeToggle: '浅色模式',
         heroBadge: 'SINYWORK LAB FREEWARE · 个人与企业 100% 免费',
         heroTitle: '文件、文件夹与程序 0.1 秒极速启动 — FINDRUN',
-        heroDesc: '告别层层点击文件夹的繁琐操作。按下全局快捷键并输入部分文件名，0.1 秒内完成检索，按一下 Enter 即可立即启动。',
+        heroDesc: '告别层层点击文件夹的繁琐操作。<br/>按下快捷键(<kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-xs font-mono">Alt+Space</kbd>)并输入部分文件名或首字母，0.1 秒内完成检索，文件立即启动、文件夹直接以独立 Windows 资源管理器窗口打开。',
         heroCtaDownload: 'Windows 版免费下载 (V1.0.1)', heroCtaGuide: 'FINDRUN 使用指南',
-        updateTitle: 'V1.0.1 更新说明',
-        update1: '• 新增 10 款柔和配色、深色模式、自定义主题及收藏夹拖放区域高度自动调节',
-        update2: '• 支持多显示器与 DPI 缩放窗口位置恢复、托盘隐藏记忆、磁吸对齐及防重复图标',
-        update3: '• 优化安装版（Program Files）环境下 AppData 配置存储及 Windows 开机自启兼容性',
-        update4: '• 新增默认排除文件夹过滤、分类扩展名编辑、快捷键直接录制及 > 系统命令执行功能',
-        smartscreenTip: "💡 若弹出 Windows 安全提示，请点击 [更多信息] → [仍要运行]。",
-        trustFree: '无广告无付费完全免费', trustLight: '超低内存后台常驻', trustLocal: '纯离线本地索引',
+        updateTitle: '最新引擎与实用功能更新摘要',
+        update1: '• os.scandir 高速扫描、虚拟列表渲染、局部目录重扫及启动/设置(⚙)响应提速',
+        update2: '• 点击文件夹直接打开独立 Windows 资源管理器窗口 + 新增顶部搜索语法指南(📖)弹窗',
+        update3: '• 支持韩文首字母、正则(re:)、重复文件检测(dup:)、排除(!)、公式计算(=)与系统命令(>)',
+        update4: '• 支持 Windows Shell / PPT 隔离预览、顶部收藏栏、批量拖拽及 13 款主题配色',
+        smartscreenTip: '💡 若弹出 Windows 安全提示，请点击 [更多信息] → [仍要运行]。',
+        trustFree: '无广告无付费完全免费', trustLight: '无需管理员权限 · 超低内存常驻', trustLocal: '100% 纯离线本地索引',
         mockBadge: '实时搜索体验（可直接输入关键词测试！）', mockClear: '清空',
-        mockHintLeft: '↑↓ 方向键移动 · Ctrl+Enter 打开文件夹', mockHintRight: 'Enter ↵ 立即运行',
-        demoPerkText: '完整版：内部浏览、7种排序与预览功能全部免费',
+        mockQuickTry: '快速测试:',
+        mockSearchPh: '输入关键词（如: 设计稿, ext:xlsx, =45000*1.1, >cmd, dup:...）',
+        mockEmpty: '没有找到匹配的文件或命令。',
+        mockHintLeft: 'Enter 启动文件 · 文件夹直接新开资源管理器', mockHintRight: '📖 内置搜索语法指南',
+        demoPerkText: '完整版：7种排序、预览面板与批量拖拽全部免费',
         demoDonateLink: '☕ 觉得好用？请喝杯咖啡',
+        compEyebrow: 'WHY CHOOSE FINDRUN',
+        compTitle: 'Windows 资源管理器 · Everything · FINDRUN 全面对比',
+        compDesc: '不仅拥有 0.1 秒级搜索响应，更整合了首字母匹配、文档混合预览、快捷收藏栏、批量拖拽、计算器与系统命令启动等高频办公能力。',
+        compColFeature: '对比维度', compColExplorer: 'Windows 资源管理器', compColEverything: 'Everything',
+        compR1: '搜索速度与响应性', compR1E: '较慢（每次实时遍历磁盘）', compR1V: '极快（NTFS MFT 索引）', compR1F: '0.1秒即时搜索（os.scandir + 缓存 + 虚拟列表）',
+        compR2: '韩文首字母搜索（如 ㅍㄹㅈㅌ）', compR2E: '不支持', compR2V: '默认不支持（需额外配置）', compR2F: '原生内置（仅输入辅音即可秒搜）',
+        compR3: '一体式启动器（=公式, >命令, dup:, re:）', compR3E: '仅基础文件筛选', compR3V: '专注文件搜索语法', compR3F: '计算器(=) + 系统命令(>) + 重复文件(dup:) + 正则(re:)',
+        compR4: '文档 · PPT · 图片预览', compR4E: '仅限资源管理器窗口内', compR4V: '基础预览为主', compR4F: 'Windows Shell + PPT 隔离渲染与缓存混合预览',
+        compR5: '顶部收藏栏与批量拖拽', compR5E: '支持快速访问固定', compR5V: '书签菜单方式', compR5F: '文件夹/应用拖拽固定 + 多选批量拖拽(Batch Drag)',
+        compR6: '运行权限 · 网络共享 · 界面', compR6E: '普通权限 · 默认界面', compR6V: '需管理员权限/服务 · 经典界面', compR6F: '普通权限直接运行 · 支持网络目录 · 13 款柔和/深色主题',
+        adv1Tag: 'ADVANTAGE 01 · 常用优先与智能排序',
+        adv1Title: '高频打开的文件自动排在最前面',
+        adv1Desc: '自动记录使用频率与最近打开历史，结合前缀匹配权重，让常用工作文件始终出现在搜索结果首位。',
+        adv2Tag: 'ADVANTAGE 02 · 搜索到下一步操作无缝衔接',
+        adv2Title: '独立资源管理器打开文件夹 & 批量拖入 MEMTODO',
+        adv2Desc: '文件夹直接通过 Windows 资源管理器窗口打开，也可在结果列表中多选文件并批量拖拽至邮件或 MEMTODO 待办卡片。',
+        adv3Tag: 'ADVANTAGE 03 · 办公内网环境零门槛运行',
+        adv3Title: '无需管理员权限，指定本地与网络目录极速索引',
+        adv3Desc: '即使在限制管理员权限或后台服务的公司电脑上，也能以普通用户权限直接运行并索引指定工作目录。',
+        featEyebrow: 'SPEED & SIMPLICITY',
         featMainTitle: '双手离开鼠标的瞬间，办公效率全面提速。',
-        f1Title: '应用内文件夹浏览与 7 种排序', f1Desc: '无需另开资源管理器，在 FINDRUN 内即可直接浏览下级文件夹与文件。<br/>后退、向上及 7 种排序方式全部免费开放。',
-        f2Title: '更稳的预览体验与智能边缘扩展', f2Desc: '通过 PPT 隔离渲染与缓存流畅预览，并支持最大化与窗口还原。<br/>靠在屏幕最右侧时可向左自然展开，关闭后回到原位。',
-        f3Title: '更跟手的输入与防连点误触', f3Desc: '降低搜索输入延迟，连续快速打字也能保持顺滑响应。<br/>减少逐个快速点击条目时的误打开，操作更稳妥。',
-        f4Title: '无广告无付费墙，安装即享完整免费版', f4Desc: '多款主题、快捷键录制、扩展名过滤与 MEMTODO 联动统统免费。<br/>无需注册或付费，立即下载体验更快的日常效率。',
+        f1Title: '文件夹直接打开资源管理器 & 7 种排序', f1Desc: '选中文件夹即可直接弹出独立 Windows 资源管理器窗口继续操作。<br/>支持相关度、最新、最早、名称、大小、扩展名等 7 种排序一键切换。',
+        f2Title: '资源管理器级预览 & 智能靠边扩展', f2Desc: '通过 Windows Shell 与 PPT 隔离渲染缓存流畅预览文档、图纸与图片。<br/>靠在屏幕最右侧时自动向左展开，关闭预览后恢复原位。',
+        f3Title: '高级搜索语法 · 计算器 · 系统命令', f3Desc: '支持 !排除、ext:、re:正则、dup:重复文件检测，以及 =公式计算与 >cmd 命令启动。<br/>点击顶部 📖 图标即可随时查看清晰的搜索语法说明。',
+        f4Title: '顶部文件夹/应用收藏栏 & 批量拖拽', f4Desc: '将常用文件夹和程序图标拖入顶部收藏栏，支持重命名与拖拽调整顺序。<br/>支持多选搜索结果并一次性批量拖拽(Batch Drag)到其他软件。',
+        f5Title: '高速索引缓存 & 更快启动与设置响应', f5Desc: '采用 os.scandir 高速遍历、虚拟列表渲染及变更目录局部重扫机制。<br/>优化启动与设置(⚙)弹窗加载流程，点击即开不卡顿。',
+        f6Title: '13 款柔和/深色主题 & 100% 永久免费', f6Desc: '10 款柔和配色、3 款深色模式、自定义颜色、快捷键录制与扩展名过滤全部免费。<br/>无广告无注册门槛，立即下载提升日常办公效率。',
+        donateBadge: 'SUPPORT FREEWARE DEVELOPER',
         donateTitle: 'FINDRUN 是否帮您省下了每天多次的文件夹查找时间？',
-        donateDesc: 'FINDRUN 完全免费、无广告也无功能付费墙。<br/>一杯咖啡的轻松打赏将直接用于 V1.0.1 后续优化与新免费工具开发。',
-        donatePerks1Title: '⚡ 切身省时',
-        donatePerks1Desc: '每天少点 20 次文件夹，每月节省数百次操作',
-        donatePerks2Title: '☕ 零压力支持',
-        donatePerks2Desc: '无订阅无解锁门槛，想支持时请喝杯咖啡即可',
-        donatePerks3Title: '🛠️ 助力持续更新',
-        donatePerks3Desc: '用于版本构建维护与下一款免费桌面工具研发',
+        donateDesc: 'FINDRUN 完全免费、无广告也无功能付费墙。<br/>一杯咖啡的轻松打赏将直接用于稳定性优化与新免费工具开发。',
+        donatePerks1Title: '⚡ 切身省时', donatePerks1Desc: '每天少点 20 次文件夹，每月节省数百次操作',
+        donatePerks2Title: '☕ 零压力支持', donatePerks2Desc: '无订阅无解锁门槛，想支持时请喝杯咖啡即可',
+        donatePerks3Title: '🛠️ 助力持续更新', donatePerks3Desc: '用于版本构建维护与下一款免费桌面工具研发',
         donateCta: '请开发者喝杯咖啡 (Buy Me a Coffee)',
         donateFeedbackCta: '💬 功能建议与问题反馈',
         memtodoBannerTitle: '桌面便签、日历与文件一体化管理，MEMTODO',
-        memtodoBannerDesc: '分组待办进度、文件夹拖拽关联与自定义截止提醒，一次付费终身拥有。',
+        memtodoBannerDesc: '将 FINDRUN 搜到的文件与文件夹直接拖入 MEMTODO 待办卡片关联，一次付费终身拥有。',
         memtodoBannerCta: '查看 MEMTODO',
-        footerGuide: '详细使用说明书',
-        footerTerms: '使用条款与退款政策',
-        footerPrivacy: '隐私政策',
-        footerDonate: '☕ 打赏支持开发者'
+        footerCopyright: '© 2026 All rights reserved.',
+        footerGuide: '使用说明书', footerTerms: '使用条款与退款政策', footerPrivacy: '隐私政策', footerDonate: '☕ 打赏支持开发者',
+        footerContactPrefix: '官方咨询与授权支持：', footerGithub: 'GitHub Releases', footerLocalNote: '100% Local Desktop Software'
       }
     };
 
+    const copyEmailMessages = {
+      'ko': '✓ sinyworklab@gmail.com 주소가 복사되었습니다. 사용 중인 메일로 보내주세요!',
+      'en': '✓ Copied sinyworklab@gmail.com to clipboard! Paste it into your email client.',
+      'ja': '✓ sinyworklab@gmail.com をコピーしました！お使いのメールに貼り付けて送信してください。',
+      'zh-CN': '✓ 已复制 sinyworklab@gmail.com！请粘贴到您的邮箱中发送。'
+    };
+
+    async function copySupportEmail(triggerEl) {
+      const email = 'sinyworklab@gmail.com';
+      const lang = (document.getElementById('langSelector') && document.getElementById('langSelector').value) || 'ko';
+      const msg = copyEmailMessages[lang] || copyEmailMessages['ko'];
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = email;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+      }
+      if (triggerEl) {
+        let fb = triggerEl.parentElement && triggerEl.parentElement.querySelector('.copy-email-feedback');
+        if (!fb && triggerEl.nextElementSibling && triggerEl.nextElementSibling.classList.contains('copy-email-feedback')) {
+          fb = triggerEl.nextElementSibling;
+        }
+        if (fb) {
+          fb.textContent = msg;
+          fb.classList.remove('hidden');
+          clearTimeout(fb._t);
+          fb._t = setTimeout(() => fb.classList.add('hidden'), 4500);
+        }
+      }
+    }
+
     const langSelector = document.getElementById('langSelector');
     const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const footerKakaoWrap = document.getElementById('footerKakaoWrap');
 
     function updateThemeToggleLabel(lang, isDark) {
       const span = themeToggleBtn.querySelector('span');
@@ -526,6 +790,7 @@
     function applyPageLanguage(lang) {
       const dict = i18nFindrun[lang] || i18nFindrun['ko'];
       document.documentElement.lang = lang;
+      if (dict.pageTitle) document.title = dict.pageTitle;
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (!dict[key]) return;
@@ -539,6 +804,18 @@
           else el.textContent = val;
         }
       });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (!dict[key]) return;
+        el.innerHTML = dict[key];
+      });
+      if (dict.mockSearchPh) {
+        inputEl.placeholder = dict.mockSearchPh;
+      }
+      if (footerKakaoWrap) {
+        footerKakaoWrap.classList.toggle('hidden', lang !== 'ko');
+      }
+      renderResults(inputEl.value);
       updateThemeToggleLabel(lang, document.documentElement.classList.contains('dark'));
       localStorage.setItem('sinywork_site_lang', lang);
     }
@@ -548,6 +825,104 @@
       localStorage.setItem('sinywork_site_theme', isDark ? 'dark' : 'light');
       updateThemeToggleLabel(langSelector.value, isDark);
     }
+
+    const findrunItemsByLang = {
+      'ko': [
+        { type: 'folder', name: '01_UI_시안_최종폴더  [새 탐색기 창 열기]', path: 'D:\Work\2026_Launch\Design_Assets', badge: 'Explorer' },
+        { type: 'file', name: '2026_하반기_프로젝트_일정표.xlsx  [142 KB · 11-26 14:20]', path: 'D:\Work\2026_Launch\Schedule', badge: 'Enter' },
+        { type: 'file', name: '주간회의록_최종본_v2.pdf  [1.8 MB · 11-25 17:05]', path: 'D:\Work\Meetings\2026_11', badge: 'Enter' },
+        { type: 'calc', name: '🧮 계산 결과: 49,500  (=45000*1.1)', path: 'Enter 시 클립보드에 49500 즉시 복사', badge: 'Copy' },
+        { type: 'app', name: '💻 > cmd — 명령 프롬프트 (Command Prompt)', path: 'cmd.exe · 새 콘솔 창으로 즉시 실행', badge: 'Run' },
+        { type: 'dup', name: '📑 제안서_발표자료_사본.pptx  [중복 의심 · 12.4 MB]', path: 'D:\Work\Backup\2026_Proposal', badge: 'dup:' }
+      ],
+      'en': [
+        { type: 'folder', name: '01_UI_Mockups_Final  [Opens in Windows Explorer]', path: 'D:\Work\2026_Launch\Design_Assets', badge: 'Explorer' },
+        { type: 'file', name: '2026_H2_Project_Schedule.xlsx  [142 KB · 11-26 14:20]', path: 'D:\Work\2026_Launch\Schedule', badge: 'Enter' },
+        { type: 'file', name: 'Weekly_Meeting_Notes_v2.pdf  [1.8 MB · 11-25 17:05]', path: 'D:\Work\Meetings\2026_11', badge: 'Enter' },
+        { type: 'calc', name: '🧮 Result: 49,500  (=45000*1.1)', path: 'Press Enter to copy 49500 to clipboard', badge: 'Copy' },
+        { type: 'app', name: '💻 > cmd — Command Prompt', path: 'cmd.exe · Launch in new console window', badge: 'Run' },
+        { type: 'dup', name: '📑 Pitch_Deck_Copy.pptx  [Possible Duplicate · 12.4 MB]', path: 'D:\Work\Backup\2026_Proposal', badge: 'dup:' }
+      ],
+      'ja': [
+        { type: 'folder', name: '01_UIデザイン_最終フォルダ  [別エクスプローラーで開く]', path: 'D:\Work\2026_Launch\Design_Assets', badge: 'Explorer' },
+        { type: 'file', name: '2026_下期_プロジェクトスケジュール.xlsx  [142 KB]', path: 'D:\Work\2026_Launch\Schedule', badge: 'Enter' },
+        { type: 'file', name: '週次定例議事録_v2.pdf  [1.8 MB]', path: 'D:\Work\Meetings\2026_11', badge: 'Enter' },
+        { type: 'calc', name: '🧮 計算結果: 49,500  (=45000*1.1)', path: 'Enterで 49500 をクリップボードにコピー', badge: 'Copy' },
+        { type: 'app', name: '💻 > cmd — コマンドプロンプト', path: 'cmd.exe · 新しいコンソールで即実行', badge: 'Run' },
+        { type: 'dup', name: '📑 提案書_スライド_コピー.pptx  [重複候補 · 12.4 MB]', path: 'D:\Work\Backup\2026_Proposal', badge: 'dup:' }
+      ],
+      'zh-CN': [
+        { type: 'folder', name: '01_UI设计稿_最终目录  [独立资源管理器窗口打开]', path: 'D:\Work\2026_Launch\Design_Assets', badge: 'Explorer' },
+        { type: 'file', name: '2026_下半年_项目排期表.xlsx  [142 KB]', path: 'D:\Work\2026_Launch\Schedule', badge: 'Enter' },
+        { type: 'file', name: '周会纪要_v2.pdf  [1.8 MB]', path: 'D:\Work\Meetings\2026_11', badge: 'Enter' },
+        { type: 'calc', name: '🧮 计算结果: 49,500  (=45000*1.1)', path: '按 Enter 将 49500 复制到剪贴板', badge: 'Copy' },
+        { type: 'app', name: '💻 > cmd — 命令提示符', path: 'cmd.exe · 在新控制台窗口中立即运行', badge: 'Run' },
+        { type: 'dup', name: '📑 方案演示文稿_副本.pptx  [疑似重复 · 12.4 MB]', path: 'D:\Work\Backup\2026_Proposal', badge: 'dup:' }
+      ]
+    };
+
+    const inputEl = document.getElementById('findrunSearchInput');
+    const resultsEl = document.getElementById('findrunResults');
+    const clearBtn = document.getElementById('clearSearchBtn');
+
+    function renderResults(keyword = '') {
+      const dict = i18nFindrun[langSelector.value] || i18nFindrun['ko'];
+      const q = keyword.trim().toLowerCase();
+      const items = findrunItemsByLang[langSelector.value] || findrunItemsByLang['ko'];
+
+      let filtered = items;
+      if (q.startsWith('ext:')) {
+        const ext = q.slice(4).trim();
+        filtered = items.filter(it => it.name.toLowerCase().includes('.' + ext));
+      } else if (q.startsWith('dup:')) {
+        filtered = items.filter(it => it.type === 'dup');
+      } else if (q.startsWith('=')) {
+        filtered = items.filter(it => it.type === 'calc');
+      } else if (q.startsWith('>')) {
+        filtered = items.filter(it => it.type === 'app');
+      } else if (q) {
+        filtered = items.filter(it =>
+          it.name.toLowerCase().includes(q) || it.path.toLowerCase().includes(q)
+        );
+      }
+
+      if (filtered.length === 0) {
+        resultsEl.innerHTML = `<div class="py-8 text-center text-xs text-slate-500">${dict.mockEmpty}</div>`;
+        return;
+      }
+
+      resultsEl.innerHTML = filtered.map((it, idx) => {
+        const iconHtml = it.type === 'folder'
+          ? '<i data-lucide="folder" class="w-4 h-4 text-amber-400 fill-amber-400/20 shrink-0"></i>'
+          : it.type === 'app'
+            ? '<i data-lucide="terminal" class="w-4 h-4 text-sky-400 shrink-0"></i>'
+            : it.type === 'calc'
+              ? '<i data-lucide="calculator" class="w-4 h-4 text-amber-300 shrink-0"></i>'
+              : '<i data-lucide="file-text" class="w-4 h-4 text-emerald-400 shrink-0"></i>';
+
+        return `
+          <div class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl ${idx === 0 ? 'bg-emerald-500/20 border border-emerald-400/40' : 'hover:bg-white/5 border border-transparent'} transition-colors">
+            <div class="flex items-center gap-2.5 min-w-0">
+              ${iconHtml}
+              <div class="min-w-0">
+                <div class="text-xs font-bold text-white truncate">${it.name}</div>
+                <div class="text-[10px] text-slate-400 font-mono truncate">${it.path}</div>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 shrink-0">${it.badge || 'Enter'}</span>
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    document.querySelectorAll('.demo-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        inputEl.value = btn.getAttribute('data-q') || '';
+        renderResults(inputEl.value);
+        inputEl.focus();
+      });
+    });
 
     const savedTheme = localStorage.getItem('sinywork_site_theme') !== 'light';
     const savedLang = localStorage.getItem('sinywork_site_lang') || 'ko';
@@ -560,55 +935,6 @@
       const nextDark = !document.documentElement.classList.contains('dark');
       setSiteTheme(nextDark);
     });
-
-    const findrunItems = [
-      { type: 'folder', name: '01_UI_시안_최종폴더 (디자인 에셋)', path: 'D:\\Work\\2026_Launch\\Design_Assets' },
-      { type: 'app', name: 'MEMTODO.exe', path: 'C:\\Users\\User\\AppData\\Local\\Programs\\MEMTODO' },
-      { type: 'file', name: '2026_하반기_프로젝트_일정표.xlsx', path: 'D:\\Work\\2026_Launch\\Schedule' },
-      { type: 'folder', name: '02_프로모션_배너_원본함', path: 'D:\\Work\\Marketing\\Banners_2026' },
-      { type: 'file', name: '주간회의록_v2.pdf', path: 'D:\\Work\\Meetings\\2026_11' },
-      { type: 'app', name: '> cmd / > control (시스템 명령어 즉시 실행)', path: 'System Command Mode (>)' }
-    ];
-
-    const inputEl = document.getElementById('findrunSearchInput');
-    const resultsEl = document.getElementById('findrunResults');
-    const clearBtn = document.getElementById('clearSearchBtn');
-
-    function renderResults(keyword = '') {
-      const q = keyword.trim().toLowerCase();
-      const filtered = findrunItems.filter(it =>
-        it.name.toLowerCase().includes(q) || it.path.toLowerCase().includes(q)
-      );
-
-      if (filtered.length === 0) {
-        resultsEl.innerHTML = `<div class="py-8 text-center text-xs text-slate-500">일치하는 파일이나 프로그램이 없습니다.</div>`;
-        return;
-      }
-
-      resultsEl.innerHTML = filtered.map((it, idx) => {
-        const iconHtml = it.type === 'folder'
-          ? '<i data-lucide="folder" class="w-4 h-4 text-amber-400 fill-amber-400/20 shrink-0"></i>'
-          : it.type === 'app'
-            ? '<i data-lucide="app-window" class="w-4 h-4 text-emerald-400 shrink-0"></i>'
-            : '<i data-lucide="file-text" class="w-4 h-4 text-blue-400 shrink-0"></i>';
-
-        return `
-          <div class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl ${idx === 0 ? 'bg-emerald-500/20 border border-emerald-400/40' : 'hover:bg-white/5 border border-transparent'} transition-colors">
-            <div class="flex items-center gap-2.5 min-w-0">
-              ${iconHtml}
-              <div class="min-w-0">
-                <div class="text-xs font-bold text-white truncate">${it.name}</div>
-                <div class="text-[10px] text-slate-400 font-mono truncate">${it.path}</div>
-              </div>
-            </div>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 shrink-0">Enter</span>
-          </div>
-        `;
-      }).join('');
-      lucide.createIcons();
-    }
-
-    renderResults();
     inputEl.addEventListener('input', (e) => renderResults(e.target.value));
     clearBtn.addEventListener('click', () => {
       inputEl.value = '';
@@ -624,7 +950,7 @@
     src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
     data-id="sinyworklab"
     data-description="Support SINYWORK LAB on Buy me a coffee!"
-    data-message="따뜻한 커피 한 잔 응원 감사합니다 ☕"
+    data-message="Thank you for supporting SINYWORK LAB ☕"
     data-color="#FFDD00"
     data-position="Right"
     data-x_margin="20"
